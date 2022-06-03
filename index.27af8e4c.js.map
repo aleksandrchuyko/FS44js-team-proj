@@ -1,0 +1,1 @@
+{"mappings":"AAAAA,OAAOC,MAAM","sources":["src/index.js"],"sourcesContent":["window.alert('Hi111');"],"names":["window","alert"],"version":3,"file":"index.27af8e4c.js.map"}
