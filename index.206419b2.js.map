@@ -1,0 +1,1 @@
+{"mappings":"AAAAA,QAAQC,IAAI,QCAZC,OAAOC,MAAM","sources":["src/js/go.js","src/index.js"],"sourcesContent":["console.log(\"I go\");","window.alert('Hi111');\nimport './js/go';"],"names":["console","log","window","alert"],"version":3,"file":"index.206419b2.js.map"}
