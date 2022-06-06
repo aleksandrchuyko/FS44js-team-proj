@@ -1,3 +1,3 @@
-import { totalPages } from './SB_homepage-render';
+import { totalPages } from './sb_homepage-render';
 
 console.log(totalPages);

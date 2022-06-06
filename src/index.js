@@ -1,4 +1,4 @@
 // import './js/go';
 import './js/modal';
-import './js/SB_homepage-render';
+import './js/sb_homepage-render';
 // import './js/mariaTest';

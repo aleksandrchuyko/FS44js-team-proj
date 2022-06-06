@@ -1,8 +1,8 @@
-import MoviesApiService from './SB_tranding-fetch_API';
+import MoviesApiService from './sb_tranding-fetch_API';
 
 import { refs } from './refs.js';
 
-import { genresInfo } from './SB_genres';
+import { genresInfo } from './sb_genres';
 
 const moviesApiService = new MoviesApiService();
 

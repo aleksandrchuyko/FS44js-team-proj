@@ -17,7 +17,7 @@ export default class MoviesApiService {
     // this.searchQuery = '';
 
     // узгодити з Maria Streltova
-    this.page = 1;
+    this.page = 2;
   }
 
   async fetchMovies(fetchParametres) {
@@ -38,47 +38,14 @@ export default class MoviesApiService {
     }
   }
 
-  // async fetchMovies() {
-  //   const url = `${BASE_URL}/trending/${MEDIA_TYPE}/${TIME_WINDOW}?api_key=${API_KEY}&page=${this.page}&language=${LANGUAGE}`;
-  //   try {
-  //     await fetch(url)
-  //       .then(response => {
-  //         // console.log(response);
-  //         return response.json();
-  //       })
-  //       .then(({ movies }) => {
-  //         // console.log(movies);
-  //         // this.incrementPage();
-  //         return movies;
-  //       });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-
-  // const url = `${BASE_URL}/trending/${MEDIA_TYPE}/${TIME_WINDOW}?api_key=${API_KEY}`;
-
-  // // `${BASE_URL}/trending/${MEDIA_TYPE}/${TIME_WINDOW}?page=${this.page}&language=${LANGUAGE}`;
-
-  // return fetch(url)
-  // .then(response => {
-  //   // console.log(response);
-  //   return response.json();
-  // })
-  // .then(({ movies }) => {
-  //   // console.log(movies);
-  //   // this.incrementPage();
-  //   return movies;
-  // });
-  // }
-
   // узгодити з Maria Streltova
   //   incrementPage() {
   //     this.page += 1;
   //   }
 
-  // resetPage() {
-  //   this.page = 1;
-  // }
+  resetPage() {
+    this.page = 1;
+  }
 
   //   get query() {
   //     return this.searchQuery;
