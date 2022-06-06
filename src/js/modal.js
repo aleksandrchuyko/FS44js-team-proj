@@ -9,7 +9,7 @@ function openModal() {
   window.addEventListener("keydown", escapePress);
   document.body.classList.add("show__modal");
     markup();
-    const closeModalBtn = document.querySelector(".close__btn");
+    const closeModalBtn = document.querySelector(".close__modal");
     const backdrop = document.querySelector(".backdrop");
    
     closeModalBtn.addEventListener("click", closeModal);
