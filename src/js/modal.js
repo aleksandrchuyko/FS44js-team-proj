@@ -40,44 +40,43 @@ function escapePress(event) {
 function markup() {
   refs.container.innerHTML = `<div class="backdrop">
         <div class="modal">
-            <button type="button" class="close__btn">
+            <button type="button" class="close__modal">
                 X
             </button>
-            <div class="wrapper">
-                <img class="image" src="" alt="">
-                <div class="about">
+            <div class="modal__wrapper">
+                <img class="modal__image" src="" alt="">
+                <div class="modal__about">
                     <h2 class="modal__title">A FISTFUL OF LEAD</h2>
-                    <div class="lists"> 
-                        <ul class="list__key list">
-                            <li class="item">
+                    <div class="modal__lists"> 
+                        <ul class="list__key">
+                            <li class="key__item">
                                 Vote / Votes
                             </li>
-                            <li class="item">
+                            <li class="key__item">
                                 Popularity
                             </li>
-                            <li class="item">
+                            <li class="key__item">
                                 Original Title
                             </li>
-                            <li class="item">
+                            <li class="key__item">
                                 Genre
                             </li>
                         </ul>
                         <ul class="list__value list">
-                            <li class="item__value item">
+                            <li class="item__value">
                                 <span class="vote">7.3</span> / 1260
                             </li>
-                            <li class="item__value item">
+                            <li class="item__value">
                                 100.2
                             </li>
-                            <li class="item__value item">
+                            <li class="item__value">
                                 A FISTFUL OF LEAD
                             </li>
-                            <li class="item__value item">
+                            <li class="item__value">
                                 Western 
                             </li>
                         </ul>
-                    </div>
-
+                    </div
                     <h3 class="text__title">About</h3>
 
                     <p class="modal__text">
