@@ -17,7 +17,7 @@ export default class MoviesApiService {
     // this.searchQuery = '';
 
     // узгодити з Maria Streltova
-    this.page = 1;
+    this.page = 3;
   }
 
   async fetchMovies(fetchParametres) {

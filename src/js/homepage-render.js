@@ -13,7 +13,11 @@ const TIME_WINDOW = 'day'; // day, week, month, year
 
 const fetchParametres = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
 
-const homeBtn = refs.headerLogo.addEventListener('click', onClickHomePage);
+addEventListener('DOMContentLoaded', () => {
+  loadHomePage();
+});
+
+refs.headerLogo.addEventListener('click', onClickHomePage);
 refs.headerList.addEventListener('click', onClickHomePage);
 
 async function onClickHomePage(e) {
@@ -21,16 +25,21 @@ async function onClickHomePage(e) {
 
   refs.headerList.firstElementChild.classList.add('active');
   refs.headerSearch.classList.remove('visually-hidden');
+  moviesApiService.resetPage();
 
   clearGalleryContainer();
 
+  await loadHomePage();
+
+  // AWAIT пагінація Maria Streltova
+}
+
+async function loadHomePage() {
   const response = await moviesApiService.fetchMovies(fetchParametres);
   const totalPages = response.total_pages;
   const movies = response.results;
 
   await changeMoviesArray(movies);
-
-  // AWAIT пагінація Maria Streltova
 }
 
 async function changeMoviesArray(movies) {
