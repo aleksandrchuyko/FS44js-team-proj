@@ -35,5 +35,11 @@
       border-right: 1px solid orange;
       padding-right: 5px;
     }
+    &--rating {
+      color: white;
+      background-color: orange;
+      padding: 0 9px;
+      border-radius: 4px;
+    }
   }
 }
