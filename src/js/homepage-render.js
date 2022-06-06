@@ -1,8 +1,10 @@
-import MoviesApiService from './sb_tranding-fetch_API';
+import MoviesApiService from './tranding-fetch_API';
 
 import { refs } from './refs.js';
 
-import { genresInfo } from './sb_genres';
+import { genresInfo } from './genres';
+
+// IMPORT пагінація по сторінках Maria Streltova
 
 const moviesApiService = new MoviesApiService();
 
@@ -11,21 +13,22 @@ const TIME_WINDOW = 'day'; // day, week, month, year
 
 const fetchParametres = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
 
-// IMPORT пагінація по сторінках Maria Streltova
+const homeBtn = refs.headerLogo.addEventListener('click', onClickHomePage);
+refs.headerList.addEventListener('click', onClickHomePage);
 
-async function onClickHomePage() {
-  //   e.preventDefault();
+async function onClickHomePage(e) {
+  e.preventDefault();
+
+  refs.headerList.firstElementChild.classList.add('active');
+  refs.headerSearch.classList.remove('visually-hidden');
+
+  clearGalleryContainer();
+
   const response = await moviesApiService.fetchMovies(fetchParametres);
   const totalPages = response.total_pages;
   const movies = response.results;
-  console.log(totalPages);
-  // console.log(movies);
 
   await changeMoviesArray(movies);
-
-  // console.log(moviesArray);
-
-  // await renderMovies(moviesArray);
 
   // AWAIT пагінація Maria Streltova
 }
@@ -84,4 +87,6 @@ async function renderMovies(moviesArray) {
   refs.galleryContainer.insertAdjacentHTML('beforeend', renderResult);
 }
 
-onClickHomePage();
+function clearGalleryContainer() {
+  refs.galleryContainer.innerHTML = '';
+}
