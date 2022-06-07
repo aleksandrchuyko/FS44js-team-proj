@@ -51,9 +51,9 @@ export default class MoviesApiService {
   }
 
   // узгодити із Maria Streltova
-  //   incrementPage() {
-  //     this.page += 1;
-  //   }
+    changePage() {
+      this.page = page;
+    }
 
   resetPage() {
     this.page = 1;

@@ -7,4 +7,5 @@ export const refs = {
   myLibraryBtn:
     document.querySelector('.header__list').lastElementChild.firstElementChild,
   headerSearch: document.querySelector('.header__searchform'),
+  painationList: document.querySelector('.pagination'),
 };
