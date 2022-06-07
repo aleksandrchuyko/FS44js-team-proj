@@ -1,25 +1,30 @@
+const axios = require('axios').default;
+
 const refs = {
   openModalBtn: document.querySelector(".open__btn"),
   container: document.querySelector(".container-js"),
 };
 
 refs.openModalBtn.addEventListener("click", openModal);
+let id = "453395";
+
+const  options = {
+    responseType: 'stream',
+    api_key: "a8de9bbb748883055cd7737934b96801",
+}
 
 function openModal() {
-  window.addEventListener("keydown", escapePress);
-  document.body.classList.add("show__modal");
-    markup();
-    const closeModalBtn = document.querySelector(".close__modal");
-    const backdrop = document.querySelector(".backdrop");
-   
-    closeModalBtn.addEventListener("click", closeModal);
-    backdrop.addEventListener("click", backdropClick);
+    window.addEventListener("keydown", escapePress);
+    document.body.classList.add("show__modal");
+    modalMarkup();
+    
 
 }
 
 function closeModal() {
   window.removeEventListener("keydown", escapePress);
     document.body.classList.remove("show__modal");
+    refs.container.innerHTML = "";
 }
 
 function backdropClick(event) {
@@ -37,16 +42,22 @@ function escapePress(event) {
   }
 }
 
-function markup() {
-  refs.container.innerHTML = `<div class="backdrop">
+
+
+function modalMarkup() {
+   
+    getData().then(data => {
+        const {poster_path, title, overview, vote_average, vote_count, popularity, original_title,} = data;
+        const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        let markup = `<div class="backdrop">
         <div class="modal">
             <button type="button" class="close__modal">
                 X
             </button>
             <div class="modal__wrapper">
-                <img class="modal__image" src="" alt="">
+                <img class="modal__image" src="${poster}" alt="foto">
                 <div class="modal__about">
-                    <h2 class="modal__title">A FISTFUL OF LEAD</h2>
+                    <h2 class="modal__title">${title}</h2>
                     <div class="modal__lists"> 
                         <ul class="list__key">
                             <li class="key__item">
@@ -64,36 +75,21 @@ function markup() {
                         </ul>
                         <ul class="list__value list">
                             <li class="item__value">
-                                <span class="vote">7.3</span> / 1260
+                                <span class="vote">${vote_average}</span> / ${vote_count}
                             </li>
                             <li class="item__value">
-                                100.2
+                                ${popularity}
                             </li>
                             <li class="item__value">
-                                A FISTFUL OF LEAD
+                                ${original_title}
                             </li>
                             <li class="item__value">
-                                Western 
+                                ${data.genres[0].name} 
                             </li>
                         </ul>
-                    </div
+                    </div>
                     <h3 class="text__title">About</h3>
-
-                    <p class="modal__text">
-                        Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most
-                        corrupt
-                        settlement of the
-                        gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of
-                        gold hide out
-                        in the
-                        abandoned gold mine where they happen across another gang of three – who themselves were
-                        planning to hit the
-                        very same
-                        bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled
-                        with lead...
-                        they’ve
-                        been double crossed – but by who and how?
-                    </p>
+                    <p class="modal__text">${overview}</p>
                     <div class="modal__buttons">
                         <button class="modal__button watched__btn" type="button">add to watched</button>
                         <button class="modal__button" type="button">add to queue</button>
@@ -102,4 +98,26 @@ function markup() {
             </div>
         </div>
     </div>`
+        refs.container.insertAdjacentHTML("beforeend", markup);
+
+        const closeModalBtn = document.querySelector(".close__modal");
+        const backdrop = document.querySelector(".backdrop");
+        closeModalBtn.addEventListener("click", closeModal);
+        backdrop.addEventListener("click", backdropClick);
+    })
+}
+
+getData();
+
+
+async function getData() {
+    try {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/453395`, {
+            params: options
+        });
+        const muvie = response.data;
+        return muvie;
+    } catch (error) {
+        console.log(error);
+    }
 }
