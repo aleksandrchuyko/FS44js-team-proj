@@ -14,6 +14,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 export default class MoviesApiService {
   constructor() {
+    // узгодити зі Stas
     // this.searchQuery = '';
 
     // узгодити з Maria Streltova
@@ -21,6 +22,7 @@ export default class MoviesApiService {
   }
 
   async fetchMovies(fetchParametres) {
+    // run spinner
     try {
       const response = await axios.get(`${BASE_URL}${fetchParametres}`, {
         params: {
@@ -35,10 +37,12 @@ export default class MoviesApiService {
       return response.data;
     } catch (error) {
       console.error(error);
+    } finally {
+      // stop spinner
     }
   }
 
-  // узгодити з Maria Streltova
+  // узгодити із Maria Streltova
   //   incrementPage() {
   //     this.page += 1;
   //   }
@@ -47,6 +51,7 @@ export default class MoviesApiService {
     this.page = 1;
   }
 
+  // узгодити зі Stas
   //   get query() {
   //     return this.searchQuery;
   //   }

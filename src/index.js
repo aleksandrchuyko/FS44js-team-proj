@@ -13,5 +13,5 @@ const global = {
 // import './js/go';
 import './js/modal';
 import './js/homepage-render';
-// import './js/mariaTest';
+
 import './js/goToMyLibrary';
