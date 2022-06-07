@@ -1,7 +1,13 @@
 .header {
     height: 216px; 
     background: rgba(0, 0, 0, 0.56);
-    background-image:  url(/src/images/header.jpg);
+    background-image:  url(/src/images/header/header-mob.jpg);
+    @media screen and (min-width: 768px) {
+            background-image: url(/src/images/header/header-tablet.jpg);
+        }
+        @media screen and (min-width: 1200px) {
+        background-image: url(/src/images/header/header_pc.jpg);
+        }
 }
 
 .header__box{
@@ -9,10 +15,15 @@
 }
 
 .header__logo {
-    padding-top: 45px;
+    padding-top: 40px;
+    @media screen and (min-width: 768px) {
+            padding-top: 45px;
+            display: flex;
+        }
 }
 
 .header__text{
+    display: none;
     padding-top: 40px;
     padding-left: 10px;
     font-family: 'Roboto';
@@ -20,6 +31,9 @@
     font-size: 30px;
     line-height: 1.2;
     color: var(--main-text-color);
+    @media screen and (min-width: 768px) {
+        display: flex;
+        }
 }
 
 .header__menu {
@@ -29,12 +43,17 @@
 
 .header__list {
     display: flex;
-    padding-top: 49px;
+    padding-top: 44px;
+    @media screen and (min-width: 768px) {
+            padding-top: 49px;
+        }
 }
 
 .header__item {
-    padding-left: 49px;
-    
+    padding-left: 40px;
+    @media screen and (min-width: 1200px) {
+            padding-left: 49px;
+        }     
 }
 
 .sitenav__link {
@@ -71,7 +90,7 @@ color: var(--main-text-color);
 }
 
 .header__searchform {
-    margin-top: 41px;
+    margin-top: 57px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -81,6 +100,9 @@ color: var(--main-text-color);
     border-bottom: 1px solid  var(--main-text-color); 
     font-weight: normal; 
     padding-bottom: 4px;
+    @media screen and (min-width: 768px) {
+            margin-top: 50px;
+        }
 }
 
 .header__searchname {
