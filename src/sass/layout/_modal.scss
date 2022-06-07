@@ -98,6 +98,8 @@ body.show__modal .modal {
 
 .modal__image {
     display: block;
+    width: 100%;
+    height: 100%;
     min-width: 240px;
     min-height: 357px;
     background-color: teal;
@@ -108,13 +110,16 @@ body.show__modal .modal {
 
     @media screen and (min-width: 768px) {
         margin: 0;
-        min-width: 264px;
-        min-height: 374px;
+        max-width: 264px;
+        max-height: 374px;
     }
     @media screen and (min-width: 1024px) {
         margin: 0;
+        // width: 100%;
+        // height: 100%;
         min-width: 375px;
         min-height: 478px;
+        // height: auto;
     }
 
 }
@@ -161,6 +166,10 @@ body.show__modal .modal {
     @media screen and (min-width: 1024px) {
         margin-left: 85px;
         }
+}
+
+.key__item {
+    white-space: nowrap;
 }
 
 .key__item, 
