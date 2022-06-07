@@ -8,6 +8,7 @@ const global = {
   currentPage: HOME_PAGE,
   currentGalleryPage: 1,
 };
+
 //Віше определение всех глобал переменніх проекта
 
 // import './js/go';
