@@ -2,7 +2,6 @@ import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
 import { refs } from './refs';
 import { clearGalleryContainer } from './clearGallery';
-// import { movieFetch } from './fetchFunction';
 
 // IMPORT пагінація по сторінках Maria Streltova
 
