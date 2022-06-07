@@ -18,12 +18,13 @@ addEventListener('DOMContentLoaded', () => {
 });
 
 refs.headerLogo.addEventListener('click', onClickHomePage);
-refs.headerList.addEventListener('click', onClickHomePage);
+refs.homePageBtn.addEventListener('click', onClickHomePage);
 
 async function onClickHomePage(e) {
   e.preventDefault();
 
-  refs.headerList.firstElementChild.classList.add('active');
+  refs.homePageBtn.classList.add('active');
+  refs.myLibraryBtn.classList.remove('active');
   refs.headerSearch.classList.remove('visually-hidden');
   moviesApiService.resetPage();
 
