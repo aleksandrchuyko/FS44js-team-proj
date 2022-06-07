@@ -1,49 +1,11 @@
-import MoviesApiService from './tranding-fetch_API';
+import MoviesApiService from './fetch_API';
 
 import { refs } from './refs.js';
 
 import { genresInfo } from './genres';
 
-// IMPORT пагінація по сторінках Maria Streltova
-
-const moviesApiService = new MoviesApiService();
-
-const MEDIA_TYPE = 'movie'; // movie or tv
-const TIME_WINDOW = 'day'; // day, week, month, year
-
-const fetchParametres = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
-
-addEventListener('DOMContentLoaded', () => {
-  loadHomePage();
-});
-
-refs.headerLogo.addEventListener('click', onClickHomePage);
-refs.homePageBtn.addEventListener('click', onClickHomePage);
-
-async function onClickHomePage(e) {
-  e.preventDefault();
-
-  refs.homePageBtn.classList.add('active');
-  refs.myLibraryBtn.classList.remove('active');
-  refs.headerSearch.classList.remove('visually-hidden');
-  moviesApiService.resetPage();
-
-  clearGalleryContainer();
-
-  await loadHomePage();
-
-  // AWAIT пагінація Maria Streltova
-}
-
-async function loadHomePage() {
-  const response = await moviesApiService.fetchMovies(fetchParametres);
-  const totalPages = response.total_pages;
+export default async function changeMoviesArray(response) {
   const movies = response.results;
-
-  await changeMoviesArray(movies);
-}
-
-async function changeMoviesArray(movies) {
   const moviesArray = await movies.map(movie => {
     // console.log(movie.id);
     const releasePattern = /\d{4}/g;
@@ -95,8 +57,4 @@ async function renderMovies(moviesArray) {
     .join('');
 
   refs.galleryContainer.insertAdjacentHTML('beforeend', renderResult);
-}
-
-function clearGalleryContainer() {
-  refs.galleryContainer.innerHTML = '';
 }

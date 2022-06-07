@@ -2,9 +2,11 @@ import axios from 'axios';
 
 const API_KEY = 'a8de9bbb748883055cd7737934b96801';
 const BASE_URL = 'https://api.themoviedb.org/3';
-// const MEDIA_TYPE = 'movie'; // movie or tv
+
+//  -------- TRANDING MOVIES -------- //
+const MEDIA_TYPE = 'movie'; // movie or tv
 // const LANGUAGE = 'en-US'; // English
-// const TIME_WINDOW = 'day'; // day, week, month, year
+const TIME_WINDOW = 'day'; // day, week, month, year
 
 // const options = {
 //   headers: {
@@ -14,6 +16,8 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 export default class MoviesApiService {
   constructor() {
+    // this.request = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
+
     // узгодити зі Stas
     // this.searchQuery = '';
 
@@ -21,10 +25,10 @@ export default class MoviesApiService {
     this.page = 3;
   }
 
-  async fetchMovies(fetchParametres) {
+  async fetchMovies() {
     // run spinner
     try {
-      const response = await axios.get(`${BASE_URL}${fetchParametres}`, {
+      const response = await axios.get(`${BASE_URL}${this.request}`, {
         params: {
           api_key: API_KEY,
           page: this.page,
@@ -40,6 +44,10 @@ export default class MoviesApiService {
     } finally {
       // stop spinner
     }
+  }
+
+  tranding() {
+    this.request = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
   }
 
   // узгодити із Maria Streltova
