@@ -2,7 +2,7 @@ import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
 import { refs } from './refs';
 import { clearGalleryContainer } from './clearGallery';
-
+import { onRenderPagination } from './pagination';
 // IMPORT пагінація по сторінках Maria Streltova
 
 // ------- First page load -----------//
@@ -38,4 +38,5 @@ async function onClickHomePage(e) {
   await loadHomePage();
 
   // AWAIT пагінація Maria Streltova
+  await onRenderPagination();
 }
