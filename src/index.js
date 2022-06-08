@@ -20,3 +20,4 @@ import './js/goToMyLibrary';
 import './js/pagination';
 
 import './js/header-library'
+import './js/search'

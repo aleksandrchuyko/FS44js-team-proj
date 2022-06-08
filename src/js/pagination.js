@@ -12,10 +12,10 @@ async function onCreatePaginationTemplate(totalPages) {
 }
 
 export async function onRenderPagination(totalPages) {
-    console.log(totalPages);
+    // console.log(totalPages);
     const markup = await onCreatePaginationTemplate(totalPages);
   
-    console.log(markup);
+    // console.log(markup);
     refs.paginationList.insertAdjacentHTML("beforeend", markup);
 
 }
