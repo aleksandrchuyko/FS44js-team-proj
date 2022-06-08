@@ -8,4 +8,5 @@ export const refs = {
     document.querySelector('.header__list').lastElementChild.firstElementChild,
   headerSearch: document.querySelector('.header__searchform'),
   paginationList: document.querySelector('.pagination'),
+  libraryBtns: document.querySelector('.library__list'),
 };
