@@ -1,8 +1,9 @@
 import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
 import { refs } from './refs';
-import { clearGalleryContainer } from './clearGallery';
+import { clearGalleryContainer } from './clear-gallery';
 import { onRenderPagination } from './pagination';
+import { clearPaginationList } from './clear-pagination';
 
 // ------- First page load -----------//
 addEventListener('DOMContentLoaded', () => {
@@ -34,6 +35,7 @@ async function onClickHomePage(e) {
   moviesApiService.resetPage();
 
   await clearGalleryContainer();
+  await clearPaginationList();
 
   await loadHomePageHeader();
 
@@ -41,6 +43,7 @@ async function onClickHomePage(e) {
 }
 
 async function loadHomePageHeader() {
+  console.log('loadHomePageHeader');
   // --- hide my library hedder --- //
   refs.libraryBtns.classList.add('is-hidden');
   refs.myLibraryBtn.classList.remove('current');

@@ -17,8 +17,8 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
 }
 
 export async function onRenderPagination(totalPages, currentPage) {
-    console.log(totalPages);
-    console.log(currentPage);
+  console.log(totalPages);
+  console.log(currentPage);
   const markup = await onCreatePaginationTemplate(totalPages, currentPage);
 
   console.log(markup);
