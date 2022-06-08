@@ -1,5 +1,5 @@
 import { refs } from './refs';
 
-export function clearPaginationList() {
+export async function clearPaginationList() {
   refs.paginationList.innerHTML = '';
 }

@@ -13,11 +13,11 @@ const global = {
 //Віше определение всех глобал переменніх проекта
 
 // import './js/go';
-import './js/modal';
+// import './js/modal';
 import './js/tranding';
 
 import './js/goToMyLibrary';
 import './js/pagination';
 
-import './js/header-library'
-import './js/search'
+import './js/header-library';
+import './js/search';
