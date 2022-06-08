@@ -8,7 +8,7 @@ const moviesApiService = new MoviesApiService();
 async function onCreatePaginationTemplate(totalPages, currentPage) {
       console.log(currentPage);
     let array = [];
-    for (i = 1; i <= totalPages; i += 1){
+    for (let i = 1; i <= totalPages; i += 1){
         array.push(`<button type="button" class="pagination__btn page">${i}</button>`)
     } 
      return array.join("");

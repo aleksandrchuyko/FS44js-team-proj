@@ -18,5 +18,5 @@ async function paginationBtnClick(e) {
     const pageNumber = e.target.textContent;
     console.log(pageNumber);
    await moviesApiService.changePage(pageNumber);
-await loa
+
 }
