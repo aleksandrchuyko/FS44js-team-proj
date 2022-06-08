@@ -11,10 +11,10 @@ function onCreatePaginationTemplate(totalPages) {
     return array.join("");
 }
 
-function onRenderPagination(totalPages) {
+export async function onRenderPagination(totalPages) {
     const markup = onCreatePaginationTemplate(totalPages);
-    paginationList.insertAdjacentHTML("beforeend", markup);
-    
+    refs.paginationList.insertAdjacentHTML("beforeend", markup);
+
 }
 
 function onPagiationBtnClick(e) {
