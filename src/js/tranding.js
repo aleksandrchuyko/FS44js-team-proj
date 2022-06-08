@@ -30,11 +30,21 @@ async function loadTrandingPage() {
   await onRenderPagination(totalPages, currentPage);
 }
 
+export default async function loadSelectedTrandingPage(page) {
+  moviesApiService.setPage(page);
+
+  await onRender();
+}
+
 async function onClickHomePage(e) {
   e.preventDefault();
 
   moviesApiService.resetPage();
 
+  await onRender();
+}
+
+async function onRender() {
   await clearGalleryContainer();
   await clearPaginationList();
 

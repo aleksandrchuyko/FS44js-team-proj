@@ -21,7 +21,7 @@ export async function onRenderPagination(totalPages, currentPage) {
   console.log(currentPage);
   const markup = await onCreatePaginationTemplate(totalPages, currentPage);
 
-  console.log(markup);
+  // console.log(markup);
 
   refs.paginationList.insertAdjacentHTML('beforeend', markup);
 }

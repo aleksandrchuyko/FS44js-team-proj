@@ -32,7 +32,7 @@ export default class MoviesApiService {
         params: {
           api_key: API_KEY,
           page: this.page,
-          query: 'car',
+          // query: 'car',
         },
       });
 
@@ -56,18 +56,18 @@ export default class MoviesApiService {
   }
 
   // узгодити із Maria Streltova
-    changePage() {
-      this.page = page;
-    }
+  async setPage(page) {
+    this.page = page;
+  }
 
   resetPage() {
     this.page = 1;
   }
 
   // узгодити зі Stas
-    get query() {
-      return this.searchQuery;
-    }
+  get query() {
+    return this.searchQuery;
+  }
 
   set query(newQuery) {
     this.searchQuery = newQuery;
