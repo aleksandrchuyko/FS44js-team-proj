@@ -112,6 +112,7 @@
     font-weight: normal;
     padding-bottom: 4px;
 
+
     @media screen and (min-width: 768px) {
         margin-top: 50px;
     }
@@ -132,7 +133,7 @@
 
 .header__svg {
     margin-left: auto;
-    margin-bottom: 14px;
+    margin-bottom: -2px;
     fill: #fff;
 }
 
@@ -205,3 +206,28 @@ li {
     border: 2px solid #FF6B01;
     box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
 }
+.header__form {
+    width: 100%;
+    display: flex;
+}
+
+.header__input {
+    width: 175%;
+    color: var(--main-text-color);
+    font-size: 15px;
+    background: none;
+    border: none;
+    @media screen and (min-width: 768px) {
+            width: 210%;
+        }
+}
+
+::-webkit-input-placeholder {
+    color: var(--main-text-color);
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+}
+

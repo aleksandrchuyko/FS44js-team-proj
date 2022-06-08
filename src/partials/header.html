@@ -27,15 +27,20 @@
 
         </div>
         <div class="header__searchform">
-            <p class="header__searchname">Поиск фильмов</p>
+
+            <form class="header__form">
+            <p>
+            <input type="search" class="header__input" name="searchQuery" placeholder="Поиск фильмов">
+            </p>
             <p class="header__image">
                 <svg class="header__svg" width="12" height="12">
-                    <use href="/src/images/icons.svg#icon-search"></use>
-                </svg>
+                <use href="/src/images/icons.svg#icon-search"></use>
+            </svg>
             </p>
-        </div>
+            </form>
 
-        <div class="library__btn ">
+        </div>
+      <div class="library__btn ">
             <ul class="library__list is-hidden">
                 <li class="library__item">
                     <button type="button" class="library__link watched-btn" data-translatable>Watched</button>
@@ -44,7 +49,5 @@
                     <button type="button" class="library__link queue-btn" data-translatable>Queue</button>
                 </li>
             </ul>
-        </div>
-
     </div>
 </div>

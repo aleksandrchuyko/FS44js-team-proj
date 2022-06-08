@@ -1,9 +1,9 @@
-import MoviesApiService from './fetch_API';
+// import MoviesApiService from './fetch_API';
 import { refs } from './refs.js';
 
-const moviesApiService = new MoviesApiService();
+// const moviesApiService = new MoviesApiService();
 
-function onCreatePaginationTemplate(totalPages) {
+async function onCreatePaginationTemplate(totalPages) {
     let array = [];
     for (i = 1; i <= totalPages; i += 1){
         array.push(`<button type="button" class="pagination__btn page">${i}</button>`)
@@ -11,10 +11,13 @@ function onCreatePaginationTemplate(totalPages) {
     return array.join("");
 }
 
-function onRenderPagination(totalPages) {
-    const markup = onCreatePaginationTemplate(totalPages);
-    paginationList.insertAdjacentHTML("beforeend", markup);
-    
+export async function onRenderPagination(totalPages) {
+    console.log(totalPages);
+    const markup = await onCreatePaginationTemplate(totalPages);
+  
+    console.log(markup);
+    refs.paginationList.insertAdjacentHTML("beforeend", markup);
+
 }
 
 function onPagiationBtnClick(e) {

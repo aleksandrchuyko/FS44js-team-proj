@@ -17,12 +17,13 @@ const moviesApiService = new MoviesApiService();
 
 async function loadHomePage() {
   moviesApiService.tranding();
-  const response = await moviesApiService.fetchMovies();
+  const response = await moviesFetch();
   //   console.log(response);
   //   const totalPages = response.total_pages;
   //   const movies = response.results;
-
+  const totalPages = response.total_pages;
   await changeMoviesArray(response);
+  await onRenderPagination(totalPages);
 }
 
 async function onClickHomePage(e) {
@@ -38,5 +39,7 @@ async function onClickHomePage(e) {
   await loadHomePage();
 
   // AWAIT пагінація Maria Streltova
-  await onRenderPagination();
+
 }
+
+const moviesFetch = async () => await moviesApiService.fetchMovies();
