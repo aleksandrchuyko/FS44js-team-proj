@@ -19,7 +19,7 @@ export default class MoviesApiService {
     // this.request = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
 
     // узгодити зі Stas
-    // this.searchQuery = '';
+    this.searchQuery = '';
 
     // узгодити з Maria Streltova
     this.page = 3;
@@ -32,6 +32,7 @@ export default class MoviesApiService {
         params: {
           api_key: API_KEY,
           page: this.page,
+          query: 'car',
         },
       });
 
@@ -50,6 +51,10 @@ export default class MoviesApiService {
     this.request = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
   }
 
+  search() {
+    this.request = '/search/movie';
+  }
+
   // узгодити із Maria Streltova
     changePage() {
       this.page = page;
@@ -60,11 +65,11 @@ export default class MoviesApiService {
   }
 
   // узгодити зі Stas
-  //   get query() {
-  //     return this.searchQuery;
-  //   }
+    get query() {
+      return this.searchQuery;
+    }
 
-  // set query(newQuery) {
-  //   this.searchQuery = newQuery;
-  // }
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
 }

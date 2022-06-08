@@ -41,14 +41,14 @@ async function renderMovies(moviesArray) {
         `<li class="card">
         <div class="card__container">
           <img src="${moviesArray.poster_path}" alt="${moviesArray.title}" class="card__poster">
-           
+        
         </div>
         <div class="card__meta meta">
           <p class="meta__title">${moviesArray.title}</p>
           <ul class="meta__list list">
             <li class="meta__item meta__item--genres">${moviesArray.genres}</li>
             <li class="meta__item">${moviesArray.release_date}</li>
-           
+ 
           </ul>
         </div>
       </li>`
