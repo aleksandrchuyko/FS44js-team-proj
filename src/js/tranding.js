@@ -21,8 +21,9 @@ async function loadHomePage() {
   //   console.log(response);
   //   const totalPages = response.total_pages;
   //   const movies = response.results;
-
+  const totalPages = response.total_pages;
   await changeMoviesArray(response);
+  await onRenderPagination(totalPages);
 }
 
 async function onClickHomePage(e) {
@@ -38,5 +39,5 @@ async function onClickHomePage(e) {
   await loadHomePage();
 
   // AWAIT пагінація Maria Streltova
-  await onRenderPagination();
+
 }
