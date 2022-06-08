@@ -3,6 +3,7 @@ import changeMoviesArray from './page-render';
 import { refs } from './refs';
 import { clearGalleryContainer } from './clearGallery';
 import { onRenderPagination } from './pagination';
+
 // IMPORT пагінація по сторінках Maria Streltova
 
 // ------- First page load -----------//
@@ -15,17 +16,22 @@ refs.homePageBtn.addEventListener('click', onClickHomePage);
 
 const moviesApiService = new MoviesApiService();
 
-async function loadHomePage() {
-  moviesApiService.tranding();
+  async function loadHomePage() {
+    moviesApiService.tranding();
   const response = await moviesApiService.fetchMovies();
   //   console.log(response);
   //   const totalPages = response.total_pages;
   //   const movies = response.results;
-  const totalPages = response.total_pages;
+    const totalPages = response.total_pages;
+    const currentPage = response.page;
   await changeMoviesArray(response);
-  await onRenderPagination(totalPages);
-}
+  
+  
+    console.log(currentPage);
+   await onRenderPagination(totalPages, currentPage);
 
+}
+    
 async function onClickHomePage(e) {
   e.preventDefault();
 
@@ -38,6 +44,9 @@ async function onClickHomePage(e) {
 
   await loadHomePage();
 
+
   // AWAIT пагінація Maria Streltova
 
 }
+
+
