@@ -19,5 +19,7 @@ import './js/tranding';
 import './js/goToMyLibrary';
 import './js/pagination';
 
+import './js/pagination-btn-click';
 import './js/header-library'
 import './js/search'
+

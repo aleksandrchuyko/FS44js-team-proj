@@ -6,14 +6,16 @@ const moviesApiService = new MoviesApiService();
 // document.addEventListener("click", onPagiationBtnClick(currentPage));
 
 async function onCreatePaginationTemplate(totalPages, currentPage) {
-  //   console.log(currentPage);
-  let array = [];
-  for (i = 1; i <= totalPages; i += 1) {
-    array.push(
-      `<button type="button" class="pagination__btn page">${i}</button>`
-    );
-  }
-  return array.join('');
+
+      console.log(currentPage);
+    let array = [];
+    for (let i = 1; i <= totalPages; i += 1){
+        array.push(`<button type="button" class="pagination__btn page">${i}</button>`)
+    } 
+     return array.join("");
+
+
+
 }
 
 export async function onRenderPagination(totalPages, currentPage) {
