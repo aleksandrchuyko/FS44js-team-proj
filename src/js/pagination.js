@@ -23,6 +23,7 @@ console.log(currentPage);
     const markup = await onCreatePaginationTemplate(totalPages, currentPage);
 
     console.log(markup);
+
     refs.paginationList.insertAdjacentHTML("beforeend", markup);
  
 }

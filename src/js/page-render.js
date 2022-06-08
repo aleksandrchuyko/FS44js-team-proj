@@ -1,10 +1,11 @@
-import MoviesApiService from './fetch_API';
-
 import { refs } from './refs.js';
 
 import { genresInfo } from './genres';
 
+const imagesBaseUrl = 'https://image.tmdb.org/t/p/w500';
+
 export default async function changeMoviesArray(response) {
+  console.log(response);
   const movies = response.results;
   const moviesArray = await movies.map(movie => {
     // console.log(movie.id);
@@ -17,7 +18,7 @@ export default async function changeMoviesArray(response) {
       .join(', ');
     const poster = movie.poster_path;
 
-    const posterPath = `https://image.tmdb.org/t/p/w500${poster}`;
+    const posterPath = `${imagesBaseUrl}${poster}`;
 
     return {
       id: movie.id,
@@ -31,8 +32,6 @@ export default async function changeMoviesArray(response) {
   });
 
   await renderMovies(moviesArray);
-  // console.log(moviesArray);
-  // return moviesArray;
 }
 
 async function renderMovies(moviesArray) {
@@ -42,14 +41,14 @@ async function renderMovies(moviesArray) {
         `<li class="card">
         <div class="card__container">
           <img src="${moviesArray.poster_path}" alt="${moviesArray.title}" class="card__poster">
-           
+        
         </div>
         <div class="card__meta meta">
           <p class="meta__title">${moviesArray.title}</p>
           <ul class="meta__list list">
             <li class="meta__item meta__item--genres">${moviesArray.genres}</li>
             <li class="meta__item">${moviesArray.release_date}</li>
-           
+ 
           </ul>
         </div>
       </li>`

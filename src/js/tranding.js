@@ -16,9 +16,13 @@ refs.homePageBtn.addEventListener('click', onClickHomePage);
 
 const moviesApiService = new MoviesApiService();
 
+
   async function loadHomePage() {
     moviesApiService.tranding();
   const response = await moviesApiService.fetchMovies();
+
+//const response = await moviesFetch();
+
   //   console.log(response);
   //   const totalPages = response.total_pages;
   //   const movies = response.results;
@@ -50,3 +54,4 @@ async function onClickHomePage(e) {
 }
 
 
+//const moviesFetch = async () => await moviesApiService.fetchMovies();

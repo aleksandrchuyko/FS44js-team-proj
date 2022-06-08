@@ -7,7 +7,9 @@ const global = {
   currentUser: '',
   currentPage: HOME_PAGE,
   currentGalleryPage: 1,
+  totalGalleryPages: 0,
 };
+
 //Віше определение всех глобал переменніх проекта
 
 // import './js/go';
@@ -16,3 +18,6 @@ import './js/tranding';
 
 import './js/goToMyLibrary';
 import './js/pagination';
+
+import './js/header-library'
+import './js/search'
