@@ -116,14 +116,13 @@
     color: var(--main-text-color);
 }
 
-.header__image {
+.header__button {
+    background: transparent;
     margin-left: auto;
-    margin-bottom: -20px;
 }
 
 .header__svg {
     margin-left: auto;
-    margin-bottom: -2px;
     fill: #fff;
 }
 
