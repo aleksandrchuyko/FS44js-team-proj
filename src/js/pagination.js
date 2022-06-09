@@ -1,10 +1,10 @@
 
 import MoviesApiService from './fetch_API';
 import { refs } from './refs.js';
-
+import  loadSelectedTrandingPage  from './tranding';
 const moviesApiService = new MoviesApiService();
 let pages = [];
-let currentBtn = null;
+
 
 async function onCreatePaginationTemplate(totalPages, currentPage) {
     console.log(currentPage);
@@ -12,7 +12,7 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
     console.log('beforePage', beforePage)
     let afterPage = currentPage + 3;
     console.log('afterPage', afterPage);
-    let total = currentPage + beforePage + afterPage + 4;
+    // let total = currentPage + beforePage + afterPage + 4;
     // let numberClass = '';
 
     // if (currentPage > 4) {
@@ -23,11 +23,11 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
     //     );
     //     refs.paginationList.push(startDots);
     // }
-    if (currentPage === 1) {
-        beforePage = beforePage + 3;
-    afterPage = currentPage + 4;
+    // if (currentPage === 1) {
+    //     beforePage = 0;
+    // afterPage = currentPage + 4;
     
-    }
+    // }
 //     if (currentPage === 2) {
 //       afterPage = currentPage + 3;
 //     }
@@ -62,7 +62,19 @@ console.log(currentPage);
     const markup = await onCreatePaginationTemplate(totalPages, currentPage);
 
     console.log(markup);
-    refs.paginationList.insertAdjacentHTML("beforeend", markup);
-
+    await refs.paginationList.insertAdjacentHTML("beforeend", markup);
+    await btnPaint(currentPage);
+    
 }
+async function btnPaint(currentPage) {
+     pages = document.querySelectorAll('.page');
+    const pageIndex = currentPage - 1;
+    console.log(pageIndex);
+    let currentBtn = pages[pageIndex]; 
+    console.log(currentBtn);
+    currentBtn.classList.add("pagination__active");
+ }
+
+
+
 
