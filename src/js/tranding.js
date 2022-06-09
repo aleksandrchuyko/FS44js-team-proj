@@ -17,9 +17,10 @@ const moviesApiService = new MoviesApiService();
 
 async function loadTrandingPage() {
   moviesApiService.tranding();
-  // const response = await moviesApiService.fetchMovies();
 
   const response = await moviesFetch();
+
+  refs.galleryContainer.setAttribute('data-set', 'tranding');
 
   const totalPages = response.total_pages;
   const currentPage = response.page;
@@ -29,11 +30,21 @@ async function loadTrandingPage() {
   await onRenderPagination(totalPages, currentPage);
 }
 
+export default async function loadSelectedTrandingPage(page) {
+  moviesApiService.setPage(page);
+
+  await onRender();
+}
+
 async function onClickHomePage(e) {
   e.preventDefault();
 
   moviesApiService.resetPage();
 
+  await onRender();
+}
+
+async function onRender() {
   await clearGalleryContainer();
   await clearPaginationList();
 
@@ -43,10 +54,11 @@ async function onClickHomePage(e) {
 }
 
 async function loadHomePageHeader() {
-  console.log('loadHomePageHeader');
+  //
   // --- hide my library hedder --- //
   refs.libraryBtns.classList.add('is-hidden');
   refs.myLibraryBtn.classList.remove('current');
+  refs.header.classList.remove('header__my-library');
 
   // --- show home page hedder --- //
   refs.homePageBtn.classList.add('current');

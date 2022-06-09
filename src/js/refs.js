@@ -1,5 +1,4 @@
 export const refs = {
-  //   searchForm: document.querySelector('.js-search-form'),
   galleryContainer: document.querySelector('.main-gallery__list'),
   headerLogo: document.querySelector('.header__logo'),
   homePageBtn:
@@ -9,4 +8,5 @@ export const refs = {
   headerSearch: document.querySelector('.header__searchform'),
   paginationList: document.querySelector('.pagination'),
   libraryBtns: document.querySelector('.library__list'),
+  header: document.querySelector('.header'),
 };
