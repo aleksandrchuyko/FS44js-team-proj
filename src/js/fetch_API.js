@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refs } from './refs';
 
 const API_KEY = 'a8de9bbb748883055cd7737934b96801';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -26,13 +27,14 @@ export default class MoviesApiService {
   }
 
   async fetchMovies() {
+    refs.headerError.textContent ='';
     // run spinner
     try {
       const response = await axios.get(`${BASE_URL}${this.request}`, {
         params: {
           api_key: API_KEY,
           page: this.page,
-          query: 'car',
+          query: this.query,
         },
       });
 
@@ -41,6 +43,7 @@ export default class MoviesApiService {
       // this.incrementPage();
       return response.data;
     } catch (error) {
+      refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
       console.error(error);
     } finally {
       // stop spinner
@@ -73,3 +76,5 @@ export default class MoviesApiService {
     this.searchQuery = newQuery;
   }
 }
+
+

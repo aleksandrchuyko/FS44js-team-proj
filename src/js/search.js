@@ -9,6 +9,8 @@ refs.headerSearch.addEventListener('submit', searchSubmit)
 const moviesApiService = new MoviesApiService();
 async function searchSubmit(event) {
     event.preventDefault();
+    const value = event.target.querySelector('.header__input').value;
+    moviesApiService.query = value;
     moviesApiService.search();
 
 refs.galleryContainer.innerHTML='';
@@ -19,4 +21,6 @@ refs.galleryContainer.innerHTML='';
     await changeMoviesArray(response);
     await onRenderPagination(totalPages);
 }
+
+
 
