@@ -37,10 +37,9 @@ export default class MoviesApiService {
       });
 
       // console.log(response);
-console.log(response.data);
+      console.log(response.data);
       // this.incrementPage();
       return response.data;
-      
     } catch (error) {
       console.error(error);
     } finally {
@@ -57,7 +56,7 @@ console.log(response.data);
   }
 
   // узгодити із Maria Streltova
-  async setPage(page) {
+  setPage(page) {
     this.page = page;
   }
 
