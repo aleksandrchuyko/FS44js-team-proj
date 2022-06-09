@@ -7,12 +7,9 @@
         background-image: url(/src/images/header/header-tablet.jpg);
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1024px) {
         background-image: url(/src/images/header/header_pc.jpg);
     }
-
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .header__box {
@@ -60,7 +57,7 @@
 .header__item {
     padding-left: 40px;
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1024px) {
         padding-left: 49px;
     }
 }
@@ -156,9 +153,9 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('/src/images/header-library/library_bg_img_desktop_1x-min.jpg');
     }
 
-    @media (min-device-pixel-ratio: 2) and (min-width: 1200px),
-    (min-resolution: 192dpi) and (min-width: 1200px),
-    (min-resolution: 2dppx) and (min-width: 1200px) {
+    @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
+    (min-resolution: 192dpi) and (min-width: 1024px),
+    (min-resolution: 2dppx) and (min-width: 1024px) {
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url('/src/images/header-library/library_bg_img_desktop_2x-min.jpg');
     }
 }
@@ -178,7 +175,7 @@ li {
         margin-top: 40px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1024px) {
         margin: 0 -8px;
         margin-top: 40px;
     }
@@ -213,7 +210,7 @@ li {
         width: 148px;
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1024px) {
         margin: 0 8px;
         width: 148px;
     }
