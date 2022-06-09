@@ -32,7 +32,7 @@ export default class MoviesApiService {
         params: {
           api_key: API_KEY,
           page: this.page,
-          // query: 'car',
+          query: 'car',
         },
       });
 
