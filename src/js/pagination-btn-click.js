@@ -1,22 +1,15 @@
-import MoviesApiService from './fetch_API';
-import { refs } from './refs.js';
-const moviesApiService = new MoviesApiService();
 
-refs.paginationList.addEventListener("click", paginationBtnClick);
+import { refs } from './refs';
+import { loadSelectedTrandingPage } from './tranding';
 
-async function paginationBtnClick(e) {
+refs.paginationList.addEventListener("click", onPaginationBtnClick)
+
+async function onPaginationBtnClick(e) {
     e.preventDefault();
-   console.log(e)
-    // if (e.target.nodeName !== "BUTTON") {
-    //     return;
-    // }
-//     currentPage = e.currentTarget.textContent;
-//     console.log(currentPage);
-//
-//     // onRenderNewPage(currentPage);
-// }
-    const pageNumber = e.target.textContent;
-    console.log(pageNumber);
-   await moviesApiService.changePage(pageNumber);
-
+    if (e.target.nodeName !== "BUTTON") {
+        return;
+    }
+    const page = e.target.textContent;
+    console.log(page);
+    await loadSelectedTrandingPage(page);
 }

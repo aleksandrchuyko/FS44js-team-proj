@@ -37,9 +37,10 @@ export default class MoviesApiService {
       });
 
       // console.log(response);
-
+console.log(response.data);
       // this.incrementPage();
       return response.data;
+      
     } catch (error) {
       console.error(error);
     } finally {
