@@ -1,16 +1,17 @@
 import MoviesApiService from './fetch_API';
-import { refs } from './refs.js';
+import { refs } from './refs';
 import  loadSelectedTrandingPage  from './tranding';
 const moviesApiService = new MoviesApiService();
-let pages = [];
+let pages = []; 
+const shiftPage = 3;
 
 
 async function onCreatePaginationTemplate(totalPages, currentPage) {
 
     console.log(currentPage);
-    let beforePage = currentPage - 3;
+    let beforePage = currentPage - shiftPage;
     console.log('beforePage', beforePage)
-    let afterPage = currentPage + 3;
+    let afterPage = currentPage + shiftPage;
     console.log('afterPage', afterPage);
     // let total = currentPage + beforePage + afterPage + 4;
     // let numberClass = '';
@@ -23,11 +24,11 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
     //     );
     //     refs.paginationList.push(startDots);
     // }
-    // if (currentPage === 1) {
-    //     beforePage = 0;
-    // afterPage = currentPage + 4;
+    if (currentPage === 1) {
+        beforePage = 0;
+    afterPage = currentPage + 4;
     
-    // }
+    }
 //     if (currentPage === 2) {
 //       afterPage = currentPage + 3;
 //     }
@@ -78,10 +79,10 @@ console.log(currentPage);
     
 }
 async function btnPaint(currentPage) {
-     pages = document.querySelectorAll('.page');
+    pages = document.querySelectorAll('.page');
     const pageIndex = currentPage - 1;
     console.log(pageIndex);
-    let currentBtn = pages[pageIndex]; 
+    let currentBtn = pages[shiftPage]; 
     console.log(currentBtn);
     currentBtn.classList.add("pagination__active");
  }
