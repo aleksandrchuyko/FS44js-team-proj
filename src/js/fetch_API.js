@@ -32,15 +32,14 @@ export default class MoviesApiService {
         params: {
           api_key: API_KEY,
           page: this.page,
-          // query: 'car',
+          query: 'car',
         },
       });
 
       // console.log(response);
-console.log(response.data);
+      console.log(response.data);
       // this.incrementPage();
       return response.data;
-      
     } catch (error) {
       console.error(error);
     } finally {
@@ -57,7 +56,7 @@ console.log(response.data);
   }
 
   // узгодити із Maria Streltova
-  async setPage(page) {
+  setPage(page) {
     this.page = page;
   }
 

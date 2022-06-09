@@ -1,4 +1,3 @@
-
 import MoviesApiService from './fetch_API';
 import { refs } from './refs.js';
 import  loadSelectedTrandingPage  from './tranding';
@@ -7,6 +6,7 @@ let pages = [];
 
 
 async function onCreatePaginationTemplate(totalPages, currentPage) {
+
     console.log(currentPage);
     let beforePage = currentPage - 3;
     console.log('beforePage', beforePage)
@@ -39,22 +39,33 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
     
 //     }
 
-//     if (beforePage < 2) {
-//       beforePage = 2;
-//     }
-//     if (afterPage >= total) {
-//       afterPage = total - 1;
-//     }
+  // }
+  //     if (currentPage === 2) {
+  //       afterPage = currentPage + 3;
+  //     }
+  //     if (currentPage === total) {
+  //       beforePage = currentPage - 4;
+  //     }
+  //     if (currentPage === total - 1) {
+  //         beforePage = currentPage - 3;
 
-    let array = [];
-    for (let i = beforePage; i <= afterPage; i += 1){
-        array.push(`<button type="button" class="pagination__btn page">${i}</button>`)
-    } 
-     return array.join("");
+  //     }
 
-   
+  //     if (beforePage < 2) {
+  //       beforePage = 2;
+  //     }
+  //     if (afterPage >= total) {
+  //       afterPage = total - 1;
+  //     }
+
+  let array = [];
+  for (let i = beforePage; i <= afterPage; i += 1) {
+    array.push(
+      `<button type="button" class="pagination__btn page">${i}</button>`
+    );
+  }
+  return array.join('');
 }
-
 
 export async function onRenderPagination(totalPages, currentPage) {
     console.log(totalPages);
@@ -74,7 +85,4 @@ async function btnPaint(currentPage) {
     console.log(currentBtn);
     currentBtn.classList.add("pagination__active");
  }
-
-
-
 

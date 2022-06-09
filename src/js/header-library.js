@@ -1,13 +1,4 @@
-const refs = {
-  header: document.querySelector('.header'),
-  inputForm: document.querySelector('.header__searchform'),
-  navHome: document.querySelector('.home__btn'),
-  navLibrary: document.querySelector('.library__btn'),
-  libraryBtns: document.querySelector('.library__list'),
-  watchedBtn: document.querySelector('.watched-btn'),
-  queueBtn: document.querySelector('.queue-btn'),
-};
-
+import { refs } from './refs';
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
