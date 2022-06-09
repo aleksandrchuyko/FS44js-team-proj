@@ -1,7 +1,7 @@
 import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
 import { refs } from './refs';
-import { clearGalleryContainer } from './clear-gallery';
+import clearGalleryContainer from './clear-gallery';
 import { onRenderPagination } from './pagination';
 import { clearPaginationList } from './clear-pagination';
 
@@ -31,6 +31,7 @@ async function loadTrandingPage() {
 }
 
 export default async function loadSelectedTrandingPage(page) {
+  // console.log('page', page);
   moviesApiService.setPage(page);
 
   await onRender();
