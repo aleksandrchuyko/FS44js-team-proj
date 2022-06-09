@@ -10,13 +10,18 @@
 
     background-color: transparent;
     color: var(--second-text-color);
-    ;
+    
     border-radius: 5px;
-    &:hover,
-    &:focus{
-background-color: var(--accent-text-color);
-color: var(--main-text-color);
-    }
+//     &:hover,
+//     &:focus{
+// background-color: var(--accent-text-color);
+// color: var(--main-text-color);
+//     }
+}
+
+.pagination__active{
+    background-color: var(--accent-text-color);
+        color: var(--main-text-color);
 }
 
 .pagination-list {
