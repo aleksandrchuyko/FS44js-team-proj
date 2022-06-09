@@ -5,10 +5,9 @@ import { genresInfo } from './genres';
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
 export default async function changeMoviesArray(response) {
-  console.log(response);
+  // console.log(response);
   const movies = response.results;
   const moviesArray = await movies.map(movie => {
-    // console.log(movie.id);
     const releasePattern = /\d{4}/g;
     const date = movie.release_date;
     const releaseDate = date.match(releasePattern);
@@ -38,17 +37,17 @@ async function renderMovies(moviesArray) {
   const renderResult = await moviesArray
     .map(
       moviesArray =>
-        `<li class="card">
-        <div class="card__container">
+        `<li class="card" data-id = "${moviesArray.id}">
+        <div class="card__container" data-id = "${moviesArray.id}">
           <img src="${moviesArray.poster_path}" alt="${moviesArray.title}" class="card__poster">
-           
+        
         </div>
         <div class="card__meta meta">
           <p class="meta__title">${moviesArray.title}</p>
           <ul class="meta__list list">
             <li class="meta__item meta__item--genres">${moviesArray.genres}</li>
             <li class="meta__item">${moviesArray.release_date}</li>
-           
+ 
           </ul>
         </div>
       </li>`

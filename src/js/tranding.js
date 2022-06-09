@@ -1,13 +1,13 @@
 import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
 import { refs } from './refs';
-import { clearGalleryContainer } from './clearGallery';
+import clearGalleryContainer from './clear-gallery';
 import { onRenderPagination } from './pagination';
-// IMPORT пагінація по сторінках Maria Streltova
+import { clearPaginationList } from './clear-pagination';
 
 // ------- First page load -----------//
 addEventListener('DOMContentLoaded', () => {
-  loadHomePage();
+  loadTrandingPage();
 });
 
 refs.headerLogo.addEventListener('click', onClickHomePage);
@@ -15,31 +15,55 @@ refs.homePageBtn.addEventListener('click', onClickHomePage);
 
 const moviesApiService = new MoviesApiService();
 
-async function loadHomePage() {
+async function loadTrandingPage() {
   moviesApiService.tranding();
+
   const response = await moviesFetch();
-  //   console.log(response);
-  //   const totalPages = response.total_pages;
-  //   const movies = response.results;
+
+  refs.galleryContainer.setAttribute('data-set', 'tranding');
+
   const totalPages = response.total_pages;
+  const currentPage = response.page;
+
   await changeMoviesArray(response);
-  await onRenderPagination(totalPages);
+
+  await onRenderPagination(totalPages, currentPage);
+}
+
+export default async function loadSelectedTrandingPage(page) {
+  // console.log('page', page);
+  moviesApiService.setPage(page);
+
+  await onRender();
 }
 
 async function onClickHomePage(e) {
   e.preventDefault();
 
-  refs.homePageBtn.classList.add('active');
-  refs.myLibraryBtn.classList.remove('active');
-  refs.headerSearch.classList.remove('visually-hidden');
   moviesApiService.resetPage();
 
+  await onRender();
+}
+
+async function onRender() {
   await clearGalleryContainer();
+  await clearPaginationList();
 
-  await loadHomePage();
+  await loadHomePageHeader();
 
-  // AWAIT пагінація Maria Streltova
+  await loadTrandingPage();
+}
 
+async function loadHomePageHeader() {
+  //
+  // --- hide my library hedder --- //
+  refs.libraryBtns.classList.add('is-hidden');
+  refs.myLibraryBtn.classList.remove('current');
+  refs.header.classList.remove('header__my-library');
+
+  // --- show home page hedder --- //
+  refs.homePageBtn.classList.add('current');
+  refs.headerSearch.classList.remove('is-hidden');
 }
 
 const moviesFetch = async () => await moviesApiService.fetchMovies();

@@ -1,5 +1,4 @@
 export const refs = {
-  //   searchForm: document.querySelector('.js-search-form'),
   galleryContainer: document.querySelector('.main-gallery__list'),
   headerLogo: document.querySelector('.header__logo'),
   homePageBtn:
@@ -8,4 +7,13 @@ export const refs = {
     document.querySelector('.header__list').lastElementChild.firstElementChild,
   headerSearch: document.querySelector('.header__searchform'),
   paginationList: document.querySelector('.pagination'),
+  libraryBtns: document.querySelector('.library__list'),
+  header: document.querySelector('.header'),
+
+  inputForm: document.querySelector('.header__searchform'),
+  navHome: document.querySelector('.home__btn'),
+  navLibrary: document.querySelector('.library__btn'),
+  watchedBtn: document.querySelector('.watched-btn'),
+  queueBtn: document.querySelector('.queue-btn'),
+  headerError:document.querySelector('.header__error'),
 };

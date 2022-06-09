@@ -1,93 +1,85 @@
-const axios = require('axios').default;
+
+import {getData} from "./get-card-api";
 
 const refs = {
-  openModalBtn: document.querySelector(".open__btn"),
-  container: document.querySelector(".container-js"),
+    openModalBtn: document.querySelector(".main-gallery__list"),
+    container: document.querySelector(".container-js"),
 };
 
 refs.openModalBtn.addEventListener("click", openModal);
-let id = "453395";
 
-const  options = {
-    responseType: 'stream',
-    api_key: "a8de9bbb748883055cd7737934b96801",
+function closeBacdropClick () {
+    const closeModalBtn = document.querySelector(".close__modal");
+    const backdrop = document.querySelector(".backdrop");
+    closeModalBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", backdropClick);
 }
 
-function openModal() {
+function openModal(e) {
+    e.preventDefault();
+    const cardId = e.target.closest(".card").dataset.id;
+
     window.addEventListener("keydown", escapePress);
     document.body.classList.add("show__modal");
-    modalMarkup();
-    
-
+    modalMarkup(cardId);
 }
 
 function closeModal() {
-  window.removeEventListener("keydown", escapePress);
+    window.removeEventListener("keydown", escapePress);
     document.body.classList.remove("show__modal");
     refs.container.innerHTML = "";
 }
 
 function backdropClick(event) {
-  if (event.currentTarget === event.target) {
-    closeModal();
-  }
+    if (event.currentTarget === event.target) {
+        closeModal();
+    }
 }
 
 function escapePress(event) {
-  const ESC_KEY_CODE = "Escape";
-  const escape = event.code === ESC_KEY_CODE;
+    const ESC_KEY_CODE = "Escape";
+    const escape = event.code === ESC_KEY_CODE;
 
-  if (escape) {
-    closeModal();
-  }
+    if (escape) {
+        closeModal();
+    }
 }
 
-
-
-function modalMarkup() {
-   
-    getData().then(data => {
+function modalMarkup(muvieId) {
+    getData(muvieId).then(data => {
         const {poster_path, title, overview, vote_average, vote_count, popularity, original_title,} = data;
         const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+        const genres = data.genres.map(genre => genre.name).join(", ");
         let markup = `<div class="backdrop">
         <div class="modal">
             <button type="button" class="close__modal">
-                X
             </button>
             <div class="modal__wrapper">
-                <img class="modal__image" src="${poster}" alt="foto">
+                <div class="modal__poster">
+                    <img class="modal__image" src="${poster}" alt="${title}">
+                </div>
                 <div class="modal__about">
                     <h2 class="modal__title">${title}</h2>
-                    <div class="modal__lists"> 
-                        <ul class="list__key">
-                            <li class="key__item">
-                                Vote / Votes
-                            </li>
-                            <li class="key__item">
-                                Popularity
-                            </li>
-                            <li class="key__item">
-                                Original Title
-                            </li>
-                            <li class="key__item">
-                                Genre
-                            </li>
-                        </ul>
-                        <ul class="list__value list">
-                            <li class="item__value">
-                                <span class="vote">${vote_average}</span> / ${vote_count}
-                            </li>
-                            <li class="item__value">
-                                ${popularity}
-                            </li>
-                            <li class="item__value">
-                                ${original_title}
-                            </li>
-                            <li class="item__value">
-                                ${data.genres[0].name} 
-                            </li>
-                        </ul>
-                    </div>
+                    <table class="modal__table">
+                        <tbody>
+                            <tr>
+                            <td class="key__item">Vote / Votes</td>
+                            <td class="item__value"><span class="vote">${vote_average}</span> / ${vote_count}</td>
+                            </tr>
+                            <tr>
+                            <td class="key__item">Popularity</td>
+                            <td class="item__value">${popularity}</td>
+                            </tr>
+                            <tr>
+                            <td class="key__item">Original Title</td>
+                            <td class="item__value">${original_title}</td>
+                            </tr>
+                            <tr>
+                            <td class="key__item">Genre</td>
+                            <td class="item__value">${genres}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <h3 class="text__title">About</h3>
                     <p class="modal__text">${overview}</p>
                     <div class="modal__buttons">
@@ -98,26 +90,7 @@ function modalMarkup() {
             </div>
         </div>
     </div>`
-        refs.container.insertAdjacentHTML("beforeend", markup);
-
-        const closeModalBtn = document.querySelector(".close__modal");
-        const backdrop = document.querySelector(".backdrop");
-        closeModalBtn.addEventListener("click", closeModal);
-        backdrop.addEventListener("click", backdropClick);
+        refs.container.insertAdjacentHTML("beforeend", markup);   
+        closeBacdropClick();
     })
-}
-
-getData();
-
-
-async function getData() {
-    try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/453395`, {
-            params: options
-        });
-        const muvie = response.data;
-        return muvie;
-    } catch (error) {
-        console.log(error);
-    }
 }

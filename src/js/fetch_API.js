@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refs } from './refs';
 
 const API_KEY = 'a8de9bbb748883055cd7737934b96801';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -19,27 +20,30 @@ export default class MoviesApiService {
     // this.request = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
 
     // узгодити зі Stas
-    // this.searchQuery = '';
+    this.searchQuery = '';
 
     // узгодити з Maria Streltova
-    this.page = 3;
+    this.page = 4;
   }
 
   async fetchMovies() {
+    refs.headerError.textContent ='';
     // run spinner
     try {
       const response = await axios.get(`${BASE_URL}${this.request}`, {
         params: {
           api_key: API_KEY,
           page: this.page,
+          query: this.query,
         },
       });
 
       // console.log(response);
-
+      console.log(response.data);
       // this.incrementPage();
       return response.data;
     } catch (error) {
+      refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
       console.error(error);
     } finally {
       // stop spinner
@@ -50,21 +54,27 @@ export default class MoviesApiService {
     this.request = `/trending/${MEDIA_TYPE}/${TIME_WINDOW}`;
   }
 
+  search() {
+    this.request = '/search/movie';
+  }
+
   // узгодити із Maria Streltova
-    changePage() {
-      this.page = page;
-    }
+  setPage(page) {
+    this.page = page;
+  }
 
   resetPage() {
-    this.page = 1;
+    this.page = 2;
   }
 
   // узгодити зі Stas
-  //   get query() {
-  //     return this.searchQuery;
-  //   }
+  get query() {
+    return this.searchQuery;
+  }
 
-  // set query(newQuery) {
-  //   this.searchQuery = newQuery;
-  // }
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
 }
+
+
