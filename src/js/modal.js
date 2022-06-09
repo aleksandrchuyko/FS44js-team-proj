@@ -1,5 +1,5 @@
 
-import {getData} from "./getCardApi.js";
+import {getData} from "./get-card-api";
 
 const refs = {
     openModalBtn: document.querySelector(".main-gallery__list"),
@@ -7,38 +7,45 @@ const refs = {
 };
 
 refs.openModalBtn.addEventListener("click", openModal);
-let muvieId = "10770";
 
-function openModal() {
-    console.log(refs.openModalBtn);
+function closeBacdropClick () {
+    const closeModalBtn = document.querySelector(".close__modal");
+    const backdrop = document.querySelector(".backdrop");
+    closeModalBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", backdropClick);
+}
+
+function openModal(e) {
+    e.preventDefault();
+    const cardId = e.target.closest(".card").dataset.id;
+
     window.addEventListener("keydown", escapePress);
     document.body.classList.add("show__modal");
-    modalMarkup();
+    modalMarkup(cardId);
 }
 
 function closeModal() {
-  window.removeEventListener("keydown", escapePress);
+    window.removeEventListener("keydown", escapePress);
     document.body.classList.remove("show__modal");
     refs.container.innerHTML = "";
 }
 
 function backdropClick(event) {
-  if (event.currentTarget === event.target) {
-    closeModal();
-  }
+    if (event.currentTarget === event.target) {
+        closeModal();
+    }
 }
 
 function escapePress(event) {
-  const ESC_KEY_CODE = "Escape";
-  const escape = event.code === ESC_KEY_CODE;
+    const ESC_KEY_CODE = "Escape";
+    const escape = event.code === ESC_KEY_CODE;
 
-  if (escape) {
-    closeModal();
-  }
+    if (escape) {
+        closeModal();
+    }
 }
 
-function modalMarkup() {
-   
+function modalMarkup(muvieId) {
     getData(muvieId).then(data => {
         const {poster_path, title, overview, vote_average, vote_count, popularity, original_title,} = data;
         const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -83,11 +90,7 @@ function modalMarkup() {
             </div>
         </div>
     </div>`
-        refs.container.insertAdjacentHTML("beforeend", markup);
-
-        const closeModalBtn = document.querySelector(".close__modal");
-        const backdrop = document.querySelector(".backdrop");
-        closeModalBtn.addEventListener("click", closeModal);
-        backdrop.addEventListener("click", backdropClick);
+        refs.container.insertAdjacentHTML("beforeend", markup);   
+        closeBacdropClick();
     })
 }
