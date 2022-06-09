@@ -11,5 +11,8 @@ async function onPaginationBtnClick(e) {
   // }
   const page = e.target.textContent;
   console.log(page);
-  await loadSelectedTrandingPage(page);
+    if (refs.galleryContainer.getAttribute('data-set') === ('tranding')) {
+     await loadSelectedTrandingPage(page);
+  }
+
 }
