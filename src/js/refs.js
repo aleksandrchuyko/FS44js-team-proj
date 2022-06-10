@@ -15,5 +15,7 @@ export const refs = {
   navLibrary: document.querySelector('.library__btn'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
-  headerError:document.querySelector('.header__error'),
+  headerError: document.querySelector('.header__error'),
+  leftBtn: document.querySelector('.pagination__button--left'),
+  rightBtn: document.querySelector('.pagination__button--right'),
 };

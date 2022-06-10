@@ -33,7 +33,6 @@ export async function loadTrandingPage() {
 export async function loadSelectedTrandingPage(page) {
   // console.log('page', page);
   moviesApiService.setPage(page);
-
   await onRender();
 }
 

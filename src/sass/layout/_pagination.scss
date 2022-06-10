@@ -1,3 +1,10 @@
+.pagination__wrapper{
+    display: flex;
+        justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+}
+
 .pagination {
     display: flex;
     // flex-direction: column;
@@ -5,7 +12,7 @@
     align-items: center;
 }
 .pagination__btn {
-    margin-top: 10px;
+    
     padding: 14px 18px;
 
     background-color: transparent;
@@ -23,7 +30,11 @@
     background-color: var(--accent-text-color);
         color: var(--main-text-color);
 }
-
+.pagination__button{
+  
+    padding: 16px 18px;
+    border-radius: 5px;
+}
 .pagination-list {
     display: flex;
     justify-content: center;
