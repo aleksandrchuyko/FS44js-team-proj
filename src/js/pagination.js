@@ -1,7 +1,7 @@
 import MoviesApiService from './fetch_API';
 import { refs } from './refs';
-import  loadSelectedTrandingPage  from './tranding';
-const moviesApiService = new MoviesApiService();
+import  {loadSelectedTrandingPage}  from './tranding';
+
 let pages = []; 
 let currentBtn;
 const shiftPage = 3;
