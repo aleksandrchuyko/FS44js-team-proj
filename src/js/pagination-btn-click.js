@@ -1,5 +1,5 @@
 import { refs } from './refs';
-import loadSelectedTrandingPage from './tranding';
+import { loadSelectedTrandingPage } from './tranding';
 
 refs.paginationList.addEventListener('click', onPaginationBtnClick);
 
