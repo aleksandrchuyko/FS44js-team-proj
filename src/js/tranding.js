@@ -30,7 +30,7 @@ async function loadTrandingPage() {
   await onRenderPagination(totalPages, currentPage);
 }
 
-export default async function loadSelectedTrandingPage(page) {
+export async function loadSelectedTrandingPage(page) {
   // console.log('page', page);
   moviesApiService.setPage(page);
   await onRender();
