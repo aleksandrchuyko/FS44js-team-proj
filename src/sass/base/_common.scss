@@ -47,3 +47,6 @@ button {
     padding-right: 32px;
   }
 }
+body::-webkit-scrollbar {
+  width: 0;
+}
