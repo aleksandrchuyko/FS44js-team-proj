@@ -3,6 +3,7 @@ import { refs } from './refs';
 import  loadSelectedTrandingPage  from './tranding';
 const moviesApiService = new MoviesApiService();
 let pages = []; 
+let currentBtn;
 const shiftPage = 3;
 
 
@@ -14,13 +15,10 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
     let afterPage = currentPage + shiftPage;
     console.log('afterPage', afterPage);
     // let total = currentPage + beforePage + afterPage + 4;
-    // let numberClass = '';
+    let numberClass = '';
 
     // if (currentPage > 4) {
-    //     const startDots = refs.paginationList.createElement(
-    //         'li',
-    //         { class: 'pagination-item pagination-dots' },
-    //         createElement('span', { class: `${numberClass}` }, '...'),
+    //     let startDots = refs.paginationList.createElement('span', { class: `${numberClass}` }, '...'
     //     );
     //     refs.paginationList.push(startDots);
     // }
@@ -69,20 +67,34 @@ async function onCreatePaginationTemplate(totalPages, currentPage) {
 }
 
 export async function onRenderPagination(totalPages, currentPage) {
-    console.log(totalPages);
-console.log(currentPage);
-    const markup = await onCreatePaginationTemplate(totalPages, currentPage);
+  console.log(totalPages);
+  console.log(currentPage);
+  refs.leftBtn.addEventListener('click', onLeftBtnClick);
+  refs.rightBtn.addEventListener('click', onRightBtnClick);
+  const markup = await onCreatePaginationTemplate(totalPages, currentPage);
 
-    console.log(markup);
-    await refs.paginationList.insertAdjacentHTML("beforeend", markup);
-    await btnPaint(currentPage);
-    
+  console.log(markup);
+  await refs.paginationList.insertAdjacentHTML("beforeend", markup);
+  await btnPaint(currentPage);
+       
+
+  function onLeftBtnClick(e) {
+    e.preventDefault();
+    currentPage = currentPage - 1;
+    console.log(currentPage);
+         await loadSelectedTrandingPage(currentPage);
+  }
+  function onRightBtnClick(e) {
+    e.preventDefault();
+    currentPage = currentPage + 1;
+    console.log(currentPage);
+  }
 }
 async function btnPaint(currentPage) {
     pages = document.querySelectorAll('.page');
     const pageIndex = currentPage - 1;
     console.log(pageIndex);
-    let currentBtn = pages[shiftPage]; 
+    currentBtn = pages[shiftPage]; 
     console.log(currentBtn);
     currentBtn.classList.add("pagination__active");
  }
