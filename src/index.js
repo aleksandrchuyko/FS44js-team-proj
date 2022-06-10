@@ -15,7 +15,7 @@ const global = {
 // import './js/go';
 // import './js/modal';
 import './js/tranding';
-import './js/goToMyLibrary';
+// import './js/goToMyLibrary';
 import './js/pagination';
 import './js/header-library';
 import './js/modal';
