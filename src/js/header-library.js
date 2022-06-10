@@ -1,4 +1,5 @@
 import { refs } from './refs';
+import logIn from "./logIn";
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
@@ -14,7 +15,24 @@ refs.queueBtn.addEventListener('click', onClickQueueBth);
 //     refs.header.classList.remove('header__my-library');
 // }
 
-function onClickHeaderLibraryBth() {
+function onClickHeaderLibraryBth(e) {
+  if (global.currentUser) {
+    setMyLibraryStyles(e);
+} else {
+    logIn().then((resolve) => {
+        global.currentUser = resolve;
+        console.log(global.currentUser);
+    setMyLibraryStyles(e);
+    }).catch((reject) => {
+//Тут візов сообщения ошибки авторизации
+//...
+    console.log(reject);
+});
+}
+}
+
+function setMyLibraryStyles(e) {
+  e.preventDefault();
   refs.inputForm.classList.add('is-hidden');
   refs.libraryBtns.classList.remove('is-hidden');
   refs.navLibrary.classList.add('current');

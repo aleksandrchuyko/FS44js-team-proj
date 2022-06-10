@@ -15,7 +15,7 @@ refs.homePageBtn.addEventListener('click', onClickHomePage);
 
 const moviesApiService = new MoviesApiService();
 
-async function loadTrandingPage() {
+export async function loadTrandingPage() {
   moviesApiService.tranding();
 
   const response = await moviesFetch();

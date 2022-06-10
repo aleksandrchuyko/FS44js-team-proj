@@ -5,6 +5,7 @@ const HOME_PAGE = 'Home page',
 //Изменяеміе
 const global = {
   currentUser: '',
+  userId: null,
   currentPage: HOME_PAGE,
   currentGalleryPage: 1,
   totalGalleryPages: 0,
@@ -14,11 +15,13 @@ const global = {
 
 // import './js/go';
 // import './js/modal';
+import './js/init-firebase';
 import './js/tranding';
-import './js/goToMyLibrary';
+// import './js/goToMyLibrary';
 import './js/pagination';
-import './js/header-library'
-import './js/modal_tm'
+import './js/header-library';
+import './js/modal';
+import './js/modal_tm';
 import './js/pagination-btn-click';
 import './js/search';
 import './js/My-library-btn';
