@@ -15,7 +15,7 @@ refs.homePageBtn.addEventListener('click', onClickHomePage);
 
 const moviesApiService = new MoviesApiService();
 
-async function loadTrandingPage() {
+export async function loadTrandingPage() {
   moviesApiService.tranding();
 
   const response = await moviesFetch();
@@ -30,7 +30,7 @@ async function loadTrandingPage() {
   await onRenderPagination(totalPages, currentPage);
 }
 
-export default async function loadSelectedTrandingPage(page) {
+export async function loadSelectedTrandingPage(page) {
   // console.log('page', page);
   moviesApiService.setPage(page);
 
