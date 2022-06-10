@@ -23,7 +23,7 @@ export default class MoviesApiService {
     this.searchQuery = '';
 
     // узгодити з Maria Streltova
-    this.page = 4;
+    this.page = 1;
   }
 
   async fetchMovies() {
@@ -39,11 +39,15 @@ export default class MoviesApiService {
       });
 
       // console.log(response);
-      console.log(response.data);
+      console.log(response.data.total_results);
+      // if (response.data.total.results === 0) {
+        
+      //   refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
+      // }
       // this.incrementPage();
       return response.data;
     } catch (error) {
-      refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
+      // refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
       console.error(error);
     } finally {
       // stop spinner
@@ -64,7 +68,7 @@ export default class MoviesApiService {
   }
 
   resetPage() {
-    this.page = 2;
+    this.page = 1;
   }
 
   // узгодити зі Stas
