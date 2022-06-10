@@ -1,5 +1,6 @@
 
-import {getData} from "./get-card-api";
+import { getData } from "./get-card-api";
+import writeUserData from "./add-to-database";
 
 const refs = {
     openModalBtn: document.querySelector(".main-gallery__list"),
@@ -47,6 +48,9 @@ function escapePress(event) {
 
 function modalMarkup(muvieId) {
     getData(muvieId).then(data => {
+        //Тест запису в базу проглянутих
+        // writeUserData(global.userId, muvieId, data);
+        //...
         const {poster_path, title, overview, vote_average, vote_count, popularity, original_title,} = data;
         const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
         const genres = data.genres.map(genre => genre.name).join(", ");
