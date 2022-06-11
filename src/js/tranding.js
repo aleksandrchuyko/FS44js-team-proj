@@ -12,10 +12,6 @@ addEventListener('DOMContentLoaded', () => {
 
 let currentPageT;
 
-// refs.headerLogo.addEventListener('click', onClickHomePage);
-refs.navHome.addEventListener('click', onClickHomePage);
-refs.headerLogo.addEventListener('click', onClickHomePage);
-
 const moviesApiService = new MoviesApiService();
 
 export async function loadTrandingPage() {
@@ -27,20 +23,26 @@ export async function loadTrandingPage() {
 
   refs.galleryContainer.setAttribute('data-set', 'tranding');
 
-  // const totalPages = response.total_pages;
+  const totalPages = response.total_pages;
   currentPageT = response.page;
   const currentPage = response.page;
 
   await changeMoviesArray(response);
 
-  await onRenderPagination(currentPage);
+  await onRenderPagination(currentPage, totalPages);
 }
+
+export { currentPageT };
 
 export async function loadSelectedTrandingPage(page) {
   // console.log('page', page);
   moviesApiService.setPage(page);
   await loadTrandingPage();
 }
+
+refs.navHome.addEventListener('click', onClickHomePage);
+refs.headerTitle.addEventListener('click', onClickHomePage);
+refs.headerLogo.addEventListener('click', onClickHomePage);
 
 async function onClickHomePage(e) {
   e.preventDefault();
@@ -53,6 +55,7 @@ async function onClickHomePage(e) {
 }
 
 async function loadHomePageHeader() {
+  location.reload();
   //
   // --- hide my library hedder --- //
   refs.libraryBtns.classList.add('is-hidden');
@@ -61,7 +64,6 @@ async function loadHomePageHeader() {
 
   // --- show home page hedder --- //
   refs.navHome.classList.add('current');
-  refs.headerSearch.classList.remove('is-hidden');
+  refs.inputForm.classList.remove('is-hidden');
+  refs.paginationList.classList.remove('is-hidden');
 }
-
-export { currentPageT };

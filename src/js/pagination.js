@@ -4,7 +4,7 @@ let shiftPage = 3;
 let beforePage;
 let afterPage;
 
-async function onCreatePaginationTemplate(currentPage) {
+async function onCreatePaginationTemplate(currentPage, totalPages) {
   // console.log(currentPage < shiftPage);
 
   if (currentPage < shiftPage + 1) {
@@ -14,6 +14,11 @@ async function onCreatePaginationTemplate(currentPage) {
   } else {
     beforePage = currentPage - shiftPage + 1;
     afterPage = currentPage + shiftPage + 1;
+  }
+
+  // console.log(afterPage > totalPages);
+  if (afterPage >= totalPages) {
+    afterPage = totalPages + 1;
   }
 
   // console.log('beforePage', beforePage);
@@ -31,10 +36,10 @@ async function onCreatePaginationTemplate(currentPage) {
   return array.join('');
 }
 
-export async function onRenderPagination(currentPage) {
+export async function onRenderPagination(currentPage, totalPages) {
   // console.log(currentPage);
 
-  const markup = await onCreatePaginationTemplate(currentPage);
+  const markup = await onCreatePaginationTemplate(currentPage, totalPages);
 
   // console.log(markup);
 

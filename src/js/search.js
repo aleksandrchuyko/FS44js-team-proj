@@ -7,14 +7,16 @@ import clearGalleryContainer from './clear-gallery';
 import { clearPaginationList } from './clear-pagination';
 import { loadTrandingPage } from './tranding';
 
-refs.headerSearch.addEventListener('submit', searchSubmit);
+refs.inputForm.addEventListener('submit', searchSubmit);
 
 let currentPageS;
 
 const moviesApiService = new MoviesApiService();
 async function searchSubmit(event) {
   event.preventDefault();
+
   const value = event.target.querySelector('.header__input').value;
+  moviesApiService.resetPage();
 
   if (value === '') {
     loadTrandingPage();
@@ -44,7 +46,7 @@ async function errorS(response) {
   const currentPage = response.page;
   currentPageS = currentPage;
   await changeMoviesArray(response);
-  await onRenderPagination(currentPage);
+  await onRenderPagination(currentPage, totalPages);
 }
 
 export async function loadSelectedSearchPage(page) {
@@ -66,7 +68,7 @@ async function onRender() {
   //   const totalPages = response.total_pages;
   const currentPage = response.page;
   currentPageS = currentPage;
-  await changeMoviesArray(response);
+  // await changeMoviesArray(response);
   // await onRenderPagination(currentPage);
 }
 
