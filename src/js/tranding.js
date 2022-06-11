@@ -10,6 +10,8 @@ addEventListener('DOMContentLoaded', () => {
   loadTrandingPage();
 });
 
+let currentPageT;
+
 refs.headerLogo.addEventListener('click', onClickHomePage);
 refs.homePageBtn.addEventListener('click', onClickHomePage);
 
@@ -18,16 +20,17 @@ const moviesApiService = new MoviesApiService();
 export async function loadTrandingPage() {
   moviesApiService.tranding();
 
-  const response = await moviesFetch();
+  const response = await moviesApiService.fetchMovies();
 
   refs.galleryContainer.setAttribute('data-set', 'tranding');
 
-  const totalPages = response.total_pages;
+  // const totalPages = response.total_pages;
+  currentPageT = response.page;
   const currentPage = response.page;
 
   await changeMoviesArray(response);
 
-  await onRenderPagination(totalPages, currentPage);
+  await onRenderPagination(currentPage);
 }
 
 export async function loadSelectedTrandingPage(page) {
@@ -40,6 +43,7 @@ async function onClickHomePage(e) {
   e.preventDefault();
 
   moviesApiService.resetPage();
+  await loadHomePageHeader();
 
   await onRender();
 }
@@ -47,8 +51,6 @@ async function onClickHomePage(e) {
 async function onRender() {
   await clearGalleryContainer();
   await clearPaginationList();
-
-  await loadHomePageHeader();
 
   await loadTrandingPage();
 }
@@ -65,4 +67,4 @@ async function loadHomePageHeader() {
   refs.headerSearch.classList.remove('is-hidden');
 }
 
-const moviesFetch = async () => await moviesApiService.fetchMovies();
+export { currentPageT };
