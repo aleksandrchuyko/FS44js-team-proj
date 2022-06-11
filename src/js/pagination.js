@@ -16,9 +16,9 @@ async function onCreatePaginationTemplate(currentPage) {
     afterPage = currentPage + shiftPage + 1;
   }
 
-  console.log('beforePage', beforePage);
+  // console.log('beforePage', beforePage);
 
-  console.log('afterPage', afterPage);
+  // console.log('afterPage', afterPage);
 
   let array = [];
   for (let i = beforePage; i <= afterPage; i += 1) {
@@ -32,17 +32,18 @@ async function onCreatePaginationTemplate(currentPage) {
 }
 
 export async function onRenderPagination(currentPage) {
-  console.log(currentPage);
+  // console.log(currentPage);
 
   const markup = await onCreatePaginationTemplate(currentPage);
 
-  console.log(markup);
+  // console.log(markup);
 
   await refs.paginationList.insertAdjacentHTML('beforeend', markup);
 
-  curentBtn = refs.paginationList.querySelector(
-    `[data-set = "${currentPage}"]`
+  const curentBtn = refs.paginationList.querySelector(
+    `[data-set = '${currentPage}']`
   );
+  // console.log(curentBtn);
 
-  await curentBtn.classList.add('pagination__active');
+  curentBtn.classList.add('pagination__active');
 }
