@@ -3,21 +3,45 @@ import { refs } from './refs.js';
 import { genresInfo } from './genres';
 
 const imagesBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const imageNull =
+  'https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-fashion-movie-film-theme-background-poster-image_196478.jpg';
 
 export default async function changeMoviesArray(response) {
   // console.log(response);
   const movies = response.results;
+
+  let posterPath;
+  let genres = [];
+  let releaseDate;
+
   const moviesArray = await movies.map(movie => {
     const releasePattern = /\d{4}/g;
     const date = movie.release_date;
-    const releaseDate = date.match(releasePattern);
-    const genresIds = movie.genre_ids;
-    const genres = genresIds
-      .map(id => genresInfo.find(genre => genre.id === id).name)
-      .join(', ');
-    const poster = movie.poster_path;
+    // const releaseDate;
+    if (date === '') {
+      releaseDate = 'Today';
+    } else {
+      releaseDate = date.match(releasePattern);
+    }
+    // const date = movie.release_date;
+    // const releaseDate = date.match(releasePattern);
 
-    const posterPath = `${imagesBaseUrl}${poster}`;
+    const genresIds = movie.genre_ids;
+    if (genresIds.length > 1) {
+      genres = genresIds
+        .map(id => genresInfo.find(genre => genre.id === id).name)
+        .join(', ');
+    } else {
+      genres = 'other';
+    }
+
+    const poster = movie.poster_path;
+    if (poster === null) {
+      console.log('poster', poster);
+      posterPath = `${imageNull}`;
+    } else {
+      posterPath = `${imagesBaseUrl}${poster}`;
+    }
 
     return {
       id: movie.id,
