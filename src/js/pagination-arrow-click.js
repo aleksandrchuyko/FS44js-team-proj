@@ -6,14 +6,6 @@ refs.leftBtn.addEventListener('click', onLeftBtnClick);
 refs.rightBtn.addEventListener('click', onRightBtnClick);
 let page;
 
-// async function getCurrentPage() {
-//   moviesApiService.tranding();
-//   const response = await moviesApiService.fetchMovies();
-//   currentPage = response.page;
-//   console.log(currentPage);
-//   return currentPage;
-// }
-
 async function onLeftBtnClick(e) {
   e.preventDefault();
   //   getCurrentPage();
