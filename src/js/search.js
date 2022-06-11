@@ -46,7 +46,7 @@ async function errorS(response) {
   const currentPage = response.page;
   currentPageS = currentPage;
   await changeMoviesArray(response);
-  await onRenderPagination(currentPage);
+  await onRenderPagination(currentPage, totalPages);
 }
 
 export async function loadSelectedSearchPage(page) {

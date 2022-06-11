@@ -27,13 +27,13 @@ export async function loadTrandingPage() {
 
   refs.galleryContainer.setAttribute('data-set', 'tranding');
 
-  // const totalPages = response.total_pages;
+  const totalPages = response.total_pages;
   currentPageT = response.page;
   const currentPage = response.page;
 
   await changeMoviesArray(response);
 
-  await onRenderPagination(currentPage);
+  await onRenderPagination(currentPage, totalPages);
 }
 
 export async function loadSelectedTrandingPage(page) {
