@@ -8,7 +8,8 @@ refs.openModalBtn.addEventListener('click', onOpenModal);
 refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
-function onOpenModal() {
+function onOpenModal(e) {
+  e.preventDefault()
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('show-modal');
 }
