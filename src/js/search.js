@@ -10,6 +10,7 @@ import { loadTrandingPage } from './tranding';
 refs.inputForm.addEventListener('submit', searchSubmit);
 
 let currentPageS;
+let totalPages;
 
 const moviesApiService = new MoviesApiService();
 async function searchSubmit(event) {
@@ -42,7 +43,7 @@ async function errorS(response) {
       'Search result not successful. Enter the correct movie name and';
   }
 
-  const totalPages = response.total_pages;
+  totalPages = response.total_pages;
   const currentPage = response.page;
   currentPageS = currentPage;
   await changeMoviesArray(response);
@@ -68,8 +69,22 @@ async function onRender() {
   //   const totalPages = response.total_pages;
   const currentPage = response.page;
   currentPageS = currentPage;
+  await paginationButons();
   // await changeMoviesArray(response);
   // await onRenderPagination(currentPage);
 }
 
 export { currentPageS };
+
+async function paginationButons() {
+  if (currentPageS === 1) {
+    refs.leftBtn.classList.add('is-hidden');
+  } else {
+    refs.leftBtn.classList.remove('is-hidden');
+  }
+  if (currentPageS === totalPages) {
+    refs.rightBtn.classList.add('is-hidden');
+  } else {
+    refs.rightBtn.classList.remove('is-hidden');
+  }
+}

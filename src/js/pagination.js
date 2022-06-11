@@ -6,7 +6,7 @@ let afterPage;
 
 async function onCreatePaginationTemplate(currentPage, totalPages) {
   // console.log(currentPage < shiftPage);,
-  console.dir(document.documentElement.clientWidth);
+  // console.dir(document.documentElement.clientWidth);
 
   if (document.documentElement.clientWidth < 480) {
     shiftPage = 1;

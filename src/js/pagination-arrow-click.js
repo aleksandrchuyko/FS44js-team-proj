@@ -28,7 +28,7 @@ async function onRightBtnClick(e) {
   //   getCurrentPage();
   if (refs.galleryContainer.getAttribute('data-set') === 'tranding') {
     page = currentPageT + 1;
-    console.log(page);
+    // console.log(page);
     await loadSelectedTrandingPage(page);
   }
   if (refs.galleryContainer.getAttribute('data-set') === 'search') {
