@@ -1,7 +1,8 @@
 import { refs } from './refs';
 
-
 let shiftPage = 3;
+let beforePage;
+let afterPage;
 
 async function onCreatePaginationTemplate(currentPage) {
   // console.log(currentPage < shiftPage);
@@ -14,7 +15,6 @@ async function onCreatePaginationTemplate(currentPage) {
     beforePage = currentPage - shiftPage + 1;
     afterPage = currentPage + shiftPage + 1;
   }
-
 
   console.log('beforePage', beforePage);
 
@@ -34,7 +34,6 @@ async function onCreatePaginationTemplate(currentPage) {
 export async function onRenderPagination(currentPage) {
   console.log(currentPage);
 
-
   const markup = await onCreatePaginationTemplate(currentPage);
 
   console.log(markup);
@@ -46,5 +45,4 @@ export async function onRenderPagination(currentPage) {
   );
 
   await curentBtn.classList.add('pagination__active');
-
 }
