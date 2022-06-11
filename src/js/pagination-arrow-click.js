@@ -4,6 +4,7 @@ import { refs } from './refs';
 
 refs.leftBtn.addEventListener('click', onLeftBtnClick);
 refs.rightBtn.addEventListener('click', onRightBtnClick);
+let page;
 
 // async function getCurrentPage() {
 //   moviesApiService.tranding();
