@@ -1,5 +1,8 @@
 
 import { refs } from './refs';
+import { clearPaginationList } from './clear-pagination';
+import clearGalleryContainer from './clear-gallery';
+import changeMoviesArray from './page-render';
 
 
 
@@ -43,65 +46,67 @@ function clickButWatched() {
 // Render Library JS//////
 
 const container = document.getElementById('pagination');
-
-function watchedRender() {
-    clearRender();
-    const watched = JSON.parse(localStorage.getItem('UserFilmWatched'));
-
-
+async function moviesRender(type) {
+    await clearGalleryContainer();
+    await clearPaginationList();
+    let response
+    switch (type) {
+        case 'watched':
+            response = JSON.parse(localStorage.getItem('UserFilmWatched'));
+            refs.galleryContainer.setAttribute('data-set', 'watched');
+            break;
+        case 'queue':
+            response = JSON.parse(localStorage.getItem('UserFilmQueue'));
+            refs.galleryContainer.setAttribute('data-set', 'queue');
+    }
     container.classList.add('is-hidden');
 
-    renderCardMurkupLibreary(watched);
+    await changeMoviesArray(response)
 }
-function queueRender() {
-    clearRender();
-    const queue = JSON.parse(localStorage.getItem('UserFilmQueue'));
 
-    renderCardMurkupLibreary(queue);
-}
 
 refs.navLibrary.addEventListener('click', () => {
-    clearRender();
+
     if (refs.watchedBtn.classList.contains('library__current')) {
-        watchedRender();
+        moviesRender('watched');
     } else if (refs.queueBtn.classList.contains('library__current')) {
-        queueRender();
+        moviesRender('queue')
     }
 });
 
-refs.watchedBtn.addEventListener('click', watchedRender);
-refs.queueBtn.addEventListener('click', queueRender);
+refs.watchedBtn.addEventListener('click', () => moviesRender('watched'));
+refs.queueBtn.addEventListener('click', () => moviesRender('queue'));
 
 // функція RENDER LIBRARY  CARD///
 
-function renderCardMurkupLibreary(data) {
-    const galleryMarkupLibreary = data
-        .map(({ id, poster_path, title, genres, release_date, vote_average }) => {
-            genres = genres.map((genre) => genre.name);
-            console.log(genres);
-            title = title.length > 37 ? `${title.slice(0, 40)}...` : title;
-            const imgUrl = poster_path === null ? BASE_IMG_NO_POSTER : `${BASE_IMG_URL}${poster_path}`;
-            return `<li class="card">
-                    <a href="#${id}" class="card__link" id="${id}">
-                        <img class="card__img" src="${imgUrl}" alt="${title}" />
-                        <div class="card__information">
-                            <h2 class="card__name">${title}</h2>
-                            <div class="card__inf">   
-                            <p class="card__genre">${genres}</p>
-                            ${genres && release_date
-                    ? `<p class="card__genre">&nbsp;|&nbsp;</p>`
-                    : ''
-                }
-                            <p class="card__genre">${release_date.slice(
-                    0,
-                    4,
-                )}</p>                        
-                            <p class="card__rating" > ${vote_average}</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>`;
-        })
-        .join('');
-    refs.homeFilmList.insertAdjacentHTML('beforeend', galleryMarkupLibreary);
-}
+// function renderCardMurkupLibreary(data) {
+//     const galleryMarkupLibreary = data
+//         .map(({ id, poster_path, title, genres, release_date, vote_average }) => {
+//             genres = genres.map((genre) => genre.name);
+//             console.log(genres);
+//             title = title.length > 37 ? `${title.slice(0, 40)}...` : title;
+//             const imgUrl = poster_path === null ? BASE_IMG_NO_POSTER : `${BASE_IMG_URL}${poster_path}`;
+//             return `<li class="card">
+//                     <a href="#${id}" class="card__link" id="${id}">
+//                         <img class="card__img" src="${imgUrl}" alt="${title}" />
+//                         <div class="card__information">
+//                             <h2 class="card__name">${title}</h2>
+//                             <div class="card__inf">
+//                             <p class="card__genre">${genres}</p>
+//                             ${genres && release_date
+//                     ? `<p class="card__genre">&nbsp;|&nbsp;</p>`
+//                     : ''
+//                 }
+//                             <p class="card__genre">${release_date.slice(
+//                     0,
+//                     4,
+//                 )}</p>
+//                             <p class="card__rating" > ${vote_average}</p>
+//                             </div>
+//                         </div>
+//                     </a>
+//                 </li>`;
+//         })
+//         .join('');
+//     refs.homeFilmList.insertAdjacentHTML('beforeend', galleryMarkupLibreary);
+// }
