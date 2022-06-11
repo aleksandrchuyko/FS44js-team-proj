@@ -29,7 +29,7 @@ export default class MoviesApiService {
   }
 
   async fetchMovies() {
-    refs.headerError.textContent ='';
+    refs.headerError.textContent = '';
     // run spinner
     showSpinner();
     try {
@@ -42,9 +42,9 @@ export default class MoviesApiService {
       });
 
       // console.log(response);
-      console.log(response.data.total_results);
+      // console.log(response.data.total_results);
       // if (response.data.total.results === 0) {
-        
+
       //   refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
       // }
       // this.incrementPage();
@@ -84,5 +84,3 @@ export default class MoviesApiService {
     this.searchQuery = newQuery;
   }
 }
-
-
