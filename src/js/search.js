@@ -5,9 +5,9 @@ import { onRenderPagination } from './pagination';
 
 import clearGalleryContainer from './clear-gallery';
 import { clearPaginationList } from './clear-pagination';
-import { loadTrandingPage, onClickHomePage } from './tranding';
+import { loadTrandingPage } from './tranding';
 
-refs.headerSearch.addEventListener('submit', searchSubmit);
+refs.inputForm.addEventListener('submit', searchSubmit);
 
 let currentPageS;
 
