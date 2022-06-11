@@ -1,101 +1,46 @@
-import MoviesApiService from './fetch_API';
 import { refs } from './refs';
-import  {loadSelectedTrandingPage}  from './tranding';
 
-let pages = []; 
-let currentBtn;
-const shiftPage = 3;
+let shiftPage = 3;
 
+async function onCreatePaginationTemplate(currentPage) {
+  // console.log(currentPage < shiftPage);
 
-async function onCreatePaginationTemplate(totalPages, currentPage) {
+  if (currentPage < shiftPage + 1) {
+    beforePage = shiftPage - 1;
+    // shiftPage = currentPage
+    afterPage = 8;
+  } else {
+    beforePage = currentPage - shiftPage + 1;
+    afterPage = currentPage + shiftPage + 1;
+  }
 
-    console.log(currentPage);
-    let beforePage = currentPage - shiftPage;
-    console.log('beforePage', beforePage)
-    let afterPage = currentPage + shiftPage;
-    console.log('afterPage', afterPage);
-    // let total = currentPage + beforePage + afterPage + 4;
-    let numberClass = '';
+  console.log('beforePage', beforePage);
 
-    // if (currentPage > 4) {
-    //     let startDots = refs.paginationList.createElement('span', { class: `${numberClass}` }, '...'
-    //     );
-    //     refs.paginationList.push(startDots);
-    // }
-    if (currentPage === 1) {
-        beforePage = 0;
-    afterPage = currentPage + 4;
-    
-    }
-//     if (currentPage === 2) {
-//       afterPage = currentPage + 3;
-//     }
-//     if (currentPage === total) {
-//       beforePage = currentPage - 4;
-//     }
-//     if (currentPage === total - 1) {
-//         beforePage = currentPage - 3;
-    
-//     }
-
-  // }
-  //     if (currentPage === 2) {
-  //       afterPage = currentPage + 3;
-  //     }
-  //     if (currentPage === total) {
-  //       beforePage = currentPage - 4;
-  //     }
-  //     if (currentPage === total - 1) {
-  //         beforePage = currentPage - 3;
-
-  //     }
-
-  //     if (beforePage < 2) {
-  //       beforePage = 2;
-  //     }
-  //     if (afterPage >= total) {
-  //       afterPage = total - 1;
-  //     }
+  console.log('afterPage', afterPage);
 
   let array = [];
   for (let i = beforePage; i <= afterPage; i += 1) {
     array.push(
-      `<button type="button" class="pagination__btn page">${i}</button>`
+      `<button type="button" class="pagination__btn page" data-set = "${
+        i - 1
+      }">${i - 1}</button>`
     );
   }
   return array.join('');
 }
 
-export async function onRenderPagination(totalPages, currentPage) {
-  console.log(totalPages);
+export async function onRenderPagination(currentPage) {
   console.log(currentPage);
-  refs.leftBtn.addEventListener('click', onLeftBtnClick);
-  refs.rightBtn.addEventListener('click', onRightBtnClick);
-  const markup = await onCreatePaginationTemplate(totalPages, currentPage);
+
+  const markup = await onCreatePaginationTemplate(currentPage);
 
   console.log(markup);
-  await refs.paginationList.insertAdjacentHTML("beforeend", markup);
-  await btnPaint(currentPage);
-       
 
-  function onLeftBtnClick(e) {
-    e.preventDefault();
-    currentPage = currentPage - 1;
-    console.log(currentPage);
-         await loadSelectedTrandingPage(currentPage);
-  }
-  function onRightBtnClick(e) {
-    e.preventDefault();
-    currentPage = currentPage + 1;
-    console.log(currentPage);
-  }
+  await refs.paginationList.insertAdjacentHTML('beforeend', markup);
+
+  curentBtn = refs.paginationList.querySelector(
+    `[data-set = "${currentPage}"]`
+  );
+
+  await curentBtn.classList.add('pagination__active');
 }
-async function btnPaint(currentPage) {
-    pages = document.querySelectorAll('.page');
-    const pageIndex = currentPage - 1;
-    console.log(pageIndex);
-    currentBtn = pages[shiftPage]; 
-    console.log(currentBtn);
-    currentBtn.classList.add("pagination__active");
- }
-
