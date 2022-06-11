@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { refs } from './refs';
-import { showSpinner } from './spinner';
-import { hideSpinner } from './spinner';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const API_KEY = 'a8de9bbb748883055cd7737934b96801';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -31,7 +30,10 @@ export default class MoviesApiService {
   async fetchMovies() {
     refs.headerError.textContent = '';
     // run spinner
-    showSpinner();
+    Loading.hourglass('Loading...', {
+      backgroundColor: 'rgba(0,0,0,0.8)',
+  });
+
     try {
       const response = await axios.get(`${BASE_URL}${this.request}`, {
         params: {
@@ -54,7 +56,7 @@ export default class MoviesApiService {
       console.error(error);
     } finally {
       // stop spinner
-      hideSpinner();
+     Loading.remove(1000);
     }
   }
 
