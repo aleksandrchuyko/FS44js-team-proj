@@ -1,10 +1,10 @@
 export const refs = {
   galleryContainer: document.querySelector('.main-gallery__list'),
   headerLogo: document.querySelector('.header__logo'),
-  homePageBtn:
-    document.querySelector('.header__list').firstElementChild.firstElementChild,
-  myLibraryBtn:
-    document.querySelector('.header__list').lastElementChild.firstElementChild,
+  // homePageBtn:
+  //   document.querySelector('.header__list').firstElementChild.firstElementChild,
+  // myLibraryBtn:
+  //   document.querySelector('.header__list').lastElementChild.firstElementChild,
   headerSearch: document.querySelector('.header__searchform'),
   paginationList: document.querySelector('.pagination'),
   libraryBtns: document.querySelector('.library__list'),

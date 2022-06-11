@@ -2,9 +2,10 @@ import { refs } from './refs';
 import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
 import { onRenderPagination } from './pagination';
-import { loadTrandingPage } from './tranding';
+
 import clearGalleryContainer from './clear-gallery';
 import { clearPaginationList } from './clear-pagination';
+import { loadTrandingPage } from './tranding';
 
 refs.headerSearch.addEventListener('submit', searchSubmit);
 
@@ -14,12 +15,15 @@ const moviesApiService = new MoviesApiService();
 async function searchSubmit(event) {
   event.preventDefault();
   const value = event.target.querySelector('.header__input').value;
+
   if (value === '') {
     loadTrandingPage();
+  } else {
+    moviesApiService.query = value;
+    moviesApiService.search();
+    await onRender();
   }
-  moviesApiService.query = value;
-  moviesApiService.search();
-  await onRender();
+
   // refs.galleryContainer.innerHTML='';
   //     const response = await moviesApiService.fetchMovies();
   //   await errorS(response);
@@ -54,7 +58,7 @@ async function onRender() {
   await clearGalleryContainer();
   await clearPaginationList();
 
-  refs.galleryContainer.innerHTML = '';
+  // refs.galleryContainer.innerHTML = '';
   const response = await moviesApiService.fetchMovies();
   //   await errorS(response)
   refs.galleryContainer.setAttribute('data-set', 'search');
@@ -63,7 +67,7 @@ async function onRender() {
   const currentPage = response.page;
   currentPageS = currentPage;
   await changeMoviesArray(response);
-  await onRenderPagination(currentPage);
+  // await onRenderPagination(currentPage);
 }
 
 export { currentPageS };
