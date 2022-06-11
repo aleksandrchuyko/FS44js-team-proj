@@ -26,3 +26,4 @@ import './js/pagination-btn-click';
 // import './js/pagination-arrow-click';
 import './js/search';
 import './js/My-library-btn';
+import './js/pagination-arrow-click';
