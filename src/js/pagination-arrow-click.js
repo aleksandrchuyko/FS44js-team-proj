@@ -6,14 +6,6 @@ refs.leftBtn.addEventListener('click', onLeftBtnClick);
 refs.rightBtn.addEventListener('click', onRightBtnClick);
 let page;
 
-// async function getCurrentPage() {
-//   moviesApiService.tranding();
-//   const response = await moviesApiService.fetchMovies();
-//   currentPage = response.page;
-//   console.log(currentPage);
-//   return currentPage;
-// }
-
 async function onLeftBtnClick(e) {
   e.preventDefault();
   //   getCurrentPage();
@@ -36,7 +28,7 @@ async function onRightBtnClick(e) {
   //   getCurrentPage();
   if (refs.galleryContainer.getAttribute('data-set') === 'tranding') {
     page = currentPageT + 1;
-    console.log(page);
+    // console.log(page);
     await loadSelectedTrandingPage(page);
   }
   if (refs.galleryContainer.getAttribute('data-set') === 'search') {

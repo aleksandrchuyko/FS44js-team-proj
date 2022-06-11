@@ -11,6 +11,7 @@ addEventListener('DOMContentLoaded', () => {
 });
 
 let currentPageT;
+let totalPages;
 
 const moviesApiService = new MoviesApiService();
 
@@ -23,13 +24,14 @@ export async function loadTrandingPage() {
 
   refs.galleryContainer.setAttribute('data-set', 'tranding');
 
-  const totalPages = response.total_pages;
+  totalPages = response.total_pages;
   currentPageT = response.page;
   const currentPage = response.page;
 
   await changeMoviesArray(response);
 
   await onRenderPagination(currentPage, totalPages);
+  await paginationButons();
 }
 
 export { currentPageT };
@@ -66,4 +68,17 @@ async function loadHomePageHeader() {
   refs.navHome.classList.add('current');
   refs.inputForm.classList.remove('is-hidden');
   refs.paginationList.classList.remove('is-hidden');
+}
+
+async function paginationButons() {
+  if (currentPageT === 1) {
+    refs.leftBtn.classList.add('is-hidden');
+  } else {
+    refs.leftBtn.classList.remove('is-hidden');
+  }
+  if (currentPageT === totalPages) {
+    refs.rightBtn.classList.add('is-hidden');
+  } else {
+    refs.rightBtn.classList.remove('is-hidden');
+  }
 }

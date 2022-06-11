@@ -5,12 +5,17 @@ let beforePage;
 let afterPage;
 
 async function onCreatePaginationTemplate(currentPage, totalPages) {
-  // console.log(currentPage < shiftPage);
+  // console.log(currentPage < shiftPage);,
+  // console.dir(document.documentElement.clientWidth);
+
+  if (document.documentElement.clientWidth < 480) {
+    shiftPage = 1;
+  }
 
   if (currentPage < shiftPage + 1) {
     beforePage = shiftPage - 1;
     // shiftPage = currentPage
-    afterPage = 8;
+    afterPage = 2 * (shiftPage + 1);
   } else {
     beforePage = currentPage - shiftPage + 1;
     afterPage = currentPage + shiftPage + 1;
@@ -27,12 +32,15 @@ async function onCreatePaginationTemplate(currentPage, totalPages) {
 
   let array = [];
   for (let i = beforePage; i <= afterPage; i += 1) {
-    array.push(
-      `<button type="button" class="pagination__btn page" data-set = "${
-        i - 1
-      }">${i - 1}</button>`
-    );
+    if (i - 1 > 0) {
+      array.push(
+        `<button type="button" class="pagination__btn page" data-set = "${
+          i - 1
+        }">${i - 1}</button>`
+      );
+    }
   }
+
   return array.join('');
 }
 
