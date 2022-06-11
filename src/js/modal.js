@@ -1,5 +1,5 @@
 import { getData } from './get-card-api';
-import writeUserData from './add-to-database';
+  import {writeUserDataWatched, writeUserDataQueue} from './add-to-database';
 
 const refs = {
   openModalBtn: document.querySelector('.main-gallery__list'),
@@ -49,7 +49,7 @@ function escapePress(event) {
 function modalMarkup(muvieId) {
   getData(muvieId).then(data => {
     //Тест запису в базу проглянутих
-    // writeUserData(global.userId, muvieId, data);
+    // writeUserDataQueue('116126857176505822881', muvieId, data);
     //...
     const {
       poster_path,

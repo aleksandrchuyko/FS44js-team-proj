@@ -1,5 +1,6 @@
 import { refs } from './refs';
 import logIn from "./logIn";
+import { getUserDataAllWatched , getUserDataAllQueue} from "./get-from-dadabase";
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
@@ -21,7 +22,15 @@ function onClickHeaderLibraryBth(e) {
 } else {
     logIn().then((resolve) => {
         global.currentUser = resolve;
-        console.log(global.currentUser);
+      console.log('Вошел пользователь:', global.currentUser);
+      getUserDataAllWatched('116126857176505822881').then(data => {
+        global.watchedCache = Object.values(data);
+        console.log('Массив watched из firebase:', global.watchedCache);
+      });
+      getUserDataAllQueue('116126857176505822881').then(data => {
+        global.queueCache = Object.values(data);
+        console.log('Массив queue из firebase:', global.queueCache);
+      });
     setMyLibraryStyles(e);
     }).catch((reject) => {
 //Тут візов сообщения ошибки авторизации

@@ -9,6 +9,8 @@ const global = {
   currentPage: HOME_PAGE,
   currentGalleryPage: 1,
   totalGalleryPages: 0,
+  watchedCache: [],
+  queueCache: [],
 };
 
 //Віше определение всех глобал переменніх проекта
