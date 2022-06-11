@@ -29,7 +29,9 @@ function clickButLibrary(e) {
     refs.navHome.classList.remove('current');
     refs.inputForm.classList.add('visually-hidden');
     refs.libraryBtns.classList.remove('visually-hidden');
-
+    moviesRender('queue')
+    refs.queueBtn.classList.add('active');
+    refs.watchedBtn.classList.remove('active');
 }
 
 function clickButQueue() {
@@ -57,11 +59,13 @@ async function moviesRender(type) {
             break;
         case 'queue':
             response = JSON.parse(localStorage.getItem('UserFilmQueue'));
+            console.log(refs.galleryContainer)
             refs.galleryContainer.setAttribute('data-set', 'queue');
     }
-    container.classList.add('is-hidden');
+    console.log(response)
+    container?.classList.add('is-hidden');
 
-    await changeMoviesArray(response)
+    await changeMoviesArray(response ?? { results: [] })
 }
 
 
