@@ -1,15 +1,10 @@
 //Авторизация Google popup
-import { initializeApp } from 'firebase/app';
-
-// TODO: Replace the following with your app's Firebase project configuration
-import {firebaseConfig} from './firebaseConfig';
-const app = initializeApp(firebaseConfig);
 
 import { GoogleAuthProvider } from "firebase/auth";
 const provider = new GoogleAuthProvider();
 
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup } from "firebase/auth";
 const auth = getAuth();
 
 export default function logIn() {
@@ -19,7 +14,9 @@ export default function logIn() {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
-      const user = result.user;
+    const user = result.user;
+    global.userId = user.providerData[0].uid;
+    console.log(global.userId);
     return user.email;
   }).catch((error) => {
     // Handle Errors here.

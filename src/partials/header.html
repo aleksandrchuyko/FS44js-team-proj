@@ -10,7 +10,6 @@
                 <h1 class="header__text">Filmoteka</h1>
             </div>
 
-
             <div class="header__menu">
                 <nav class="header__nav">
                     <ul class="header__list">
@@ -24,23 +23,27 @@
                 </nav>
             </div>
 
-
         </div>
-        <div class="header__searchform">
+        <form class="header__searchform">
 
-            <form class="header__form">
+            <div class="header__form">
             <p>
-            <input type="search" class="header__input" name="searchQuery" placeholder="Поиск фильмов">
+            <input type="search" 
+            class="header__input" 
+            name="searchQuery" 
+            placeholder="Поиск фильмов" >
             </p>
-            <p class="header__image">
+            <button type="submit" class="header__button">
                 <svg class="header__svg" width="12" height="12">
                 <use href="/src/images/icons.svg#icon-search"></use>
             </svg>
-            </p>
-            </form>
-
+            </button>
         </div>
-      <div class="library__btn ">
+
+        </form>
+        <div class="header__error"></div>
+    
+    <div class="library__btn ">
             <ul class="library__list is-hidden">
                 <li class="library__item">
                     <button type="button" class="library__link watched-btn" data-translatable>Watched</button>

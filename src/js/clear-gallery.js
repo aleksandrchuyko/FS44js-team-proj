@@ -1,5 +1,5 @@
 import { refs } from './refs';
 
-export function clearGalleryContainer() {
+export default async function clearGalleryContainer() {
   refs.galleryContainer.innerHTML = '';
 }

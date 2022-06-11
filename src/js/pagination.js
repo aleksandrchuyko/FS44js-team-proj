@@ -1,39 +1,54 @@
-// import MoviesApiService from './fetch_API';
-import { refs } from './refs.js';
+import { refs } from './refs';
 
-// const moviesApiService = new MoviesApiService();
+let shiftPage = 3;
+let beforePage;
+let afterPage;
 
-async function onCreatePaginationTemplate(totalPages) {
-    let array = [];
-    for (i = 1; i <= totalPages; i += 1){
-        array.push(`<button type="button" class="pagination__btn page">${i}</button>`)
-    }
-    return array.join("");
+async function onCreatePaginationTemplate(currentPage, totalPages) {
+  // console.log(currentPage < shiftPage);
+
+  if (currentPage < shiftPage + 1) {
+    beforePage = shiftPage - 1;
+    // shiftPage = currentPage
+    afterPage = 8;
+  } else {
+    beforePage = currentPage - shiftPage + 1;
+    afterPage = currentPage + shiftPage + 1;
+  }
+
+  // console.log(afterPage > totalPages);
+  if (afterPage >= totalPages) {
+    afterPage = totalPages + 1;
+  }
+
+  // console.log('beforePage', beforePage);
+
+  // console.log('afterPage', afterPage);
+
+  let array = [];
+  for (let i = beforePage; i <= afterPage; i += 1) {
+    array.push(
+      `<button type="button" class="pagination__btn page" data-set = "${
+        i - 1
+      }">${i - 1}</button>`
+    );
+  }
+  return array.join('');
 }
 
-export async function onRenderPagination(totalPages) {
-    console.log(totalPages);
-    const markup = await onCreatePaginationTemplate(totalPages);
-  
-    console.log(markup);
-    refs.paginationList.insertAdjacentHTML("beforeend", markup);
+export async function onRenderPagination(currentPage, totalPages) {
+  // console.log(currentPage);
 
+  const markup = await onCreatePaginationTemplate(currentPage, totalPages);
+
+  // console.log(markup);
+
+  await refs.paginationList.insertAdjacentHTML('beforeend', markup);
+
+  const curentBtn = refs.paginationList.querySelector(
+    `[data-set = '${currentPage}']`
+  );
+  // console.log(curentBtn);
+
+  curentBtn.classList.add('pagination__active');
 }
-
-function onPagiationBtnClick(e) {
-    if (e.target.NodeName !== "BUTTON") {
-        return;
-    }
-
-    
-
-    const pageNumber = e.target.textContent;
-    changePage(pageNumber);
-    // onrenderNewPage(pageNumber);
-}
-
-// async function onrenderNewPage(pageNum) {
-//     const nextPageTrendFilms = await moviesApiService.fetchMovies(pageNum);
-// renderMovies(nextPageTrendFilms, moviesArray)
-
-// }
