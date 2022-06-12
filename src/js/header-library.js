@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import logIn from "./logIn";
-import { getUserDataAllWatched , getUserDataAllQueue} from "./get-from-dadabase";
+import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
@@ -16,12 +16,12 @@ refs.queueBtn.addEventListener('click', onClickQueueBth);
 //     refs.header.classList.remove('header__my-library');
 // }
 
-function onClickHeaderLibraryBth(e) {
+export function onClickHeaderLibraryBth(e) {
   if (global.currentUser) {
     setMyLibraryStyles(e);
-} else {
+  } else {
     logIn().then((resolve) => {
-        global.currentUser = resolve;
+      global.currentUser = resolve;
       console.log('Вошел пользователь:', global.currentUser);
       getUserDataAllWatched('116126857176505822881').then(data => {
         global.watchedCache = Object.values(data);
@@ -31,13 +31,13 @@ function onClickHeaderLibraryBth(e) {
         global.queueCache = Object.values(data);
         console.log('Массив queue из firebase:', global.queueCache);
       });
-    setMyLibraryStyles(e);
+      setMyLibraryStyles(e);
     }).catch((reject) => {
-//Тут візов сообщения ошибки авторизации
-//...
-    console.log(reject);
-});
-}
+      //Тут візов сообщения ошибки авторизации
+      //...
+      console.log(reject);
+    });
+  }
 }
 
 function setMyLibraryStyles(e) {
