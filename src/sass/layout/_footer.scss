@@ -1,5 +1,5 @@
 .footer {
-    background-color: #F7F7F7;
+    background-color: var(--main-text-color);
     margin-top: 40px;
 }
 
@@ -31,22 +31,12 @@
     &:visited,
     &:hover,
     &:focus {
-        color: #FF6B08;
+        color: var(--accent-text-color);
     }
 }
 
 .glow {
     animation: glow 1s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #FF6B03, 0 0 20px #FF6B03, 0 0 30px #FF6B05, 0 0 40px #FF6B07;
-    }
-
-    to {
-        text-shadow: 0 0 20px #fff, 0 0 30px #FF6B18, 0 0 40px #FF6B18;
-    }
 }
 
 .footer__list {
@@ -68,7 +58,7 @@
     font-size: 14px;
     line-height: 1.14;
     text-align: center;
-    color: #545454;
+    color: var(--footer-text-color);
 }
 
 .footer__title {
@@ -94,8 +84,8 @@
 
     &:hover,
     &:focus {
-        fill: #FF6B08;
-        filter: drop-shadow(0 0 10px rgb(255, 107, 8, 0.5));
+        fill: var(--accent-text-color);
+        filter: drop-shadow(0 0 10px var(--accent-text-color));
     }
 }
 
@@ -109,23 +99,10 @@
 
     &:hover,
     &:focus {
-        fill: #FF6B08;
-        filter: drop-shadow(0 0 10px rgb(255, 107, 8));
+        fill: var(--accent-text-color);
+        filter: drop-shadow(0 0 10px var(--accent-text-color));
     }
 }
-
-@keyframes footer-heart {
-    0% {
-        
-        transform: scale(0.9);
-    }
-
-    100% {
-        
-        transform: scale(1.75);
-    }
-}
-
 
 .footer__form {
     display: flex;
@@ -136,13 +113,13 @@
     &:hover,
     &:focus,
     &:active {
-        color: #FF6B08;
+        color: var(--accent-text-color);
         border: transparent;
     }
 }
 
 ::placeholder {
-    color: #545454;
+    color: var(--footer-text-color);
     opacity: 0.5;
 }
 
@@ -152,16 +129,16 @@
     height: 30px;
     margin: auto;
     padding-left: 16px;
-    border: 1px solid #FF6B08;
+    border: 1px solid var(--accent-text-color);
     box-sizing: border-box;
     border-radius: 4px;
-    color: #545454;
+    color: var(--footer-text-color);
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus,
     &:active {
-        box-shadow: 0 0 10px #FF6B08;
+        box-shadow: 0 0 10px var(--accent-text-color);
         border: transparent;
         outline: none;
     }
@@ -171,16 +148,16 @@
     width: 30px;
     height: 30px;
     border-radius: 4px;
-    color: #fff;
+    color: var(--main-text-color);
     background-color: rgb(0, 0, 0, 0.5);
     margin-left: 5px;
     font-size: 12px;
 
     &:hover,
     &:focus {
-        background-color: #FF6B03;
-        color: #545454;
-        filter: drop-shadow(0 0 10px rgb(255, 107, 8, 0.5));
+        background-color: var(--accent-text-color);
+        color: var(--footer-text-color);
+        filter: drop-shadow(0 0 10px var(--accent-text-color));
         outline: none;
     }
 }
