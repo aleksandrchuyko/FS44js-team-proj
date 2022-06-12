@@ -3,14 +3,24 @@ import { refs } from './refs';
 let shiftPage = 3;
 let beforePage;
 let afterPage;
+let displayWidth;
+
+window.addEventListener('resize', onResize);
+
+async function onResize() {
+  displayWidth = document.documentElement.clientWidth;
+}
 
 async function onCreatePaginationTemplate(currentPage, totalPages) {
+  await onResize();
+
+  if (displayWidth < 480) {
+    shiftPage = 1;
+  }
   // console.log(currentPage < shiftPage);,
   // console.dir(document.documentElement.clientWidth);
 
-  if (document.documentElement.clientWidth < 480) {
-    shiftPage = 1;
-  }
+  // console.log(shiftPage);
 
   if (currentPage < shiftPage + 1) {
     beforePage = shiftPage - 1;
