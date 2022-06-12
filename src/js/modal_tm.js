@@ -1,11 +1,7 @@
-const refs = {
-  openModalBtn: document.querySelector('[data-action="open-modal_tm"]'),
-  closeModalBtn: document.querySelector('[data-action="close-modal_tm"]'),
-  backdrop: document.querySelector('.js-backdrop_tm'),
-};
+import { refs } from './refs';
 
-refs.openModalBtn.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
+refs.openModalTm.addEventListener('click', onOpenModal);
+refs.closeModalTm.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onOpenModal(e) {
