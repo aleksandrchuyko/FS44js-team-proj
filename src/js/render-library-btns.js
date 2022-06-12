@@ -12,20 +12,21 @@ refs.queueBtn.addEventListener("click", renderQueueMove)
 
 const load = key => {
     try {
-        // if (key === "watched-movie-list") {
-        //     getUserDataAllWatched('116126857176505822881').then(data => {
-        //         global.watchedCache = Object.values(data);
-        //         return global.watchedCache;
-        //     });
-        // }
+        if (key === "watched-movie-list") {
+            getUserDataAllWatched('116126857176505822881').then(data => {
+                global.watchedCache = Object.values(data);
+                // return global.watchedCache;
+                renderWatchedMove();
+            });
+        }
         // if (key === "queue-movie-list") {
         //     getUserDataAllQueue('116126857176505822881').then(data => {
         //         global.queueCache = Object.values(data);
         //         return global.queueCache;
         //     });
         // }
-        let storage = localStorage.getItem(key);
-        return (storage = JSON.parse(storage) || undefined);
+        // let storage = localStorage.getItem(key);
+        // return (storage = JSON.parse(storage) || undefined);
     } catch (err) {
         console.error('Get state error: ', err);
     }
@@ -33,16 +34,18 @@ const load = key => {
 
 function renderWatchedMove() {
     document.querySelector('.main-gallery__section').innerHTML = ' ';
-    const arrId = load("watched-movie-list")
-    console.log(arrId)
+    // const arrId = load("watched-movie-list");
+    const arrId = global.watchedCache;
+    console.log(arrId);
     if (!arrId || arrId.length === 0) {
         clearGalleryContainer();
     } else {
         for (let id of arrId) {
-            console.log("id", id)
-            getData(id).then(response => {
+            console.log("id", id.id)
+            getData(id.id).then(response => {
                 renderCardMove(response.id)
             });
+            // renderCardMove(id);
         }
     }
 }
