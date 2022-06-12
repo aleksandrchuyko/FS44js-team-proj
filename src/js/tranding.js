@@ -72,13 +72,13 @@ async function loadHomePageHeader() {
 
 async function paginationButons() {
   if (currentPageT === 1) {
-    refs.leftBtn.classList.add('is-hidden');
+    refs.leftBtn.disabled = true;
   } else {
-    refs.leftBtn.classList.remove('is-hidden');
+    refs.leftBtn.disabled = false;
   }
   if (currentPageT === totalPages) {
-    refs.rightBtn.classList.add('is-hidden');
+    refs.rightBtn.disabled = true;
   } else {
-    refs.rightBtn.classList.remove('is-hidden');
+    refs.rightBtn.disabled = false;
   }
 }
