@@ -55,7 +55,7 @@ export default class MoviesApiService {
       console.error(error);
     } finally {
       // stop spinner
-     Loading.remove(1000);
+     Loading.remove();
     }
   }
 

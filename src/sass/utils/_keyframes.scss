@@ -1,0 +1,62 @@
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #FF6B03, 0 0 20px #FF6B03, 0 0 30px #FF6B05, 0 0 40px #FF6B07;
+    }
+
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #FF6B18, 0 0 40px #FF6B18;
+    }
+}
+
+@keyframes footer-heart {
+    0% {
+
+        transform: scale(0.9);
+    }
+
+    100% {
+
+        transform: scale(1.75);
+    }
+}
+
+@keyframes rotateLogo {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes pulsate {
+
+    100% {
+
+        text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #FF6B08,
+            0 0 80px #FF6B08,
+            0 0 90px #FF6B08,
+            0 0 100px #FF6B08,
+            0 0 150px #FF6B08;
+
+    }
+
+    0% {
+
+        text-shadow:
+            0 0 4px #fff,
+            0 0 10px #fff,
+            0 0 18px #fff,
+            0 0 38px #FF6B08,
+            0 0 73px #FF6B08,
+            0 0 80px #FF6B08,
+            0 0 94px #FF6B08,
+            0 0 140px #FF6B08;
+
+    }
+}

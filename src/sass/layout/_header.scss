@@ -39,18 +39,6 @@
     }
 }
 
-@keyframes rotateLogo {
-    from {
-        transform: rotateY(0deg);
-    }
-
-    to {
-        transform: rotateY(360deg);
-    }
-}
-
-
-
 .header__text {
     display: none;
         padding-top: 40px;
@@ -75,37 +63,6 @@
 
     @media screen and (min-width: 768px) {
         display: flex;
-    }
-}
-
-@keyframes pulsate {
-
-    100% {
-
-        text-shadow:
-            0 0 4px #fff,
-            0 0 11px #fff,
-            0 0 19px #fff,
-            0 0 40px #FF6B08,
-            0 0 80px #FF6B08,
-            0 0 90px #FF6B08,
-            0 0 100px #FF6B08,
-            0 0 150px #FF6B08;
-
-    }
-
-    0% {
-
-        text-shadow:
-            0 0 4px #fff,
-            0 0 10px #fff,
-            0 0 18px #fff,
-            0 0 38px #FF6B08,
-            0 0 73px #FF6B08,
-            0 0 80px #FF6B08,
-            0 0 94px #FF6B08,
-            0 0 140px #FF6B08;
-
     }
 }
 
