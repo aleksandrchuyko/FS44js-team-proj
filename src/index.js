@@ -15,7 +15,7 @@ const global = {
 
 //Віше определение всех глобал переменніх проекта
 
-// import './js/go';
+
 // import './js/modal';
 import './js/init-firebase';
 import './js/tranding';
