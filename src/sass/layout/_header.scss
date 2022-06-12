@@ -27,18 +27,85 @@
     }
 }
 
+.icon__film {
+    width: 31px;
+    height: 30px;
+    align-items: baseline;
+    animation: rotateLogo 2s linear infinite;
+
+    &:hover,
+    &:focus {
+        fill: #FF6B08;
+    }
+}
+
+@keyframes rotateLogo {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+
+
 .header__text {
     display: none;
-    padding-top: 40px;
-    padding-left: 10px;
-    font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 1.2;
-    color: var(--main-text-color);
+        padding-top: 40px;
+        padding-left: 10px;
+        font-family: 'Roboto';
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.2;
+        color: var(--main-text-color);
+
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #FF6B08,
+        0 0 82px #FF6B08,
+        0 0 92px #FF6B08,
+        0 0 102px #FF6B08,
+        0 0 151px #FF6B08;
+
+    animation: pulsate 0.11s ease-in-out infinite alternate;
 
     @media screen and (min-width: 768px) {
         display: flex;
+    }
+}
+
+@keyframes pulsate {
+
+    100% {
+
+        text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #FF6B08,
+            0 0 80px #FF6B08,
+            0 0 90px #FF6B08,
+            0 0 100px #FF6B08,
+            0 0 150px #FF6B08;
+
+    }
+
+    0% {
+
+        text-shadow:
+            0 0 4px #fff,
+            0 0 10px #fff,
+            0 0 18px #fff,
+            0 0 38px #FF6B08,
+            0 0 73px #FF6B08,
+            0 0 80px #FF6B08,
+            0 0 94px #FF6B08,
+            0 0 140px #FF6B08;
+
     }
 }
 
@@ -124,6 +191,14 @@
 .header__button {
     background: transparent;
     margin-left: auto;
+    transform: scale(1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+        transform: scale(1.5);
+        fill: red;
+    }
 }
 
 .header__svg {
