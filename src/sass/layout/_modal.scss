@@ -166,9 +166,9 @@ body.show__modal .modal {
     }
 }
 
-.key__item {
-    white-space: nowrap;
-}
+// .key__item {
+//     white-space: nowrap;
+// }
 
 .key__item, 
 .item__value {
@@ -183,6 +183,7 @@ body.show__modal .modal {
 }
 
 .key__item {
+    white-space: nowrap;
     padding-right: 40px;
 
     @media screen and (min-width: 1024px) {
