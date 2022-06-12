@@ -1,5 +1,7 @@
 import { getData } from './get-card-api';
-  import {writeUserDataWatched, writeUserDataQueue} from './add-to-database';
+import { writeUserDataWatched, writeUserDataQueue } from './add-to-database';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import {spinnerRef } from './spinner';
 
 const refs = {
   openModalBtn: document.querySelector('.main-gallery__list'),
@@ -18,11 +20,12 @@ let cardId;
 
 function openModal(e) {
   e.preventDefault();
+  Loading.hourglass('Loading...', spinnerRef);
   cardId = e.target.closest('.card').dataset.id;
-
   window.addEventListener('keydown', escapePress);
   document.body.classList.add('show__modal');
   modalMarkup(cardId);
+  
 }
 
 function closeModal() {
@@ -75,20 +78,20 @@ function modalMarkup(muvieId) {
                     <table class="modal__table">
                         <tbody>
                             <tr>
-                            <td class="key__item">Vote / Votes</td>
-                            <td class="item__value"><span class="vote">${vote_average}</span> / ${vote_count}</td>
+                            <td class="modal__key">Vote / Votes</td>
+                            <td class="modal__value"><span class="vote">${vote_average}</span> / ${vote_count}</td>
                             </tr>
                             <tr>
-                            <td class="key__item">Popularity</td>
-                            <td class="item__value">${popularity}</td>
+                            <td class="modal__key">Popularity</td>
+                            <td class="modal__value">${popularity}</td>
                             </tr>
                             <tr>
-                            <td class="key__item">Original Title</td>
-                            <td class="item__value">${original_title}</td>
+                            <td class="modal__key">Original Title</td>
+                            <td class="modal__value">${original_title}</td>
                             </tr>
                             <tr>
-                            <td class="key__item">Genre</td>
-                            <td class="item__value">${genres}</td>
+                            <td class="modal__key">Genre</td>
+                            <td class="modal__value">${genres}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -103,6 +106,7 @@ function modalMarkup(muvieId) {
         </div>
     </div>`;
     refs.container.insertAdjacentHTML('beforeend', markup);
+    Loading.remove(); 
     closeBacdropClick();
     localStorageMovie();
   });
