@@ -144,7 +144,6 @@ body.show__modal .modal {
 }
 
 .modal__title {
-
   padding-bottom: 20px;
 
   font-family: 'Roboto';
@@ -160,50 +159,38 @@ body.show__modal .modal {
   }
 }
 
-.modal__lists {
-  display: flex;
-  padding-bottom: 20px;
 
+.modal__table {
+  border-collapse: collapse;
+  margin-bottom: 12px;
 }
 
-.list__value {
-  margin-left: 40px;
-
+.modal__key {
+  white-space: nowrap;
+  padding-right: 40px;
 
   @media screen and (min-width: 1024px) {
-    margin-left: 85px;
+    padding-right: 85px;
   }
-
 }
 
-.key__item {
-  white-space: nowrap;
-}
-
-.key__item,
-.item__value {
+.modal__key,
+.modal__value {
+  padding-bottom: 8px;
   font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.3;
   list-style-type: none;
-
+  vertical-align: top;
   color: #8c8c8c;
 }
 
-.key__item:not(:last-child),
-.item__value:not(:last-child) {
-  padding-bottom: 8px;
-
-}
-
-.item__value {
+.modal__value {
   color: #000000;
 }
 
 .vote {
-
   background-color: #ff6b01;
   padding-top: 1px;
   padding-bottom: 1px;
