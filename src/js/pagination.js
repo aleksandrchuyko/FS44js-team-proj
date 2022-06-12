@@ -36,6 +36,9 @@ async function onCreatePaginationTemplate(currentPage, totalPages) {
     afterPage = totalPages + 1;
   }
 
+  if (currentPage >= 2) {
+    refs.leftBtn.classList.remove('visually-hidden');
+}
   // console.log('beforePage', beforePage);
 
   // console.log('afterPage', afterPage);
