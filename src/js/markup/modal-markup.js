@@ -1,5 +1,5 @@
 import { getData } from '../api-fetch/get-film-api';
-import { modalFilmContainer } from '../utils/references';
+import { modalFilmContainer} from '../utils/references';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import {closeBacdropClick} from '../modal'
 
@@ -62,8 +62,11 @@ function modalMarkup(muvieId) {
         </div>
     </div>`;
     modalFilmContainer.insertAdjacentHTML('beforeend', markup);
-    Loading.remove(); 
-    closeBacdropClick();
+    Loading.remove();
+    const closeModalBtn = document.querySelector('.close__modal');
+    const backdrop = document.querySelector('.backdrop');
+    
+    closeBacdropClick(closeModalBtn, backdrop);
     // localStorageMovie();
   });
 }

@@ -2,7 +2,7 @@ import { writeUserDataWatched, writeUserDataQueue } from './api-fetch/add-to-dat
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import {spinnerRef } from './spinner';
 import { modalMarkup } from './markup/modal-markup';
-import {openModalFilm, modalFilmContainer} from './utils/references';
+import {openModalFilm, modalFilmContainer, closeModalBtn, backdrop} from './utils/references';
 
 export { closeBacdropClick };
 
@@ -12,9 +12,7 @@ openModalFilm.addEventListener('click', openModal);
 // Функція closeBacdropClick навішує слухачі на кнопку закриття модального вікна і backdrop,
 //я її запускаю після того як відбудеться завантаження модального вікна
 
-function closeBacdropClick() {
-  const closeModalBtn = document.querySelector('.close__modal');
-  const backdrop = document.querySelector('.backdrop');
+function closeBacdropClick(closeModalBtn, backdrop) {
   closeModalBtn.addEventListener('click', closeModal);
   backdrop.addEventListener('click', backdropClick);
 }
