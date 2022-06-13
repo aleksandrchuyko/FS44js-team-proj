@@ -1,15 +1,16 @@
+import {API_KEY, BASE_URL, MEDIA_TYPE} from '../utils/constants';
+
 const axios = require('axios').default;
 export { getData };
 
-const API_KEY = "https://api.themoviedb.org/3/movie/"
 const  options = {
     responseType: 'stream',
-    api_key: "a8de9bbb748883055cd7737934b96801",
+    api_key: API_KEY,
 }
 
 async function getData(id) {
     try {
-        const response = await axios.get(`${API_KEY}${id}`, {
+        const response = await axios.get(`${BASE_URL}/${MEDIA_TYPE}/${id}`, {
             params: options
         });
         const muvie = response.data;

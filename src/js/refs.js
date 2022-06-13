@@ -21,4 +21,7 @@ export const refs = {
   backdrop: document.querySelector('.js-backdrop_tm'),
   container: document.querySelector(".main-gallery__section"),
 
+  // openModalBtn: document.querySelector('.main-gallery__list'),
+  // container: document.querySelector('.container-js'),
+
 };
