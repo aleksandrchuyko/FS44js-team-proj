@@ -1,71 +1,59 @@
 import { getData } from './get-card-api'
 import { refs } from './refs';
 import clearGalleryContainer from './clear-gallery';
-import { onClickHeaderLibraryBth } from './header-library'
 import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
 
-const container = document.querySelector(".main-gallery__section")
-
-
-refs.watchedBtn.addEventListener("click", renderWatchedMove);
-refs.queueBtn.addEventListener("click", renderQueueMove)
+refs.watchedBtn.addEventListener("click", onWatchedBtnClick);
+refs.queueBtn.addEventListener("click", onQueueBtnClick);
 
 const load = key => {
     try {
         if (key === "watched-movie-list") {
             getUserDataAllWatched('116126857176505822881').then(data => {
                 global.watchedCache = Object.values(data);
-                // return global.watchedCache;
-                renderWatchedMove();
+                onWatchedBtnClick();
             });
         }
-        // if (key === "queue-movie-list") {
-        //     getUserDataAllQueue('116126857176505822881').then(data => {
-        //         global.queueCache = Object.values(data);
-        //         return global.queueCache;
-        //     });
-        // }
-        // let storage = localStorage.getItem(key);
-        // return (storage = JSON.parse(storage) || undefined);
+
+        if (key === "queue-movie-list") {
+            getUserDataAllQueue('116126857176505822881').then(data => {
+                global.queueCache = Object.values(data);
+                onQueueBtnClick()
+            });
+        }
     } catch (err) {
         console.error('Get state error: ', err);
     }
 };
 
-function renderWatchedMove() {
+function onWatchedBtnClick() {
     document.querySelector('.main-gallery__section').innerHTML = ' ';
-    // const arrId = load("watched-movie-list");
-    const arrId = global.watchedCache;
-    console.log(arrId);
-    if (!arrId || arrId.length === 0) {
+    const getListWatched = global.watchedCache;
+    if (!getListWatched || getListWatched.length === 0) {
         clearGalleryContainer();
     } else {
-        for (let id of arrId) {
-            console.log("id", id.id)
+        for (let id of getListWatched) {
             getData(id.id).then(response => {
-                renderCardMove(response.id)
+                getMovieMarkup(response.id)
             });
-            // renderCardMove(id);
         }
     }
 }
-
-function renderQueueMove() {
+function onQueueBtnClick() {
     document.querySelector('.main-gallery__section').innerHTML = ' ';
-    const arrId = load('queue-movie-list');
-    if (!arrId || arrId.length === 0) {
+    const getListQueue = global.queueCache;
+    if (!getListQueue || getListQueue.length === 0) {
         clearGalleryContainer();
     } else {
-        for (let id of arrId) {
-            getData(id).then(response => {
-                renderCardMove(response.id);
+        for (let id of getListQueue) {
+            getData(id.id).then(response => {
+                getMovieMarkup(response.id)
             });
         }
     }
 }
 
-
-function renderCardMove(moveId) {
+function getMovieMarkup(moveId) {
     getData(moveId).then(data => {
         const { poster_path, title, release_date } = data;
         const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -84,6 +72,6 @@ function renderCardMove(moveId) {
                         </ul>
                         </div>
                     </li>`
-        container.insertAdjacentHTML("beforeend", markup);
+        refs.container.insertAdjacentHTML("beforeend", markup);
     })
 }
