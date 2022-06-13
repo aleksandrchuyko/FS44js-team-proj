@@ -40,7 +40,8 @@ async function errorS(response) {
   console.log('response', response.total_results);
   if (response.total_results === 0) {
     refs.headerError.textContent =
-      'Search result not successful. Enter the correct movie name and';
+      'Search result not successful. Enter the correct movie name and'; 
+    refs.paginationWrap.classList.add('visually-hidden');
   }
 
   totalPages = response.total_pages;
