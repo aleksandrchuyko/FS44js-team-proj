@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import MoviesApiService from './fetch_API';
 import changeMoviesArray from './page-render';
-import { onRenderPagination } from './pagination';
+// import { onRenderPagination } from './pagination';
 
 import clearGalleryContainer from './clear-gallery';
 import { clearPaginationList } from './clear-pagination';
