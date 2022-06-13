@@ -1,5 +1,5 @@
 export const refs = {
-  galleryContainer: document.querySelector('.main-gallery__list'),
+  // galleryContainer: document.querySelector('.main-gallery__list'),
   headerLogo: document.querySelector('.header__logo'),
   headerTitle: document.querySelector('.header__title'),
 
@@ -12,13 +12,12 @@ export const refs = {
   navLibrary: document.querySelector('.library__btn'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
-  headerError: document.querySelector('.header__error'),
+  // headerError: document.querySelector('.header__error'),
   leftBtn: document.querySelector('.pagination__button--left'),
   rightBtn: document.querySelector('.pagination__button--right'),
   paginationWrap: document.querySelector('.pagination__wrapper'),
   openModalTm: document.querySelector('[data-action="open-modal_tm"]'),
   closeModalTm: document.querySelector('[data-action="close-modal_tm"]'),
   backdrop: document.querySelector('.js-backdrop_tm'),
-  container: document.querySelector(".main-gallery__section"),
-
+  container: document.querySelector('.main-gallery__section'),
 };
