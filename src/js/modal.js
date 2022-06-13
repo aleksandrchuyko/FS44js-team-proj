@@ -1,14 +1,16 @@
-import { getData } from './get-card-api';
 import { writeUserDataWatched, writeUserDataQueue } from './api-fetch/add-to-database';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import {spinnerRef } from './spinner';
+import { modalMarkup } from './markup/modal-markup';
+import {openModalFilm, modalFilmContainer} from './utils/references';
 
-const refs = {
-  openModalBtn: document.querySelector('.main-gallery__list'),
-  container: document.querySelector('.container-js'),
-};
+export { closeBacdropClick };
 
-refs.openModalBtn.addEventListener('click', openModal);
+  
+openModalFilm.addEventListener('click', openModal);
+
+// Функція closeBacdropClick навішує слухачі на кнопку закриття модального вікна і backdrop,
+//я її запускаю після того як відбудеться завантаження модального вікна
 
 function closeBacdropClick() {
   const closeModalBtn = document.querySelector('.close__modal');
@@ -16,22 +18,20 @@ function closeBacdropClick() {
   closeModalBtn.addEventListener('click', closeModal);
   backdrop.addEventListener('click', backdropClick);
 }
-let cardId;
 
 function openModal(e) {
   e.preventDefault();
   Loading.hourglass('Loading...', spinnerRef);
-  cardId = e.target.closest('.card').dataset.id;
+  let cardId = e.target.closest('.card').dataset.id;
   window.addEventListener('keydown', escapePress);
   document.body.classList.add('show__modal');
   modalMarkup(cardId);
-  
 }
 
 function closeModal() {
   window.removeEventListener('keydown', escapePress);
   document.body.classList.remove('show__modal');
-  refs.container.innerHTML = '';
+  modalFilmContainer.innerHTML = '';
 }
 
 function backdropClick(event) {
@@ -47,69 +47,6 @@ function escapePress(event) {
   if (escape) {
     closeModal();
   }
-}
-
-function modalMarkup(muvieId) {
-  getData(muvieId).then(data => {
-    //Тест запису в базу проглянутих
-    // writeUserDataQueue('116126857176505822881', muvieId, data);
-    //...
-    const {
-      poster_path,
-      title,
-      overview,
-      vote_average,
-      vote_count,
-      popularity,
-      original_title,
-    } = data;
-    const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
-    const genres = data.genres.map(genre => genre.name).join(', ');
-    let markup = `<div class="backdrop">
-        <div class="modal">
-            <button type="button" class="close__modal">
-            </button>
-            <div class="modal__wrapper">
-                <div class="modal__poster">
-                    <img class="modal__image" src="${poster}" alt="${title}">
-                </div>
-                <div class="modal__about">
-                    <h2 class="modal__title">${title}</h2>
-                    <table class="modal__table">
-                        <tbody>
-                            <tr>
-                            <td class="modal__key">Vote / Votes</td>
-                            <td class="modal__value"><span class="vote">${vote_average}</span> / ${vote_count}</td>
-                            </tr>
-                            <tr>
-                            <td class="modal__key">Popularity</td>
-                            <td class="modal__value">${popularity}</td>
-                            </tr>
-                            <tr>
-                            <td class="modal__key">Original Title</td>
-                            <td class="modal__value">${original_title}</td>
-                            </tr>
-                            <tr>
-                            <td class="modal__key">Genre</td>
-                            <td class="modal__value">${genres}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <h3 class="text__title">About</h3>
-                    <p class="modal__text">${overview}</p>
-                    <div class="modal__buttons">
-                        <button class="modal__button watched__btn" type="button">add to watched</button>
-                        <button class="modal__button queue__btn" type="button">add to queue</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-    refs.container.insertAdjacentHTML('beforeend', markup);
-    Loading.remove(); 
-    closeBacdropClick();
-    localStorageMovie();
-  });
 }
 
 // function localStorageMovie() {
