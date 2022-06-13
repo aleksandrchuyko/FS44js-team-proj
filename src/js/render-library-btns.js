@@ -1,4 +1,4 @@
-import { getData } from './get-card-api'
+import { getData } from './api-fetch/get-film-api';
 import { refs } from './refs';
 import clearGalleryContainer from './clear-gallery';
 import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";

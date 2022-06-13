@@ -1,5 +1,6 @@
 export const API_KEY = 'a8de9bbb748883055cd7737934b96801';
 export const BASE_URL = 'https://api.themoviedb.org/3';
+
 // ----- TRANDING MOVIES ----- //
 export const MEDIA_TYPE = 'movie'; // movie or tv
 export const TIME_WINDOW = 'day'; // day, week, month, year
@@ -10,3 +11,4 @@ export const imageNull =
 export const noReleaseDate = 'Today';
 export const noGenres = 'Other';
 export const patternReleaseDate = /\d{4}/g;
+

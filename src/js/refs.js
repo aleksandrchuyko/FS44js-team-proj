@@ -19,5 +19,12 @@ export const refs = {
   openModalTm: document.querySelector('[data-action="open-modal_tm"]'),
   closeModalTm: document.querySelector('[data-action="close-modal_tm"]'),
   backdrop: document.querySelector('.js-backdrop_tm'),
-  container: document.querySelector('.main-gallery__section'),
+
+
+  container: document.querySelector(".main-gallery__section"),
+
+  // openModalBtn: document.querySelector('.main-gallery__list'),
+  // container: document.querySelector('.container-js'),
+
+
 };
