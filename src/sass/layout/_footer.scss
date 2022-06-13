@@ -137,6 +137,9 @@
         border: transparent;
         outline: none;
     }
+    &::placeholder{
+        color: var(--accent-text-color);
+    }
 }
 
 .footer__btn {
