@@ -1,4 +1,4 @@
-
+import { tmItems } from "./modal_tm-arr";
 
 const refs = {
   openModalTmBtn: document.querySelector('[data-action="open-modal_tm"]'),
@@ -37,4 +37,24 @@ function onEscKeyPress(event) {
     onCloseModal();
   }
 }
+
+const modalTm = document.querySelector('.modal_tm');
+const modalTmMarkup = createModalTmMarkup(tmItems);
+
+modalTm.insertAdjacentHTML('beforeend', modalTmMarkup);
+modalTm.addEventListener('click', onOpenSlider);
+
+function createModalTmMarkup(tmItems) {
+
+    return tmItems.map(({ preview, original, description }) => {
+        return `<a class="member__item" href="${original}">
+  <img class="member__image" src="${preview}" alt="${description}" title="${description}"/>
+</a>`
+    }).join('');
+};
+function onOpenSlider() {
+    
+};
+let lightbox = new SimpleLightbox('.modal_tm a', { captionDelay: 250 });
+
 

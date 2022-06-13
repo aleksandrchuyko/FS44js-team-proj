@@ -28,7 +28,6 @@ body.show-modal .modal_tm {
 
 .modal_tm {
   display: flex;
-  flex-direction: column;
   padding: 8px;
   border-radius: 4px;
   max-width: 640px;
@@ -41,12 +40,6 @@ body.show-modal .modal_tm {
 
   transform: scale(1.1);
   transition: transform 200ms ease-in-out;
-}
-.list_tm {
-  display: flex;
-}
-.foto_tm {
-  margin: 0;
 }
 
 .close-modal_tm {
