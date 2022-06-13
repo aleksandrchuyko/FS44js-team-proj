@@ -1,5 +1,5 @@
 .footer {
-    background-color: var(--main-text-color);
+    background-color: var(--footer-bg-color);
     margin-top: 40px;
 }
 
@@ -118,11 +118,6 @@
     }
 }
 
-::placeholder {
-    color: var(--footer-text-color);
-    opacity: 0.5;
-}
-
 .footer__input {
     font-size: 14px;
     width: 150px;
@@ -141,6 +136,9 @@
         box-shadow: 0 0 10px var(--accent-text-color);
         border: transparent;
         outline: none;
+    }
+    &::placeholder{
+        color: var(--accent-text-color);
     }
 }
 
