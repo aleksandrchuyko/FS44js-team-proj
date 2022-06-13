@@ -19,7 +19,7 @@ const global = {
 import './js/service/init-firebase';
 
 // import './js/goToMyLibrary';
-// import './js/pagination';
+import './js/pagination';
 import './js/header-library';
 import './js/modal';
 import './js/modal_tm';
