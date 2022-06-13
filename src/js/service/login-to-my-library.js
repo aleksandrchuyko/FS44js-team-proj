@@ -1,4 +1,4 @@
-import logIn from "./logIn";
+import logIn from "../logIn";
 
 if (global.currentUser) {
 //Тут візов фунции перехода в MyLibrary

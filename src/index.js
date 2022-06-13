@@ -17,7 +17,7 @@ const global = {
 
 
 // import './js/modal';
-import './js/init-firebase';
+import './js/service/init-firebase';
 import './js/tranding';
 // import './js/goToMyLibrary';
 import './js/pagination';
