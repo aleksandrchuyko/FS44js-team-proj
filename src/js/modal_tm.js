@@ -1,17 +1,20 @@
+
+
 const refs = {
-  openModalBtn: document.querySelector('[data-action="open-modal_tm"]'),
-  closeModalBtn: document.querySelector('[data-action="close-modal_tm"]'),
-  backdrop: document.querySelector('.js-backdrop_tm'),
+  openModalTmBtn: document.querySelector('[data-action="open-modal_tm"]'),
+  closeModalTmBtn: document.querySelector('[data-action="close-modal_tm"]'),
+  backdropTm: document.querySelector('.js-backdrop_tm'),
 };
 
-refs.openModalBtn.addEventListener('click', onOpenModal);
-refs.closeModalBtn.addEventListener('click', onCloseModal);
-refs.backdrop.addEventListener('click', onBackdropClick);
+refs.openModalTmBtn.addEventListener('click', onOpenModal);
+refs.closeModalTmBtn.addEventListener('click', onCloseModal);
+refs.backdropTm.addEventListener('click', onBackdropClick);
 
 function onOpenModal(e) {
   e.preventDefault()
   window.addEventListener('keydown', onEscKeyPress);
   document.body.classList.add('show-modal');
+  
 }
 
 function onCloseModal() {
@@ -34,3 +37,4 @@ function onEscKeyPress(event) {
     onCloseModal();
   }
 }
+
