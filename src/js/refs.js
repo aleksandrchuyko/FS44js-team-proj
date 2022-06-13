@@ -3,7 +3,7 @@ export const refs = {
   headerLogo: document.querySelector('.header__logo'),
   headerTitle: document.querySelector('.header__title'),
 
-  paginationList: document.querySelector('.pagination'),
+  // paginationList: document.querySelector('.pagination'),
   libraryBtns: document.querySelector('.library__list'),
   header: document.querySelector('.header'),
 

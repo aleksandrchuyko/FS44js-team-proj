@@ -1,5 +1,7 @@
 import MoviesApiService from '../api-fetch/fetch-films.js';
-import { changeMoviesArray } from '../markup/movies-array-change';
+import { changeMoviesArray } from '../markup/movies-array-change'; 
+import { onRenderPagination } from '../markup/gallery-pagination';
+
 // import changeMoviesArray from './page-render';
 // import { refs } from './refs';
 // import clearGalleryContainer from './clear-gallery';
@@ -26,6 +28,7 @@ export async function loadTrandingPage() {
   const movies = response.results;
 
   await changeMoviesArray(movies);
+  await onRenderPagination(response);
 
   //   refs.galleryContainer.setAttribute('data-set', 'tranding');
 

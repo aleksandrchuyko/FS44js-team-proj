@@ -1,7 +1,10 @@
 import { loadTrandingPage } from '../js-partials/tranding-gallery.js';
+import { paginationList } from '../utils/references';
+import { onPaginationBtnClick } from '../js-partials/pagination-btn-click';
 
 addEventListener('DOMContentLoaded', () => {
   loadTrandingPage();
 });
 
-// import { loadTrandingPage } from '../js/js-partials/tranding/load-tranding-gallery.js';
+paginationList.addEventListener('click', onPaginationBtnClick);
+
