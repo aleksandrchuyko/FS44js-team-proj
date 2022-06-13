@@ -12,3 +12,9 @@ export const noReleaseDate = 'Today';
 export const noGenres = 'Other';
 export const patternReleaseDate = /\d{4}/g;
 
+// ---------- PAGINATION ------------ //
+
+export const desktopShiftPages = 3;
+export const mobileShiftPages = 1;
+
+
