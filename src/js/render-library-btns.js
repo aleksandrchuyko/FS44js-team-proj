@@ -9,16 +9,16 @@ refs.queueBtn.addEventListener("click", onQueueBtnClick);
 const load = key => {
     try {
         if (key === "watched-movie-list") {
-            getUserDataAllWatched('116126857176505822881').then(data => {
+            return getUserDataAllWatched('116126857176505822881').then(data => {
                 global.watchedCache = Object.values(data);
-                onWatchedBtnClick();
+                return global.watchedCache
             });
         }
 
         if (key === "queue-movie-list") {
-            getUserDataAllQueue('116126857176505822881').then(data => {
+            return getUserDataAllQueue('116126857176505822881').then(data => {
                 global.queueCache = Object.values(data);
-                onQueueBtnClick()
+                return global.queueCache
             });
         }
     } catch (err) {
@@ -27,30 +27,34 @@ const load = key => {
 };
 
 function onWatchedBtnClick() {
-    document.querySelector('.main-gallery__section').innerHTML = ' ';
-    const getListWatched = global.watchedCache;
-    if (!getListWatched || getListWatched.length === 0) {
-        clearGalleryContainer();
-    } else {
-        for (let id of getListWatched) {
-            getData(id.id).then(response => {
-                getMovieMarkup(response.id)
-            });
-        }
-    }
+    load("watched-movie-list").then(res => {
+        document.querySelector('.main-gallery__section').innerHTML = ' ';
+        const getListWatched = res;
+        if (!getListWatched || getListWatched.length === 0) {
+            clearGalleryContainer();
+        } else {
+            for (let id of getListWatched) {
+                getData(id.id).then(response => {
+                    getMovieMarkup(response.id)
+                });
+            }
+        };
+    });
 }
 function onQueueBtnClick() {
-    document.querySelector('.main-gallery__section').innerHTML = ' ';
-    const getListQueue = global.queueCache;
-    if (!getListQueue || getListQueue.length === 0) {
-        clearGalleryContainer();
-    } else {
-        for (let id of getListQueue) {
-            getData(id.id).then(response => {
-                getMovieMarkup(response.id)
-            });
-        }
-    }
+    load("queue-movie-list").then(res => {
+        document.querySelector('.main-gallery__section').innerHTML = ' ';
+        const getListQueue = global.queueCache;
+        if (!getListQueue || getListQueue.length === 0) {
+            clearGalleryContainer();
+        } else {
+            for (let id of getListQueue) {
+                getData(id.id).then(response => {
+                    getMovieMarkup(response.id)
+                });
+            }
+        };
+    });
 }
 
 function getMovieMarkup(moveId) {
