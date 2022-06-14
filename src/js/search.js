@@ -19,7 +19,7 @@ async function searchSubmit(event) {
   const value = event.target.querySelector('.header__input').value;
   moviesApiService.resetPage();
 
-  if (value === '') {
+  if (!value) {
     loadTrandingPage();
   } else {
     moviesApiService.query = value;
@@ -38,7 +38,7 @@ async function searchSubmit(event) {
 
 async function errorS(response) {
   console.log('response', response.total_results);
-  if (response.total_results === 0) {
+  if (!response.total_results) {
     refs.headerError.textContent =
       'Search result not successful. Enter the correct movie name and'; 
     refs.paginationWrap.classList.add('visually-hidden');
@@ -78,7 +78,7 @@ async function onRender() {
 export { currentPageS };
 
 async function paginationButons() {
-  if (currentPageS === 1) {
+  if (!currentPageS) {
     refs.leftBtn.disabled = true;
   } else {
     refs.leftBtn.disabled = false;
