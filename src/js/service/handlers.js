@@ -13,6 +13,9 @@ import { onClickHomePage } from '../js-partials/tranding-gallery';
 
 import { openModal } from '../js-partials/open-modal';
 import { openModalFilm } from '../utils/references';
+// import { onResize } from '../utils//display-change';
+import { arrowBtn } from '../utils/references';
+import { onArrowBtnClick} from '../js-partials/pagination-arrows';
 
 
 addEventListener('DOMContentLoaded', () => {
@@ -30,3 +33,9 @@ headerLogo.addEventListener('click', onClickHomePage);
 
 openModalFilm.addEventListener('click', openModal);
 
+// window.addEventListener('resize', onResize);
+
+
+
+arrowBtn.addEventListener('click', onArrowBtnClick);
+console.log(arrowBtn);

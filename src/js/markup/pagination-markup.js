@@ -1,11 +1,18 @@
 import { desktopShiftPages, mobileShiftPages } from '../utils/constants';
+// import { displayWidth } from '../utils/display-change';
+// console.log(displayWidth);
 
 
 export async function onCreatePaginationTemplate(response) {
     let shiftPage = desktopShiftPages;
     let beforePage;
-    let afterPage;
-    let displayWidth = 1200;
+  let afterPage;
+
+  const displayWidth = document.documentElement.clientWidth;
+  // console.log(onResize());
+    // let displayWidth = 1200;
+  
+  console.log(displayWidth)
 
     const currentPage = response.page;
     const totalPages = response.total_pages;
@@ -16,14 +23,6 @@ export async function onCreatePaginationTemplate(response) {
 
     //   await onResize();
 
-//   if (displayWidth < 480) {
-//     shiftPage = 1;
-//   }
-  // console.log(currentPage < shiftPage);,
-  // console.dir(document.documentElement.clientWidth);
-
-  // console.log(shiftPage);
-
   if (currentPage < shiftPage + 1) {
     beforePage = shiftPage - 1;
     // shiftPage = currentPage
@@ -33,17 +32,9 @@ export async function onCreatePaginationTemplate(response) {
     afterPage = currentPage + shiftPage + 1;
   }
 
-  // console.log(afterPage > totalPages);
   if (afterPage >= totalPages) {
     afterPage = totalPages + 1;
   }
-
-//   if (currentPage >= 2) {
-//     refs.leftBtn.classList.remove('visually-hidden');
-// }
-  // console.log('beforePage', beforePage);
-
-  // console.log('afterPage', afterPage);
 
   let array = [];
   for (let i = beforePage; i <= afterPage; i += 1) {
