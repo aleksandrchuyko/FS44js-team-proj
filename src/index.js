@@ -19,13 +19,12 @@ const global = {
 import './js/service/init-firebase';
 
 // import './js/goToMyLibrary';
-import './js/pagination';
+// import './js/pagination';
 import './js/header-library';
 import './js/modal';
 import './js/modal_tm';
 
-
-import './js/search';
+// import './js/search';
 import './js/My-library-btn';
 // import './js/pagination-arrow-click';
 import './js/render-library-btns';
