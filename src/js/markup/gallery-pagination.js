@@ -4,14 +4,14 @@ import { onCreatePaginationTemplate } from './pagination-markup';
 export async function onRenderPagination(response) {
     
     const currentPage = response.page;
-  console.log(currentPage);
+  // console.log(currentPage);
 
     const markup = await onCreatePaginationTemplate(response);
     
 
   // console.log(markup);
 
-  await paginationList.insertAdjacentHTML('beforeend', markup);
+  paginationList.insertAdjacentHTML('beforeend', markup);
 
   const curentBtn = paginationList.querySelector(
     `[data-set = '${currentPage}']`

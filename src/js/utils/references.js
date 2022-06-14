@@ -15,3 +15,5 @@ export const navLibrary = document.querySelector('.library__btn');
 export const header = document.querySelector('.header');
 export const headerLogo = document.querySelector('.header__logo');
 export const headerTitle = document.querySelector('.header__title');
+export const arrowBtn = document.querySelector('.pagination__wrapper');
+

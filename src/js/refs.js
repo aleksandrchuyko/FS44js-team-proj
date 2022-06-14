@@ -13,8 +13,7 @@ export const refs = {
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
   headerError: document.querySelector('.header__error'),
-  leftBtn: document.querySelector('.pagination__button--left'),
-  rightBtn: document.querySelector('.pagination__button--right'),
+
   paginationWrap: document.querySelector('.pagination__wrapper'),
   openModalTm: document.querySelector('[data-action="open-modal_tm"]'),
   closeModalTm: document.querySelector('[data-action="close-modal_tm"]'),
