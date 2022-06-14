@@ -1,9 +1,8 @@
 import { refs } from './refs';
-import { logIn, userId } from './logIn';
-import {
-  getUserDataAllWatched,
-  getUserDataAllQueue,
-} from './get-from-dadabase';
+
+import logIn from "./logIn";
+import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
+
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
@@ -23,25 +22,25 @@ export function onClickHeaderLibraryBth(e) {
   if (global.currentUser) {
     setMyLibraryStyles(e);
   } else {
-    logIn()
-      .then(resolve => {
-        global.currentUser = resolve;
-        console.log('Вошел пользователь:', global.currentUser);
-        getUserDataAllWatched(userId).then(data => {
-          global.watchedCache = Object.values(data);
-          console.log('Массив watched из firebase:', global.watchedCache);
-        });
-        getUserDataAllQueue(userId).then(data => {
-          global.queueCache = Object.values(data);
-          console.log('Массив queue из firebase:', global.queueCache);
-        });
-        setMyLibraryStyles(e);
-      })
-      .catch(reject => {
-        //Тут візов сообщения ошибки авторизации
-        //...
-        console.log(reject);
+
+    logIn().then((resolve) => {
+      global.currentUser = resolve;
+      console.log('Вошел пользователь:', global.currentUser);
+      getUserDataAllWatched('116126857176505822881').then(data => {
+        global.watchedCache = Object.values(data);
+        console.log('Массив watched из firebase:', global.watchedCache);
       });
+      getUserDataAllQueue('116126857176505822881').then(data => {
+        global.queueCache = Object.values(data);
+        console.log('Массив queue из firebase:', global.queueCache);
+      });
+      setMyLibraryStyles(e);
+    }).catch((reject) => {
+      //Тут візов сообщения ошибки авторизации
+      //...
+      console.log(reject);
+    });
+
   }
 }
 
