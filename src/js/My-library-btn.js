@@ -13,7 +13,7 @@ refs.navLibrary.addEventListener('click', clickButLibrary);
 
 function clickButHome(e) {
     e.preventDefault();
-    location.reload();
+    // location.reload();
     refs.paginationList.classList.remove('is-hidden');
     refs.navHome.classList.add('current');
     refs.navLibrary.classList.remove('current');
