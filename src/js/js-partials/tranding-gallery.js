@@ -1,6 +1,8 @@
 import MoviesApiService from '../api-fetch/fetch-films.js';
-import { changeMoviesArray } from '../markup/movies-array-change'; 
+import { changeMoviesArray } from '../markup/movies-array-change';
 import { onRenderPagination } from '../markup/gallery-pagination';
+import { clearGalleryContainer } from '../utils/clear-gallery-container';
+import { galleryContainer } from '../utils/references';
 
 // import changeMoviesArray from './page-render';
 // import { refs } from './refs';
@@ -19,7 +21,7 @@ import { onRenderPagination } from '../markup/gallery-pagination';
 const moviesApiService = new MoviesApiService();
 
 export async function loadTrandingPage() {
-  //   clearGalleryContainer();
+  await clearGalleryContainer();
   //   clearPaginationList();
   moviesApiService.tranding();
 
@@ -30,7 +32,7 @@ export async function loadTrandingPage() {
   await changeMoviesArray(movies);
   await onRenderPagination(response);
 
-  //   refs.galleryContainer.setAttribute('data-set', 'tranding');
+  galleryContainer.setAttribute('data-set', 'tranding');
 
   //   totalPages = response.total_pages;
   //   currentPageT = response.page;
@@ -40,4 +42,10 @@ export async function loadTrandingPage() {
 
   //   await onRenderPagination(currentPage, totalPages);
   //   await paginationButons();
+}
+
+export async function loadSelectedTrandingPage(page) {
+  // console.log('page', page);
+  moviesApiService.setPage(page);
+  await loadTrandingPage();
 }
