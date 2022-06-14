@@ -4,21 +4,20 @@ import { onRenderPagination } from './gallery-pagination';
 import { clearGalleryContainer } from '../utils/clear-gallery-container';
 import { galleryContainer } from '../utils/references';
 
-
 const moviesApiService = new MoviesApiService();
 
 export async function onRenderSearch(value) {
-    moviesApiService.query = value;
-    moviesApiService.search();
-    const response = await moviesApiService.fetchMovies();
-    galleryContainer.setAttribute('data-set', 'search');
+  moviesApiService.query = value;
+  moviesApiService.search();
+  const response = await moviesApiService.fetchMovies();
+  galleryContainer.setAttribute('data-set', 'search');
+  // console.log('response', response.results);
 
-    const movies = response.results;
-    await clearGalleryContainer();
+  const movies = response.results;
+  await clearGalleryContainer();
 
   await changeMoviesArray(movies);
   await onRenderPagination(response);
-    
 }
 
 // export async function loadNextSearchPage() {
@@ -27,8 +26,8 @@ export async function onRenderSearch(value) {
 // //   await onRenderSearch();
 // }
 
-export async function loadSelectedSearchPage(page) {
-  // console.log('page', page);
-  moviesApiService.setPage(page);
-  await onRenderSearch();
-}
+// export async function loadSelectedSearchPage(page) {
+//   // console.log('page', page);
+//   moviesApiService.setPage(page);
+//   await onRenderSearch();
+// }
