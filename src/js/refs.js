@@ -7,7 +7,7 @@ export const refs = {
   libraryBtns: document.querySelector('.library__list'),
   header: document.querySelector('.header'),
 
-  inputForm: document.querySelector('.header__searchform'),
+  // inputForm: document.querySelector('.header__searchform'),
   navHome: document.querySelector('.home__btn'),
   navLibrary: document.querySelector('.library__btn'),
   watchedBtn: document.querySelector('.watched-btn'),
