@@ -6,8 +6,9 @@ const provider = new GoogleAuthProvider();
 
 import { getAuth, signInWithPopup } from "firebase/auth";
 const auth = getAuth();
+let userId = '';
 
-export default function logIn() {
+function logIn() {
   return signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -15,8 +16,8 @@ export default function logIn() {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    global.userId = user.providerData[0].uid;
-    console.log(global.userId);
+    userId = user.providerData[0].uid;
+    console.log(userId);
     return user.email;
   }).catch((error) => {
     // Handle Errors here.
@@ -30,5 +31,5 @@ export default function logIn() {
   });
 }
 
-
+export {logIn , userId}
 

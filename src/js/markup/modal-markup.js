@@ -1,7 +1,9 @@
+import { WATCHED, QUEUE } from '../utils/constants';
+import { userId } from '../logIn';
 import { getData } from '../api-fetch/get-film-api';
 import { modalFilmContainer} from '../utils/references';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import {closeBacdropClick} from '../modal'
+import {closeBacdropClick, addMovieToDatabase} from '../modal'
 
 export { modalMarkup };
 
@@ -65,8 +67,19 @@ function modalMarkup(muvieId) {
     Loading.remove();
     const closeModalBtn = document.querySelector('.close__modal');
     const backdrop = document.querySelector('.backdrop');
-    
     closeBacdropClick(closeModalBtn, backdrop);
+    
+    
+    const addToWatchedEl = document.querySelector('.watched__btn');
+    addToWatchedEl.addEventListener('click', () => {
+        addMovieToDatabase(WATCHED, userId, muvieId, data);
+    });
+
+    const addToQueueEl = document.querySelector('.queue__btn');
+    addToQueueEl.addEventListener('click', () => {
+        addMovieToDatabase(QUEUE, userId, muvieId, data);
+    });
+
     // localStorageMovie();
   });
 }

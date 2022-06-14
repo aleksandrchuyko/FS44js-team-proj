@@ -2,7 +2,9 @@ import { writeUserDataWatched, writeUserDataQueue } from './api-fetch/add-to-dat
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import {spinnerRef } from './spinner';
 import { modalMarkup } from './markup/modal-markup';
-import {openModalFilm, modalFilmContainer, closeModalBtn, backdrop} from './utils/references';
+import { openModalFilm, modalFilmContainer, closeModalBtn, backdrop } from './utils/references';
+import { writeUserDataWatched, writeUserDataQueue } from './api-fetch/add-to-database';
+import { WATCHED, QUEUE } from './utils/constants';
 
 export { closeBacdropClick };
 
@@ -47,6 +49,18 @@ function escapePress(event) {
   }
 }
 
+export function addMovieToDatabase(key, userId, muvieId, data) {
+  if (key === WATCHED) {
+    writeUserDataWatched(userId, muvieId, data);
+    writeUserDataQueue(userId, muvieId);
+  }
+  else if (key === QUEUE) {
+    writeUserDataWatched(userId, muvieId);
+    writeUserDataQueue(userId, muvieId, data);
+  }
+  
+
+}
 // function localStorageMovie() {
 //   const STORAGE_WATCHED = 'watched-movie-list';
 //   const STORAGE_QUEUE = 'queue-movie-list';

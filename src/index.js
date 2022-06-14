@@ -5,7 +5,7 @@ const HOME_PAGE = 'Home page',
 //Изменяеміе
 const global = {
   currentUser: '',
-  userId: null,
+  userId: '116126857176505822881',
   currentPage: HOME_PAGE,
   currentGalleryPage: 1,
   totalGalleryPages: 0,

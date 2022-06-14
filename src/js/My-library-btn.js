@@ -5,7 +5,6 @@ import clearGalleryContainer from './clear-gallery';
 import changeMoviesArray from './page-render';
 
 
-
 refs.queueBtn.addEventListener('click', clickButQueue);
 refs.watchedBtn.addEventListener('click', clickButWatched);
 refs.navHome.addEventListener('click', clickButHome);
@@ -13,7 +12,6 @@ refs.navLibrary.addEventListener('click', clickButLibrary);
 
 function clickButHome(e) {
     e.preventDefault();
-    // location.reload();
     refs.paginationList.classList.remove('is-hidden');
     refs.navHome.classList.add('current');
     refs.navLibrary.classList.remove('current');

@@ -17,4 +17,8 @@ export const patternReleaseDate = /\d{4}/g;
 export const desktopShiftPages = 3;
 export const mobileShiftPages = 1;
 
+// ---------- LIBRARY ------------ //
+export const WATCHED = 'watched-movie-list';
+export const QUEUE = 'queue-movie-list';
+
 
