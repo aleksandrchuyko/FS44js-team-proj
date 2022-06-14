@@ -3,6 +3,8 @@ import { refs } from './refs';
 import { clearPaginationList } from './clear-pagination';
 import clearGalleryContainer from './clear-gallery';
 import changeMoviesArray from './page-render';
+import logIn, { userId } from "./logIn";
+import { getUserDataAllWatched, getUserDataAllQueue } from "./getFromDataBase";
 
 
 
@@ -51,21 +53,34 @@ const container = document.getElementById('pagination');
 async function moviesRender(type) {
     await clearGalleryContainer();
     await clearPaginationList();
-    let response
-    switch (type) {
-        case 'watched':
-            response = JSON.parse(localStorage.getItem('UserFilmWatched'));
-            refs.galleryContainer.setAttribute('data-set', 'watched');
-            break;
-        case 'queue':
-            response = JSON.parse(localStorage.getItem('UserFilmQueue'));
-            console.log(refs.galleryContainer)
-            refs.galleryContainer.setAttribute('data-set', 'queue');
-    }
-    console.log(response)
     container?.classList.add('is-hidden');
+    try {
+        if (!global.currentUser) {
+            await logIn()
+        }
 
-    await changeMoviesArray(response ?? { results: [] })
+
+        switch (type) {
+            case 'watched':
+                getUserDataAllWatched(global.currentUser.uid).then(data => {
+                    // global.watchedCache = Object.values(data);
+                    console.log('Массив watched из firebase:', data);
+                    await changeMoviesArray(data)
+                });
+                refs.galleryContainer.setAttribute('data-set', 'watched');
+                break;
+            case 'queue':
+                getUserDataAllQueue(global.currentUser.uid).then(data => {
+                    // global.queueCache = Object.values(data);
+                    console.log('Массив queue из firebase:', data);
+                    await changeMoviesArray(data)
+                });
+                console.log(refs.galleryContainer)
+                refs.galleryContainer.setAttribute('data-set', 'queue');
+        }
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 
