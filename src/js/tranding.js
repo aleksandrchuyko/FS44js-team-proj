@@ -1,69 +1,87 @@
-import MoviesApiService from './fetch_API';
-import changeMoviesArray from './page-render';
-import { refs } from './refs';
-import clearGalleryContainer from './clear-gallery';
-import { onRenderPagination } from './pagination';
-import { clearPaginationList } from './clear-pagination';
+// import MoviesApiService from '../js/api-fetch/fetch-films.js';
+// import changeMoviesArray from './page-render';
+// import { refs } from './refs';
+// import clearGalleryContainer from './clear-gallery';
+// import { onRenderPagination } from './pagination';
+// import { clearPaginationList } from './clear-pagination';
 
-// ------- First page load -----------//
-addEventListener('DOMContentLoaded', () => {
-  loadTrandingPage();
-});
+// // ------- First page load -----------//
+// addEventListener('DOMContentLoaded', () => {
+//   loadTrandingPage();
+// });
 
-refs.headerLogo.addEventListener('click', onClickHomePage);
-refs.homePageBtn.addEventListener('click', onClickHomePage);
+// let currentPageT;
+// let totalPages;
 
-const moviesApiService = new MoviesApiService();
+// const moviesApiService = new MoviesApiService();
 
-async function loadTrandingPage() {
-  moviesApiService.tranding();
+// export async function loadTrandingPage() {
+//   //   clearGalleryContainer();
+//   //   clearPaginationList();
+//   moviesApiService.tranding();
 
-  const response = await moviesFetch();
+//   const response = await moviesApiService.fetchMovies();
+//   console.log(response);
 
-  refs.galleryContainer.setAttribute('data-set', 'tranding');
+//   refs.galleryContainer.setAttribute('data-set', 'tranding');
 
-  const totalPages = response.total_pages;
-  const currentPage = response.page;
+//   totalPages = response.total_pages;
+//   currentPageT = response.page;
+//   const currentPage = response.page;
 
-  await changeMoviesArray(response);
+//   await changeMoviesArray(response);
 
-  await onRenderPagination(totalPages, currentPage);
-}
+//   await onRenderPagination(currentPage, totalPages);
+//   await paginationButons();
+// }
 
-export default async function loadSelectedTrandingPage(page) {
-  // console.log('page', page);
-  moviesApiService.setPage(page);
+// loadTrandingPage();
 
-  await onRender();
-}
+// export { currentPageT };
 
-async function onClickHomePage(e) {
-  e.preventDefault();
+// export async function loadSelectedTrandingPage(page) {
+//   // console.log('page', page);
+//   moviesApiService.setPage(page);
+//   await loadTrandingPage();
+// }
 
-  moviesApiService.resetPage();
+// refs.navHome.addEventListener('click', onClickHomePage);
+// refs.headerTitle.addEventListener('click', onClickHomePage);
+// refs.headerLogo.addEventListener('click', onClickHomePage);
 
-  await onRender();
-}
+// async function onClickHomePage(e) {
+//   e.preventDefault();
 
-async function onRender() {
-  await clearGalleryContainer();
-  await clearPaginationList();
+//   moviesApiService.resetPage();
 
-  await loadHomePageHeader();
+//   await loadHomePageHeader();
 
-  await loadTrandingPage();
-}
+//   await loadTrandingPage();
+// }
 
-async function loadHomePageHeader() {
-  //
-  // --- hide my library hedder --- //
-  refs.libraryBtns.classList.add('is-hidden');
-  refs.myLibraryBtn.classList.remove('current');
-  refs.header.classList.remove('header__my-library');
+// async function loadHomePageHeader() {
+//   location.reload();
+//   //
+//   // --- hide my library hedder --- //
+//   refs.libraryBtns.classList.add('is-hidden');
+//   refs.navLibrary.classList.remove('current');
+//   refs.header.classList.remove('header__my-library');
 
-  // --- show home page hedder --- //
-  refs.homePageBtn.classList.add('current');
-  refs.headerSearch.classList.remove('is-hidden');
-}
+//   // --- show home page hedder --- //
+//   refs.navHome.classList.add('current');
+//   refs.inputForm.classList.remove('is-hidden');
+//   refs.paginationList.classList.remove('is-hidden');
+// }
 
-const moviesFetch = async () => await moviesApiService.fetchMovies();
+// async function paginationButons() {
+//   if (currentPageT === 1) {
+//     refs.leftBtn.disabled = true;
+//   } else {
+//     refs.leftBtn.disabled = false;
+//   }
+//   if (currentPageT === totalPages) {
+//     refs.rightBtn.disabled = true;
+//   } else {
+//     refs.rightBtn.disabled = false;
+//   }
+// }

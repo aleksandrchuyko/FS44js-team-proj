@@ -1,4 +1,7 @@
 import axios from 'axios';
+import { refs } from './refs';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { spinnerRef } from './utils/spinner';
 
 const API_KEY = 'a8de9bbb748883055cd7737934b96801';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -22,28 +25,37 @@ export default class MoviesApiService {
     this.searchQuery = '';
 
     // узгодити з Maria Streltova
-    this.page = 4;
+    this.page = 1;
   }
 
   async fetchMovies() {
+    refs.headerError.textContent = '';
     // run spinner
+    Loading.hourglass('Loading...', spinnerRef);
+
     try {
       const response = await axios.get(`${BASE_URL}${this.request}`, {
         params: {
           api_key: API_KEY,
           page: this.page,
-          query: 'car',
+          query: this.query,
         },
       });
 
       // console.log(response);
-      console.log(response.data);
+      // console.log(response.data.total_results);
+      // if (response.data.total.results === 0) {
+
+      //   refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
+      // }
       // this.incrementPage();
       return response.data;
     } catch (error) {
+      // refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
       console.error(error);
     } finally {
       // stop spinner
+      Loading.remove();
     }
   }
 
@@ -61,7 +73,7 @@ export default class MoviesApiService {
   }
 
   resetPage() {
-    this.page = 2;
+    this.page = 1;
   }
 
   // узгодити зі Stas

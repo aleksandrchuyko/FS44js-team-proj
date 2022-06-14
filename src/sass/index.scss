@@ -3,9 +3,12 @@
 @import './utils/visually-hidden';
 @import './components/card';
 @import './utils/variables';
+@import './utils/keyframes';
 
 @import './layout/header';
 @import './layout/main-gallery';
 @import './layout/modal';
+@import './layout/modal_tm';
 @import './layout/pagination';
 @import './layout/footer';
+

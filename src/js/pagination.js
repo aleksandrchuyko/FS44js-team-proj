@@ -1,88 +1,75 @@
-import MoviesApiService from './fetch_API';
-import { refs } from './refs.js';
-import  loadSelectedTrandingPage  from './tranding';
-const moviesApiService = new MoviesApiService();
-let pages = [];
+// import { paginationList } from './utils/references';
 
+// let shiftPage = 3;
+// let beforePage;
+// let afterPage;
+// let displayWidth;
 
-async function onCreatePaginationTemplate(totalPages, currentPage) {
+// window.addEventListener('resize', onResize);
 
-    console.log(currentPage);
-    let beforePage = currentPage - 3;
-    console.log('beforePage', beforePage)
-    let afterPage = currentPage + 3;
-    console.log('afterPage', afterPage);
-    // let total = currentPage + beforePage + afterPage + 4;
-    // let numberClass = '';
-
-    // if (currentPage > 4) {
-    //     const startDots = refs.paginationList.createElement(
-    //         'li',
-    //         { class: 'pagination-item pagination-dots' },
-    //         createElement('span', { class: `${numberClass}` }, '...'),
-    //     );
-    //     refs.paginationList.push(startDots);
-    // }
-    // if (currentPage === 1) {
-    //     beforePage = 0;
-    // afterPage = currentPage + 4;
-    
-    // }
-//     if (currentPage === 2) {
-//       afterPage = currentPage + 3;
-//     }
-//     if (currentPage === total) {
-//       beforePage = currentPage - 4;
-//     }
-//     if (currentPage === total - 1) {
-//         beforePage = currentPage - 3;
-    
-//     }
-
-  // }
-  //     if (currentPage === 2) {
-  //       afterPage = currentPage + 3;
-  //     }
-  //     if (currentPage === total) {
-  //       beforePage = currentPage - 4;
-  //     }
-  //     if (currentPage === total - 1) {
-  //         beforePage = currentPage - 3;
-
-  //     }
-
-  //     if (beforePage < 2) {
-  //       beforePage = 2;
-  //     }
-  //     if (afterPage >= total) {
-  //       afterPage = total - 1;
-  //     }
-
-  let array = [];
-  for (let i = beforePage; i <= afterPage; i += 1) {
-    array.push(
-      `<button type="button" class="pagination__btn page">${i}</button>`
-    );
-  }
-  return array.join('');
+async function onResize() {
+  displayWidth = document.documentElement.clientWidth;
 }
 
-export async function onRenderPagination(totalPages, currentPage) {
-    console.log(totalPages);
-console.log(currentPage);
-    const markup = await onCreatePaginationTemplate(totalPages, currentPage);
+// async function onCreatePaginationTemplate(currentPage, totalPages) {
+//   await onResize();
 
-    console.log(markup);
-    await refs.paginationList.insertAdjacentHTML("beforeend", markup);
-    await btnPaint(currentPage);
-    
-}
-async function btnPaint(currentPage) {
-     pages = document.querySelectorAll('.page');
-    const pageIndex = currentPage - 1;
-    console.log(pageIndex);
-    let currentBtn = pages[pageIndex]; 
-    console.log(currentBtn);
-    currentBtn.classList.add("pagination__active");
- }
+//   if (displayWidth < 480) {
+//     shiftPage = 1;
+//   }
+//   // console.log(currentPage < shiftPage);,
+//   // console.dir(document.documentElement.clientWidth);
 
+//   // console.log(shiftPage);
+
+//   if (currentPage < shiftPage + 1) {
+//     beforePage = shiftPage - 1;
+//     // shiftPage = currentPage
+//     afterPage = 2 * (shiftPage + 1);
+//   } else {
+//     beforePage = currentPage - shiftPage + 1;
+//     afterPage = currentPage + shiftPage + 1;
+//   }
+
+//   // console.log(afterPage > totalPages);
+//   if (afterPage >= totalPages) {
+//     afterPage = totalPages + 1;
+//   }
+
+//   if (currentPage >= 2) {
+//     refs.leftBtn.classList.remove('visually-hidden');
+// }
+//   // console.log('beforePage', beforePage);
+
+//   // console.log('afterPage', afterPage);
+
+//   let array = [];
+//   for (let i = beforePage; i <= afterPage; i += 1) {
+//     if (i - 1 > 0) {
+//       array.push(
+//         `<button type="button" class="pagination__btn page" data-set = "${
+//           i - 1
+//         }">${i - 1}</button>`
+//       );
+//     }
+//   }
+
+//   return array.join('');
+// }
+
+// export async function onRenderPagination(currentPage, totalPages) {
+//   // console.log(currentPage);
+
+//   const markup = await onCreatePaginationTemplate(currentPage, totalPages);
+
+//   // console.log(markup);
+
+//   await paginationList.insertAdjacentHTML('beforeend', markup);
+
+//   const curentBtn = paginationList.querySelector(
+//     `[data-set = '${currentPage}']`
+//   );
+//   // console.log(curentBtn);
+
+//   curentBtn.classList.add('pagination__active');
+// }

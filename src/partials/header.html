@@ -3,13 +3,14 @@
         <div class="header__box">
 
             <div class="header__logo">
-                <p><img src="/src/images/film.png" alt="cinema image"></p>
+                <a><svg class="icon__film">
+                        <use href="./images/icons.svg#icon-film"></use>
+                    </svg></a>
             </div>
 
             <div class="header__title">
                 <h1 class="header__text">Filmoteka</h1>
             </div>
-
 
             <div class="header__menu">
                 <nav class="header__nav">
@@ -24,23 +25,24 @@
                 </nav>
             </div>
 
-
         </div>
         <form class="header__searchform">
 
             <div class="header__form">
-            <p>
-            <input type="search" class="header__input" name="searchQuery" placeholder="Поиск фильмов">
-            </p>
-            <p class="header__image">
-                <svg class="header__svg" width="12" height="12">
-                <use href="/src/images/icons.svg#icon-search"></use>
-            </svg>
-            </p>
-        </div>
+                <p>
+                    <input type="search" class="header__input" name="searchQuery" placeholder="Поиск фильмов">
+                </p>
+                <button type="submit" class="header__button">
+                    <svg class="header__svg" width="12" height="12">
+                        <use href="/src/images/icons.svg#icon-search"></use>
+                    </svg>
+                </button>
+            </div>
 
         </form>
-    <div class="library__btn ">
+        <div class="header__error"></div>
+
+        <div class="library__btn ">
             <ul class="library__list is-hidden">
                 <li class="library__item">
                     <button type="button" class="library__link watched-btn" data-translatable>Watched</button>
@@ -49,5 +51,5 @@
                     <button type="button" class="library__link queue-btn" data-translatable>Queue</button>
                 </li>
             </ul>
+        </div>
     </div>
-</div>
