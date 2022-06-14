@@ -46,7 +46,7 @@ export function onClickHeaderLibraryBth(e) {
 
 function setMyLibraryStyles(e) {
   e.preventDefault();
-  refs.inputForm.classList.add('visually-hidden');
+  refs.inputForm.classList.add('is-hidden');
   refs.libraryBtns.classList.remove('is-hidden');
   refs.navLibrary.classList.add('current');
   refs.navHome.classList.remove('current');
