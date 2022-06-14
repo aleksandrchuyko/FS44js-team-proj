@@ -1,6 +1,8 @@
 import { refs } from './refs';
+
 import logIn from "./logIn";
 import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
+
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
@@ -20,6 +22,7 @@ export function onClickHeaderLibraryBth(e) {
   if (global.currentUser) {
     setMyLibraryStyles(e);
   } else {
+
     logIn().then((resolve) => {
       global.currentUser = resolve;
       console.log('Вошел пользователь:', global.currentUser);
@@ -37,12 +40,13 @@ export function onClickHeaderLibraryBth(e) {
       //...
       console.log(reject);
     });
+
   }
 }
 
 function setMyLibraryStyles(e) {
   e.preventDefault();
-  refs.inputForm.classList.add('is-hidden');
+  refs.inputForm.classList.add('visually-hidden');
   refs.libraryBtns.classList.remove('is-hidden');
   refs.navLibrary.classList.add('current');
   refs.navHome.classList.remove('current');

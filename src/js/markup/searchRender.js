@@ -31,3 +31,8 @@ export async function onRenderSearch(value) {
 //   moviesApiService.setPage(page);
 //   await onRenderSearch();
 // }
+
+export async function searchSelected(page) {
+  console.log('page', page);
+  await onRenderSearch();
+}

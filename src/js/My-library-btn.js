@@ -1,5 +1,5 @@
-
 import { refs } from './refs';
+
 import { clearPaginationList } from './clear-pagination';
 import clearGalleryContainer from './clear-gallery';
 import changeMoviesArray from './page-render';
@@ -7,22 +7,25 @@ import { logIn, userId } from "./logIn";
 import { getUserDataAllWatched, getUserDataAllQueue } from "./getFromDataBase";
 
 
+
 refs.queueBtn.addEventListener('click', clickButQueue);
 refs.watchedBtn.addEventListener('click', clickButWatched);
-refs.navHome.addEventListener('click', clickButHome);
+// refs.navHome.addEventListener('click', clickButHome);
 refs.navLibrary.addEventListener('click', clickButLibrary);
 
-function clickButHome(e) {
-    e.preventDefault();
-    refs.paginationList.classList.remove('is-hidden');
-    refs.navHome.classList.add('current');
-    refs.navLibrary.classList.remove('current');
-    refs.libraryBtns.classList.add('visually-hidden');
-    refs.inputForm.classList.remove('visually-hidden');
+// ------ Stepan: я це закоментував оскільки рендер HomePage є моєю задачею -------//
 
-}
+// function clickButHome(e) {
+//   e.preventDefault();
+//   refs.paginationList.classList.remove('is-hidden');
+//   refs.navHome.classList.add('current');
+//   refs.navLibrary.classList.remove('current');
+//   refs.libraryBtns.classList.add('visually-hidden');
+//   refs.inputForm.classList.remove('visually-hidden');
+// }
 
 function clickButLibrary(e) {
+
     e.preventDefault();
     refs.paginationList?.classList.add('is-hidden');
     refs.navLibrary.classList.add('current');
@@ -35,15 +38,14 @@ function clickButLibrary(e) {
 }
 
 function clickButQueue() {
-    refs.queueBtn.classList.add('library__current');
-    refs.watchedBtn.classList.remove('library__current');
+  refs.queueBtn.classList.add('library__current');
+  refs.watchedBtn.classList.remove('library__current');
 }
 
 function clickButWatched() {
-    refs.watchedBtn.classList.add('library__current');
-    refs.queueBtn.classList.remove('library__current');
+  refs.watchedBtn.classList.add('library__current');
+  refs.queueBtn.classList.remove('library__current');
 }
-
 
 // Render Library JS//////
 
@@ -81,15 +83,14 @@ async function moviesRender(type) {
     }
 }
 
-
 refs.navLibrary.addEventListener('click', () => {
-
-    if (refs.watchedBtn.classList.contains('library__current')) {
-        moviesRender('watched');
-    } else if (refs.queueBtn.classList.contains('library__current')) {
-        moviesRender('queue')
-    }
+  if (refs.watchedBtn.classList.contains('library__current')) {
+    moviesRender('watched');
+  } else if (refs.queueBtn.classList.contains('library__current')) {
+    moviesRender('queue');
+  }
 });
 
 refs.watchedBtn.addEventListener('click', () => moviesRender('watched'));
 refs.queueBtn.addEventListener('click', () => moviesRender('queue'));
+
