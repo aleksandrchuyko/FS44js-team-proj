@@ -3,11 +3,11 @@ export const refs = {
   headerLogo: document.querySelector('.header__logo'),
   headerTitle: document.querySelector('.header__title'),
 
-  // paginationList: document.querySelector('.pagination'),
+  paginationList: document.querySelector('.pagination'),
   libraryBtns: document.querySelector('.library__list'),
   header: document.querySelector('.header'),
 
-  // inputForm: document.querySelector('.header__searchform'),
+  inputForm: document.querySelector('.header__searchform'),
   navHome: document.querySelector('.home__btn'),
   navLibrary: document.querySelector('.library__btn'),
   watchedBtn: document.querySelector('.watched-btn'),
