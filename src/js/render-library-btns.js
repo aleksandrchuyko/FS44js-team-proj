@@ -2,6 +2,7 @@ import { getData } from './api-fetch/get-film-api';
 import { refs } from './refs';
 import clearGalleryContainer from './clear-gallery';
 import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
+import {userId} from './logIn'
 
 refs.watchedBtn.addEventListener("click", onWatchedBtnClick);
 refs.queueBtn.addEventListener("click", onQueueBtnClick);
@@ -9,14 +10,14 @@ refs.queueBtn.addEventListener("click", onQueueBtnClick);
 const load = key => {
     try {
         if (key === "watched-movie-list") {
-            return getUserDataAllWatched('116126857176505822881').then(data => {
+            return getUserDataAllWatched(userId).then(data => {
                 global.watchedCache = Object.values(data);
                 return global.watchedCache
             });
         }
 
         if (key === "queue-movie-list") {
-            return getUserDataAllQueue('116126857176505822881').then(data => {
+            return getUserDataAllQueue(userId).then(data => {
                 global.queueCache = Object.values(data);
                 return global.queueCache
             });
