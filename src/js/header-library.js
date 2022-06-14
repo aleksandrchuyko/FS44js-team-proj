@@ -1,5 +1,5 @@
 import { refs } from './refs';
-import {logIn, userId} from "./logIn";
+import logIn from "./logIn";
 import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
@@ -23,11 +23,11 @@ export function onClickHeaderLibraryBth(e) {
     logIn().then((resolve) => {
       global.currentUser = resolve;
       console.log('Вошел пользователь:', global.currentUser);
-      getUserDataAllWatched(userId).then(data => {
+      getUserDataAllWatched('116126857176505822881').then(data => {
         global.watchedCache = Object.values(data);
         console.log('Массив watched из firebase:', global.watchedCache);
       });
-      getUserDataAllQueue(userId).then(data => {
+      getUserDataAllQueue('116126857176505822881').then(data => {
         global.queueCache = Object.values(data);
         console.log('Массив queue из firebase:', global.queueCache);
       });
