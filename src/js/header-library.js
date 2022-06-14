@@ -31,7 +31,7 @@ export function onClickHeaderLibraryBth(e) {
         console.log('Вошел пользователь:', global.currentUser);
         getUserDataAllWatched('116126857176505822881').then(data => {
           global.watchedCache = Object.values(data);
-          console.log('Массив watched из firebase:', global.watchedCache);
+          // console.log('Массив watched из firebase:', global.watchedCache);
         });
         getUserDataAllQueue('116126857176505822881').then(data => {
           global.queueCache = Object.values(data);
