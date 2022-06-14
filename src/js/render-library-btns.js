@@ -2,7 +2,8 @@ import { getData } from './api-fetch/get-film-api';
 import { refs } from './refs';
 import clearGalleryContainer from './clear-gallery';
 import { getUserDataAllWatched, getUserDataAllQueue } from "./get-from-dadabase";
-import {userId} from './logIn'
+import { userId } from './logIn'
+import { galleryContainer } from './utils/references'
 
 refs.watchedBtn.addEventListener("click", onWatchedBtnClick);
 refs.queueBtn.addEventListener("click", onQueueBtnClick);
@@ -29,7 +30,7 @@ const load = key => {
 
 function onWatchedBtnClick() {
     load("watched-movie-list").then(res => {
-        document.querySelector('.main-gallery__section').innerHTML = ' ';
+        document.querySelector('.main-gallery__list').innerHTML = ' ';
         const getListWatched = res;
         if (!getListWatched || getListWatched.length === 0) {
             clearGalleryContainer();
@@ -44,7 +45,7 @@ function onWatchedBtnClick() {
 }
 function onQueueBtnClick() {
     load("queue-movie-list").then(res => {
-        document.querySelector('.main-gallery__section').innerHTML = ' ';
+        document.querySelector('.main-gallery__list').innerHTML = ' ';
         const getListQueue = global.queueCache;
         if (!getListQueue || getListQueue.length === 0) {
             clearGalleryContainer();
@@ -77,6 +78,6 @@ function getMovieMarkup(moveId) {
                         </ul>
                         </div>
                     </li>`
-        refs.container.insertAdjacentHTML("beforeend", markup);
+        galleryContainer.insertAdjacentHTML("beforeend", markup);
     })
 }
