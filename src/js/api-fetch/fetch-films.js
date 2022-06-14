@@ -18,7 +18,7 @@ export default class MoviesApiService {
   async fetchMovies() {
     headerError.textContent = '';
     // run spinner
-    // Loading.hourglass('Loading...', spinnerRef);
+    Loading.hourglass('Loading...', spinnerRef);
 
     try {
       const response = await axios.get(`${BASE_URL}${this.request}`, {
