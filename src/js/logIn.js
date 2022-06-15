@@ -1,12 +1,13 @@
 //Авторизация Google popup
-
-
+import { auth , userId} from './service/init-firebase';
+import { logoutBtn } from './utils/references';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const provider = new GoogleAuthProvider();
 
-import { getAuth, signInWithPopup } from 'firebase/auth';
-const auth = getAuth();
+import { signInWithPopup , signOut} from 'firebase/auth';
+// const auth = getAuth();
+// console.log(auth);
 let userId = '';
 
 function logIn() {
@@ -17,24 +18,29 @@ function logIn() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      userId = user.providerData[0].uid;
-      console.log(userId);
+      // userId = user.providerData[0].uid;
+    console.log(userId);
+    // console.log(auth);
       return user.email;
 
 
     }).catch((error) => {
 
       // Handle Errors here.
-      const errorCode = error.code;
       const errorMessage = error.message;
       return errorMessage;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
     });
 }
 
+function logOut() {
+  
+  signOut(auth).then(() => {
+    logoutBtn.classList.add('visually-hidden');
+    location.reload();
+}).catch((error) => {
+  // An error happened.
+});
+}
 
-export { logIn, userId };
+export { logIn, logOut, userId };
 

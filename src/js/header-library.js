@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import { logoutBtn } from './utils/references';
-import { logIn, userId } from './logIn';
+import { logIn, logOut, userId } from './logIn';
 import {
   getUserDataAllWatched,
   getUserDataAllQueue,
@@ -10,6 +10,7 @@ import {
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);
 refs.watchedBtn.addEventListener('click', onClickWatchesBth);
 refs.queueBtn.addEventListener('click', onClickQueueBth);
+logoutBtn.addEventListener('click', logOut);
 
 // ------ Stepan: я це закоментував оскільки рендер HomePage є моєю задачею -------//
 
@@ -22,7 +23,7 @@ refs.queueBtn.addEventListener('click', onClickQueueBth);
 // }
 
 export function onClickHeaderLibraryBth(e) {
-  if (global.currentUser) {
+  if (userId) {
     setMyLibraryStyles(e);
   } else {
     logIn()
