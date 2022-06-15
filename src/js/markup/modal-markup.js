@@ -1,4 +1,4 @@
-import { WATCHED, QUEUE, imagesBaseUrl } from '../utils/constants';
+import { WATCHED, QUEUE, imagesBaseUrl, imageNull } from '../utils/constants';
 import { userId } from '../service/login';
 import { getData } from '../api-fetch/get-film-api';
 import { modalFilmContainer} from '../utils/references';
@@ -22,12 +22,13 @@ function modalMarkup(muvieId) {
         original_title,
         } = data;
         let poster = `${imagesBaseUrl}${poster_path}`;
-      
+        let genres = data.genres.map(genre => genre.name).join(', ');
+        
         if (poster_path === null) {
-          poster = imageNull;
-      }
+            poster = imageNull;
+            genres = "Undefined";
+        }
       
-        const genres = data.genres.map(genre => genre.name).join(', ');
         let markup = `<div class="backdrop">
             <div class="modal">
                 <button type="button" class="close__modal">
