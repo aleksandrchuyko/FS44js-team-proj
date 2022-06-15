@@ -1,7 +1,4 @@
 import { desktopShiftPages, mobileShiftPages } from '../utils/constants';
-// import { displayWidth } from '../utils/display-change';
-// console.log(displayWidth);
-
 
 export async function onCreatePaginationTemplate(response) {
     let shiftPage = desktopShiftPages;
@@ -9,8 +6,6 @@ export async function onCreatePaginationTemplate(response) {
   let afterPage;
 
   const displayWidth = document.documentElement.clientWidth;
-  // console.log(onResize());
-    // let displayWidth = 1200;
   
   console.log(displayWidth)
 
@@ -19,13 +14,11 @@ export async function onCreatePaginationTemplate(response) {
 
     if (displayWidth < 480) {
         shiftPage = mobileShiftPages;
-    }
-
-    //   await onResize();
-
+  }
+  
   if (currentPage < shiftPage + 1) {
     beforePage = shiftPage - 1;
-    // shiftPage = currentPage
+
     afterPage = 2 * (shiftPage + 1);
   } else {
     beforePage = currentPage - shiftPage + 1;
