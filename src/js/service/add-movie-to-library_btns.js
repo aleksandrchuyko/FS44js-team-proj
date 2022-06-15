@@ -1,5 +1,5 @@
-import { getUserDataAllWatched, getUserDataAllQueue } from "../get-from-dadabase";
-import { userId } from '../logIn';
+import { getUserDataAllWatched, getUserDataAllQueue } from "../api-fetch/get-from-database";
+import { userId } from './login';
 
 const load = key => {
     try {

@@ -1,5 +1,5 @@
 import { WATCHED, QUEUE, imagesBaseUrl } from '../utils/constants';
-import { userId } from '../logIn';
+import { userId } from '../service/login';
 import { getData } from '../api-fetch/get-film-api';
 import { modalFilmContainer} from '../utils/references';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';

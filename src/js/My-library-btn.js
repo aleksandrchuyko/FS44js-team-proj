@@ -3,8 +3,8 @@ import { refs } from './refs';
 import { clearPaginationList } from './clear-pagination';
 import clearGalleryContainer from './clear-gallery';
 import changeMoviesArray from './page-render';
-import { logIn, userId } from './logIn';
-import { getUserDataAllWatched, getUserDataAllQueue } from './getFromDataBase';
+import { logIn, userId } from './service/login';
+import { getUserDataAllWatched, getUserDataAllQueue } from './api-fetch/get-from-database';
 
 refs.queueBtn.addEventListener('click', clickButQueue);
 refs.watchedBtn.addEventListener('click', clickButWatched);

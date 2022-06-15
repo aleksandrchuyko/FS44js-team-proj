@@ -1,10 +1,10 @@
 import { refs } from './refs';
 import { logoutBtn } from './utils/references';
-import { logIn, logOut, userId } from './logIn';
+import { logIn, logOut, userId } from './service/login';
 import {
   getUserDataAllWatched,
   getUserDataAllQueue,
-} from './get-from-dadabase';
+} from './api-fetch/get-from-database';
 
 // refs.navHome.addEventListener('click', onClickHeaderHomeBth);
 refs.navLibrary.addEventListener('click', onClickHeaderLibraryBth);

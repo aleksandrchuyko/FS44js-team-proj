@@ -1,6 +1,6 @@
 //Авторизация Google popup
-import { auth , userId} from './service/init-firebase';
-import { logoutBtn } from './utils/references';
+import { auth , userId} from './init-firebase';
+import { logoutBtn } from '../utils/references';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const provider = new GoogleAuthProvider();
