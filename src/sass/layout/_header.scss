@@ -299,6 +299,17 @@ li {
 .logout-btn {
     display: block;
     margin: 0 0 0 auto;
+    background-color: transparent;
+    color: var(--main-text-color);
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    &:hover,
+        &:focus {
+            color: #FF6B08;
+        }
 }
 
 .header__form {
@@ -309,14 +320,15 @@ li {
 }
 
 .header__input {
-    width: 175%;
+    width: 260px;
     color: var(--main-text-color);
     font-size: 15px;
     background: none;
+    outline: none;
     border: none;
 
     @media screen and (min-width: 768px) {
-        width: 210%;
+        width: 320px;
     }
 }
 
