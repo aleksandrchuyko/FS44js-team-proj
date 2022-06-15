@@ -1,4 +1,5 @@
 import { desktopShiftPages, mobileShiftPages } from '../utils/constants';
+import { extremePaginationButtons } from '../utils/extreme-pagination-buttons';
 
 export async function onCreatePaginationTemplate(response) {
   let shiftPage = desktopShiftPages;
@@ -7,12 +8,8 @@ export async function onCreatePaginationTemplate(response) {
 
   const displayWidth = document.documentElement.clientWidth;
 
-  console.log(displayWidth)
-
   const currentPage = response.page;
-  console.log("response", response)
   const totalPages = response.total_pages;
-  console.log(totalPages)
 
   if (displayWidth < 480) {
     shiftPage = mobileShiftPages;
@@ -31,11 +28,14 @@ export async function onCreatePaginationTemplate(response) {
     afterPage = totalPages + 1;
   }
 
+  extremePaginationButtons(currentPage, totalPages);
+
   let array = [];
   for (let i = beforePage; i <= afterPage; i += 1) {
     if (i - 1 > 0) {
       array.push(
-        `<button type="button" class="pagination__btn page" data-set = "${i - 1
+        `<button type="button" class="pagination__btn page" data-set = "${
+          i - 1
         }">${i - 1}</button>`
       );
     }
