@@ -1,7 +1,7 @@
 import { loadSelectedTrandingPage } from '../js-partials/tranding-gallery';
 import { galleryContainer } from '../utils/references';
 import { loadSelectedSearchPage } from '../search';
-
+import { onRenderNextPage } from '../markup/render-watched'
 
 export async function onPaginationBtnClick(e) {
   e.preventDefault();
@@ -13,7 +13,11 @@ export async function onPaginationBtnClick(e) {
     await loadSelectedTrandingPage(page);
   }
   if (galleryContainer.getAttribute('data-set') === 'search') {
-  
+
     await loadSelectedSearchPage(page);
+  }
+  if (galleryContainer.getAttribute('data-set') === 'watched') {
+
+    await onRenderNextPage(page);
   }
 }
