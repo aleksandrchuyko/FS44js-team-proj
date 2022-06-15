@@ -1,5 +1,5 @@
 .header {
-    background:linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+    background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
     background-image: url('/src/images/header/header1x-m.jpg');
     background-size: cover;
     background-position-y: 100%;
@@ -59,13 +59,13 @@
 
 .header__text {
     display: none;
-        padding-top: 40px;
-        padding-left: 10px;
-        font-family: 'Roboto';
-        font-weight: 500;
-        font-size: 30px;
-        line-height: 1.2;
-        color: var(--main-text-color);
+    padding-top: 40px;
+    padding-left: 10px;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.2;
+    color: var(--main-text-color);
 
     animation: pulsate 0.11s ease-in-out infinite alternate;
 
@@ -139,8 +139,9 @@
         padding-bottom: 80px;
         margin-top: 25px;
     }
+
     @media screen and (min-width: 1024px) {
-            margin-top: 35px;
+        margin-top: 35px;
     }
 }
 
@@ -168,10 +169,11 @@
 .header__svg {
     margin-left: auto;
     fill: #fff;
+
     &:hover,
     &:focus {
-            fill: red;
-        }
+        fill: red;
+    }
 }
 
 .header__error {
@@ -250,13 +252,13 @@ li {
     @media screen and (min-width: 1024px) {
         margin: 0 -8px;
         margin-top: 48px;
-        
+
     }
 }
 
-.is-hidden {
-    display: none;
-}
+// .is-hidden {
+//     display: none;
+// }
 
 
 .library__link {
@@ -306,10 +308,11 @@ li {
     font-weight: 500;
     line-height: 1.2;
     text-decoration: none;
+
     &:hover,
-        &:focus {
-            color: #FF6B08;
-        }
+    &:focus {
+        color: #FF6B08;
+    }
 }
 
 .header__form {
