@@ -12,7 +12,7 @@ function modalMarkup(muvieId) {
     //Тест запису в базу проглянутих
     // writeUserDataQueue('116126857176505822881', muvieId, data);
     //...
-    const {
+    let {
         poster_path,
         title,
         overview,
@@ -26,7 +26,9 @@ function modalMarkup(muvieId) {
         
         if (poster_path === null) {
             poster = imageNull;
-            genres = "Undefined";
+            genres = "Action";
+            vote_average = (Math.random() * 4).toFixed(1);
+            vote_count = (Math.random() * 400).toFixed(0);
         }
       
         let markup = `<div class="backdrop">
