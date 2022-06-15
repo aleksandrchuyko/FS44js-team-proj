@@ -9,10 +9,16 @@ import { onRenderPagination } from '../markup/gallery-pagination';
 import { clearGalleryContainer } from '../utils/clear-gallery-container';
 import { PARPAGE } from '../utils/constants'
 
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { spinnerRef } from '../utils/spinner';
+
 let response;
 
 export async function onRenderLibrary(page) {
     await clearGalleryContainer();
+
+    Loading.hourglass('Loading...', spinnerRef);
+
     const movies = await getUserDataAllWatched('116126857176505822881')
     logoutBtn.classList.remove('visually-hidden');
     const arrayLength = movies.length;
