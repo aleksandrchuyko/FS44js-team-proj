@@ -18,7 +18,7 @@ export const refs = {
   paginationWrap : document.querySelector('.pagination__wrapper'),
   openModalTm: document.querySelector('[data-action="open-modal_tm"]'),
   closeModalTm: document.querySelector('[data-action="close-modal_tm"]'),
-  backdrop: document.querySelector('.js-backdrop_tm'),
+  backdropTm: document.querySelector('.js-backdrop_tm'),
 
 
 
