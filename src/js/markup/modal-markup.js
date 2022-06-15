@@ -4,9 +4,10 @@ import { getData } from '../api-fetch/get-film-api';
 import { modalFilmContainer} from '../utils/references';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { addMovieToDatabase } from '../service/add-muvie-to-database';
+import { getUserDataAllWatched, getUserDataAllQueue } from '../api-fetch/get-from-database';
 import { closeBacdropClick } from '../service/close-backdrop-modal';
 
-export function modalMarkup(muvieId) {
+function modalMarkup(muvieId) {
   getData(muvieId).then(data => {
     //Тест запису в базу проглянутих
     // writeUserDataQueue('116126857176505822881', muvieId, data);
@@ -74,16 +75,36 @@ export function modalMarkup(muvieId) {
         const backdrop = document.querySelector('.backdrop');
         closeBacdropClick(closeModalBtn, backdrop);
     
-    
+      
         const addToWatchedEl = document.querySelector('.watched__btn');
         addToWatchedEl.addEventListener('click', () => {
-        addMovieToDatabase(WATCHED, userId, muvieId, data);
-    });
+        addMovieToDatabase(WATCHED, userId, muvieId, data, addToWatchedEl, addToQueueEl);
+        });
 
         const addToQueueEl = document.querySelector('.queue__btn');
         addToQueueEl.addEventListener('click', () => {
-        addMovieToDatabase(QUEUE, userId, muvieId, data);
-    });
-
+        addMovieToDatabase(QUEUE, userId, muvieId, data, addToWatchedEl, addToQueueEl);
+        });
+        updateModalButtons(muvieId, addToWatchedEl, addToQueueEl);
   });
 }
+
+async function updateModalButtons(muvieId, addToWatchedEl, addToQueueEl) {
+    const watchedIdArr = await getUserDataAllWatched(userId).then(data => {
+    return Object.keys(data);
+    });
+
+    const isWatched = watchedIdArr.includes(muvieId);
+    addToWatchedEl.textContent = (isWatched) ? "remove from watched" : "add to watched";
+    addToWatchedEl.dataset.action = (isWatched) ? "remove" : "add";
+
+    const queueIdArr = await getUserDataAllQueue(userId).then(data => {
+    return Object.keys(data);
+    });
+
+    const isQueue = queueIdArr.includes(muvieId);
+    addToQueueEl.textContent = (isQueue) ? "remove from queue" : "add to queue";
+    addToQueueEl.dataset.action = (isQueue) ? "remove" : "add";
+}
+
+export {modalMarkup, updateModalButtons}
