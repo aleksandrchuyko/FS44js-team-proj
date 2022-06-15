@@ -17,7 +17,12 @@ export function onClickHeaderLibraryBth(e) {
   } else {
     logIn()
       .then(resolve => {
+        if (resolve === ('user is not defined')||('Firebase: Error (auth/popup-closed-by-user).')) {
+          console.log(resolve);
+          return false;
+        }
         global.currentUser = resolve;
+        console.log(resolve);
         logoutBtn.classList.remove('visually-hidden');
         console.log('Вошел пользователь:', global.currentUser);
         getUserDataAllWatched(userId).then(data => {

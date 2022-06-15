@@ -64,8 +64,8 @@ function modalMarkup(muvieId) {
                             <h3 class="text__title">About</h3>
                             <p class="modal__text">${overview}</p>
                             <div class="modal__buttons">
-                                <button class="modal__button watched__btn" type="button">add to watched</button>
-                                <button class="modal__button queue__btn" type="button">add to queue</button>
+                                <button class="modal__button watched__btn ${userId?"":"visually-hidden"}" type="button" >add to watched</button>
+                                <button class="modal__button queue__btn ${userId?"":"visually-hidden"}" type="button" >add to queue</button>
                             </div>
                         </div>
                     </div>
