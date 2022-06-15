@@ -132,12 +132,12 @@
     display: flex;
     justify-content: center;
     max-width: 336px;
-    font-size: 200%;
+    font-size: 14px;
     font-weight: normal;
 
     @media screen and (min-width: 768px) {
         padding-bottom: 80px;
-        margin-top: 25px;
+        margin-top: 35px;
     }
 
     @media screen and (min-width: 1024px) {
@@ -240,18 +240,18 @@ li {
     display: flex;
     justify-content: center;
     margin: 0 -10px;
-    margin-top: 63px;
+    margin-top: 48px;
     padding-bottom: 62px;
 
     @media screen and (min-width: 768px) {
         margin: 0 -16px;
-        margin-top: 40px;
+        margin-top: 35px;
         padding-bottom: 60px;
     }
 
     @media screen and (min-width: 1024px) {
         margin: 0 -8px;
-        margin-top: 48px;
+        margin-top: 33px;
 
     }
 }
@@ -322,17 +322,16 @@ li {
     border-bottom: 1px solid var(--main-text-color);
 }
 
+.header__forminput {
+    width: 100%;
+}
+
 .header__input {
-    width: 260px;
+    width: 100%;
     color: var(--main-text-color);
     font-size: 15px;
     background: none;
-    outline: none;
     border: none;
-
-    @media screen and (min-width: 768px) {
-        width: 320px;
-    }
 }
 
 ::-webkit-input-placeholder {
