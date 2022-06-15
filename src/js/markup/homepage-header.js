@@ -17,5 +17,5 @@ export function loadHomePageHeader() {
   // --- show home page hedder --- //
   navHome.classList.add('current');
   inputForm.classList.remove('visually-hidden');
-  paginationList.classList.remove('is-hidden');
+  paginationList.classList.remove('visually-hidden');
 }
