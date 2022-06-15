@@ -1,24 +1,24 @@
 import { loadSelectedTrandingPage } from '../js-partials/tranding-gallery';
 
-// import { loadSelectedSearchPage, currentPageS } from './search';
+import { loadSelectedSearchPage } from '../search';
 import { galleryContainer } from '../utils/references';
 let page;
 let nextPage;
 
 export async function onArrowBtnClick(e) {
     e.preventDefault();
-    const arrowButton = e.currentTarget;
+    // const arrowButton = e.currentTarget;
     // console.log(!e.target.classList.contains('.pagination__button'));
    
   
   
     page = document.querySelector('.pagination__active');
-    console.dir(e.target.getAttribute('data-set'))
+  console.dir(e.target.getAttribute('data-set'));
   
     if (e.target.getAttribute('data-set') === "decrement") {
-        if (!e.currentTarget.classList.contains('.arrow__button')) {
-            return;
-    } 
+        // if (!e.currentTarget.classList.contains('.arrow__button')) {
+        //     return;
+    // } 
         nextPage = Number(page.textContent) - 1;
     } else {
         nextPage = Number(page.textContent) + 1; 
@@ -56,3 +56,16 @@ export async function onArrowBtnClick(e) {
 //     await loadSelectedSearchPage(nextPage);
 //   }
 // }
+
+// async function paginationButons() {
+// //   if (!currentPageS) {
+// //     refs.leftBtn.disabled = true;
+// //   } else {
+// //     refs.leftBtn.disabled = false;
+// //   }
+// //   if (currentPageS === totalPages) {
+// //     refs.rightBtn.disabled = true;
+// //   } else {
+// //     refs.rightBtn.disabled = false;
+// //   }
+// // }
