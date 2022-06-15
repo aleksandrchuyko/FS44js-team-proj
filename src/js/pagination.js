@@ -7,9 +7,9 @@
 
 // window.addEventListener('resize', onResize);
 
-async function onResize() {
-  displayWidth = document.documentElement.clientWidth;
-}
+// async function onResize() {
+//   displayWidth = document.documentElement.clientWidth;
+// }
 
 // async function onCreatePaginationTemplate(currentPage, totalPages) {
 //   await onResize();
