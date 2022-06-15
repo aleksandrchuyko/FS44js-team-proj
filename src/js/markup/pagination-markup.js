@@ -1,21 +1,23 @@
 import { desktopShiftPages, mobileShiftPages } from '../utils/constants';
 
 export async function onCreatePaginationTemplate(response) {
-    let shiftPage = desktopShiftPages;
-    let beforePage;
+  let shiftPage = desktopShiftPages;
+  let beforePage;
   let afterPage;
 
   const displayWidth = document.documentElement.clientWidth;
-  
+
   console.log(displayWidth)
 
-    const currentPage = response.page;
-    const totalPages = response.total_pages;
+  const currentPage = response.page;
+  console.log("response", response)
+  const totalPages = response.total_pages;
+  console.log(totalPages)
 
-    if (displayWidth < 480) {
-        shiftPage = mobileShiftPages;
+  if (displayWidth < 480) {
+    shiftPage = mobileShiftPages;
   }
-  
+
   if (currentPage < shiftPage + 1) {
     beforePage = shiftPage - 1;
 
@@ -33,8 +35,7 @@ export async function onCreatePaginationTemplate(response) {
   for (let i = beforePage; i <= afterPage; i += 1) {
     if (i - 1 > 0) {
       array.push(
-        `<button type="button" class="pagination__btn page" data-set = "${
-          i - 1
+        `<button type="button" class="pagination__btn page" data-set = "${i - 1
         }">${i - 1}</button>`
       );
     }

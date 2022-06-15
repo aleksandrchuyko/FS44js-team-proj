@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs } from '../refs';
 
 refs.queueBtn.addEventListener('click', clickButQueue);
 refs.watchedBtn.addEventListener('click', clickButWatched);
