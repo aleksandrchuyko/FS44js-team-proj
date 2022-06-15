@@ -7,8 +7,6 @@ const provider = new GoogleAuthProvider();
 
 import { signInWithPopup , signOut} from 'firebase/auth';
 // const auth = getAuth();
-// console.log(auth);
-let userId = '';
 
 function logIn() {
   return signInWithPopup(auth, provider).then(result => {
