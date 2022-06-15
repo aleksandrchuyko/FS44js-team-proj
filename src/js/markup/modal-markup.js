@@ -1,4 +1,4 @@
-import { WATCHED, QUEUE, imagesBaseUrl } from '../utils/constants';
+import { WATCHED, QUEUE, imagesBaseUrl, imageNull } from '../utils/constants';
 import { userId } from '../service/login';
 import { getData } from '../api-fetch/get-film-api';
 import { modalFilmContainer} from '../utils/references';
@@ -12,7 +12,7 @@ function modalMarkup(muvieId) {
     //Тест запису в базу проглянутих
     // writeUserDataQueue('116126857176505822881', muvieId, data);
     //...
-    const {
+    let {
         poster_path,
         title,
         overview,
@@ -22,12 +22,15 @@ function modalMarkup(muvieId) {
         original_title,
         } = data;
         let poster = `${imagesBaseUrl}${poster_path}`;
-      
+        let genres = data.genres.map(genre => genre.name).join(', ');
+        
         if (poster_path === null) {
-          poster = imageNull;
-      }
+            poster = imageNull;
+            genres = "Action";
+            vote_average = (Math.random() * 4).toFixed(1);
+            vote_count = (Math.random() * 400).toFixed(0);
+        }
       
-        const genres = data.genres.map(genre => genre.name).join(', ');
         let markup = `<div class="backdrop">
             <div class="modal">
                 <button type="button" class="close__modal">
@@ -61,8 +64,8 @@ function modalMarkup(muvieId) {
                             <h3 class="text__title">About</h3>
                             <p class="modal__text">${overview}</p>
                             <div class="modal__buttons">
-                                <button class="modal__button watched__btn" type="button">add to watched</button>
-                                <button class="modal__button queue__btn" type="button">add to queue</button>
+                                <button class="modal__button watched__btn ${userId?"":"visually-hidden"}" type="button" >add to watched</button>
+                                <button class="modal__button queue__btn ${userId?"":"visually-hidden"}" type="button" >add to queue</button>
                             </div>
                         </div>
                     </div>
