@@ -5,7 +5,7 @@ import { changeMoviesArray } from '../markup/movies-array-change';
 import { onRenderPagination } from '../markup/gallery-pagination';
 import { clearGalleryContainer } from '../utils/clear-gallery-container';
 import { PARPAGE } from '../utils/constants'
-
+import { userId} from '../service/init-firebase';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { spinnerRef } from '../utils/spinner';
 
@@ -16,8 +16,9 @@ export async function onRenderLibrary(page) {
 
     Loading.hourglass('Loading...', spinnerRef);
 
-    const movies = await getUserDataAllWatched('116126857176505822881')
-    logoutBtn.classList.remove('visually-hidden');
+    const firebaseData = await getUserDataAllWatched(userId);
+    const movies = Object.values(firebaseData);
+    console.log(movies);
     const arrayLength = movies.length;
 
     const totalPages = Math.ceil(arrayLength / PARPAGE);
