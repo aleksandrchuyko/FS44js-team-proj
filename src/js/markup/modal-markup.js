@@ -9,9 +9,6 @@ import { closeBacdropClick } from '../service/close-backdrop-modal';
 
 function modalMarkup(muvieId) {
   getData(muvieId).then(data => {
-    //Тест запису в базу проглянутих
-    // writeUserDataQueue('116126857176505822881', muvieId, data);
-    //...
     let {
         poster_path,
         title,
@@ -88,7 +85,10 @@ function modalMarkup(muvieId) {
         addToQueueEl.addEventListener('click', () => {
         addMovieToDatabase(QUEUE, userId, muvieId, data, addToWatchedEl, addToQueueEl);
         });
-        updateModalButtons(muvieId, addToWatchedEl, addToQueueEl);
+      if (userId) {
+          updateModalButtons(muvieId, addToWatchedEl, addToQueueEl);
+      }
+        
   });
 }
 

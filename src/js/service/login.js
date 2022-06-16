@@ -6,11 +6,10 @@ import { GoogleAuthProvider } from 'firebase/auth';
 const provider = new GoogleAuthProvider();
 
 import { signInWithPopup , signOut} from 'firebase/auth';
-// const auth = getAuth();
 
 function logIn() {
   return signInWithPopup(auth, provider).then(result => {
-      return user.email;
+    return user;
     }).catch((error) => {
       // Handle Errors here.
       const errorMessage = error.message;
@@ -21,7 +20,6 @@ function logIn() {
 function logOut() {
   
   signOut(auth).then(() => {
-    logoutBtn.classList.add('visually-hidden');
     location.reload();
 }).catch((error) => {
   // An error happened.

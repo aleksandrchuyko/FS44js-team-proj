@@ -4,7 +4,6 @@ import { updateModalButtons } from '../markup/modal-markup'
 
 
 function addMovieToDatabase(key, userId, muvieId, data, watchedBtn, queueBtn) {
-  console.log(watchedBtn);
   if (key === WATCHED) {
     if (watchedBtn.dataset.action === 'add') {
       writeUserDataWatched(userId, muvieId, data);
