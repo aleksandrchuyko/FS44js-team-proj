@@ -26,7 +26,6 @@ import { setMyLibraryStyles } from '../markup/header-library';
 import { clickButWatched } from '../service/header-library-click';
 import { clickButQueue } from '../service/header-queue-click';
 
-
 addEventListener('DOMContentLoaded', () => {
   loadTrandingPage();
 });
@@ -34,7 +33,6 @@ addEventListener('DOMContentLoaded', () => {
 paginationList.addEventListener('click', onPaginationBtnClick);
 
 // inputForm.addEventListener('submit', searchSubmit);
-
 
 navHome.addEventListener('click', onClickHomePage);
 headerTitle.addEventListener('click', onClickHomePage);
@@ -44,9 +42,7 @@ openModalFilm.addEventListener('click', openModal);
 
 // window.addEventListener('resize', onResize);
 
-
 arrowBtn.addEventListener('click', onArrowBtnClick);
-console.log(arrowBtn);
 
 watchedBtn.addEventListener('click', clickButWatched);
 queueBtn.addEventListener('click', clickButQueue);
