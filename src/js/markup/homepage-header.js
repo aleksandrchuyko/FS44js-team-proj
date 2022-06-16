@@ -8,8 +8,6 @@ import {
 } from '../utils/references';
 
 export function loadHomePageHeader() {
-  //   location.reload();
-  //
   // --- hide my library hedder --- //
   libraryBtns.classList.add('visually-hidden');
   navLibrary.classList.remove('current');
