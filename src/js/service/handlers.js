@@ -12,7 +12,6 @@ import {
   queueBtn,
 } from '../utils/references';
 import { onPaginationBtnClick } from '../js-partials/pagination-btn-click';
-// import { searchSubmit } from '../js-partials/search-submit';
 
 import { onClickHomePage } from '../js-partials/tranding-gallery';
 

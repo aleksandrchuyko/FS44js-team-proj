@@ -6,7 +6,7 @@ import {
   patternReleaseDate,
   noGenres,
 } from '../utils/constants.js';
-import { renderMovies } from '../markup/gallery-markup.js';
+import { renderMovies } from '../markup/gallery-markup';
 
 export async function changeMoviesArray(movies) {
   let posterPath;

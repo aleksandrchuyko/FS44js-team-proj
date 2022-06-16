@@ -22,7 +22,7 @@ import './js/service/init-firebase';
 // import './js/header-library';
 import './js/modal_tm';
 
-import './js/search';
+import './js/js-partials/search';
 // import './js/markup/My-library-btn';
 // import './js/pagination-arrow-click';
 // import './js/render-library-btns';

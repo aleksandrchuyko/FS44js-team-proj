@@ -1,10 +1,10 @@
-import { inputForm, galleryContainer, arrowBtn, headerError } from '../js/utils/references';
-import MoviesApiService from '../js/api-fetch/fetch-films';
-import {changeMoviesArray} from '../js/markup/movies-array-change';
-import { onRenderPagination } from '../js/markup/gallery-pagination';
+import { inputForm, galleryContainer, arrowBtn, headerError } from '../utils/references';
+import MoviesApiService from '../api-fetch/fetch-films';
+import {changeMoviesArray} from '../markup/movies-array-change';
+import { onRenderPagination } from '../markup/gallery-pagination';
 
-import { clearGalleryContainer } from '../js/utils/clear-gallery-container';
-import { loadTrandingPage } from '../js/js-partials/tranding-gallery';
+import { clearGalleryContainer } from '../utils/clear-gallery-container';
+import { loadTrandingPage } from '../js-partials/tranding-gallery';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
