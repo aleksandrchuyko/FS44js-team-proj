@@ -16,8 +16,9 @@ export async function onRenderLibrary(page) {
 
     Loading.hourglass('Loading...', spinnerRef);
 
+    let movies = [];
     const firebaseData = await getUserDataAllWatched(userId);
-    const movies = Object.values(firebaseData);
+    if (firebaseData) movies = Object.values(firebaseData);
     
     const arrayLength = movies.length;
 

@@ -16,8 +16,10 @@ export async function onRenderLibraryQueue(page) {
 
     Loading.hourglass('Loading...', spinnerRef);
 
+    let movies = [];
     const firebaseData = await getUserDataAllQueue(userId);
-    const movies = Object.values(firebaseData);
+    if (firebaseData) movies = Object.values(firebaseData);
+
     const arrayLength = movies.length;
 
     const totalPages = Math.ceil(arrayLength / PARPAGE);

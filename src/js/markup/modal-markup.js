@@ -94,6 +94,9 @@ function modalMarkup(muvieId) {
 
 async function updateModalButtons(muvieId, addToWatchedEl, addToQueueEl) {
     const watchedIdArr = await getUserDataAllWatched(userId).then(data => {
+        if (!data) {
+            return [];
+        }
     return Object.keys(data);
     });
 
@@ -102,6 +105,9 @@ async function updateModalButtons(muvieId, addToWatchedEl, addToQueueEl) {
     addToWatchedEl.dataset.action = (isWatched) ? "remove" : "add";
 
     const queueIdArr = await getUserDataAllQueue(userId).then(data => {
+        if (!data) {
+            return [];
+        }
     return Object.keys(data);
     });
 
