@@ -1,4 +1,4 @@
-import SimpleLightbox from "simplelightbox";
+// import SimpleLightbox from "simplelightbox";
 
 import { tmItems } from "./modal_tm-arr";
 
@@ -57,6 +57,6 @@ function createModalTmMarkup(tmItems) {
 function onOpenSlider() {
     
 };
-let lightbox = new SimpleLightbox('.modal_tm a', { captionDelay: 250 });
+// let lightbox = new SimpleLightbox('.modal_tm a', { captionDelay: 250 });
 
 
