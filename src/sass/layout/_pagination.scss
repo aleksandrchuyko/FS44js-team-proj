@@ -60,6 +60,10 @@
 
     }
 }
+button:disabled:hover,
+button:disabled:focus  {
+background-color: transparent;
+}
 
 .pagination-list {
     display: flex;
