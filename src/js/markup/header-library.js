@@ -7,7 +7,7 @@ import { logIn } from '../service/login';
 export async function setMyLibraryStyles(e) {
     try {
         if (!userId) {
-        await logIn();
+        const logged = await logIn();
     }
     e.preventDefault();
     libraryBtns.classList.remove('visually-hidden');
@@ -16,8 +16,9 @@ export async function setMyLibraryStyles(e) {
     navHome.classList.remove('current');
     inputForm.classList.add('visually-hidden');
 
-    } catch {
-        console.log(err);
+    } catch(error) {
+        // console.log('Sorry, you are non logged in');
+        console.log(error.message);
     }
     
     
