@@ -17,5 +17,6 @@ export const headerLogo = document.querySelector('.header__logo');
 export const headerTitle = document.querySelector('.header__title');
 export const arrowBtn = document.querySelector('.pagination__wrapper');
 export const logoutBtn = document.querySelector('.logout-btn');
-
-
+export const openModalTm = document.querySelector('[data-action="open-modal_tm"]');
+export const closeModalTm = document.querySelector('[data-action="close-modal_tm"]');
+export const backdropTm = document.querySelector('.js-backdrop_tm');
