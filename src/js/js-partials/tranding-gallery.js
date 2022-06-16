@@ -4,6 +4,7 @@ import { onRenderPagination } from '../markup/gallery-pagination';
 import { clearGalleryContainer } from '../utils/clear-gallery-container';
 import { galleryContainer } from '../utils/references';
 import { loadHomePageHeader } from '../markup/homepage-header.js';
+import { extremePaginationButtons } from '../utils/extreme-pagination-buttons';
 
 const moviesApiService = new MoviesApiService();
 
@@ -19,6 +20,7 @@ export async function loadTrandingPage() {
 
   await changeMoviesArray(movies);
   await onRenderPagination(response);
+  // await extremePaginationButtons(response);
 
   galleryContainer.setAttribute('data-set', 'tranding');
 }
