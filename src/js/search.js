@@ -18,6 +18,7 @@ async function searchSubmit(event) {
 
   if (!value) {
     loadTrandingPage();
+    alert( "Write the name of the movie" );
   } else {
     moviesApiService.query = value;
     moviesApiService.search();
@@ -32,14 +33,14 @@ async function errorS(response) {
     headerError.textContent =
       'Search result not successful. Enter the correct movie name and'; 
     arrowBtn.classList.add('visually-hidden');
-  }
+  } 
 
 
-      const movies = response.results;
+  const movies = response.results;
   await changeMoviesArray(movies);
   await onRenderPagination(response);
 }
-
+  
 export async function loadSelectedSearchPage(page) {
 
   moviesApiService.setPage(page);
@@ -57,5 +58,3 @@ async function onRender() {
   await errorS(response);
 
 }
-
-
