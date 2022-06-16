@@ -3,16 +3,10 @@ import { headerError } from '../utils/references';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { spinnerRef } from '../utils/spinner';
 import { API_KEY, BASE_URL, MEDIA_TYPE, TIME_WINDOW } from '../utils/constants';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export default class MoviesApiService {
   constructor() {
-    // this.request = request;
-
-    // узгодити зі Stas
     this.searchQuery = '';
-
-    // узгодити з Maria Streltova
     this.page = 1;
   }
 
@@ -31,16 +25,8 @@ export default class MoviesApiService {
       });
       return response.data;
     } catch (error) {
-      // refs.headerError.textContent = 'Search result not successful. Enter the correct movie name and';
-      // Notify.error('Sorry. Try again later', {
-      //   timeout: 3000,
-      //   position: 'center-center',
-      // });
+      throw new Error(error);
     }
-    // finally {
-    //   // stop spinner
-    //   Loading.remove();
-    // }
   }
 
   tranding() {
@@ -51,21 +37,11 @@ export default class MoviesApiService {
     this.request = '/search/movie';
   }
 
-  // узгодити із Maria Streltova
   setPage(page) {
     this.page = page;
   }
 
   resetPage() {
     this.page = 1;
-  }
-
-  // узгодити зі Stas
-  get query() {
-    return this.searchQuery;
-  }
-
-  set query(newQuery) {
-    this.searchQuery = newQuery;
   }
 }
