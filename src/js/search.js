@@ -12,18 +12,20 @@ const moviesApiService = new MoviesApiService();
 
 async function searchSubmit(event) {
   event.preventDefault();
+ 
 
-  const value = event.target.querySelector('.header__input').value;
+  const value = event.target.querySelector('.header__input').value.trim();
   moviesApiService.resetPage();
+
 
   if (!value) {
     loadTrandingPage();
+    alert( "Write the name of the movie" );
   } else {
     moviesApiService.query = value;
     moviesApiService.search();
     await onRender();
   }
-
 }
 
 async function errorS(response) {
