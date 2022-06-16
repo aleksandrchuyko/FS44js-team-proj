@@ -5,6 +5,8 @@ import { onRenderPagination } from '../js/markup/gallery-pagination';
 
 import { clearGalleryContainer } from '../js/utils/clear-gallery-container';
 import { loadTrandingPage } from '../js/js-partials/tranding-gallery';
+import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 inputForm.addEventListener('submit', searchSubmit);
 
@@ -20,7 +22,7 @@ async function searchSubmit(event) {
 
   if (!value) {
     loadTrandingPage();
-    alert( "Write the name of the movie" );
+    Notiflix.Notify.warning('Write the name of the movie');
   } else {
     moviesApiService.query = value;
     moviesApiService.search();
@@ -52,7 +54,7 @@ export async function loadSelectedSearchPage(page) {
 async function onRender() {
   await clearGalleryContainer();
 
-
+  arrowBtn.classList.remove('visually-hidden');
   const response = await moviesApiService.fetchMovies();
  
   galleryContainer.setAttribute('data-set', 'search');
