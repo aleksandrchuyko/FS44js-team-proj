@@ -1,25 +1,22 @@
-import { refs } from './refs';
-import MoviesApiService from './fetch_API';
-import changeMoviesArray from './page-render';
-// import { onRenderPagination } from './pagination';
+import { inputForm, galleryContainer, arrowBtn, headerError } from '../js/utils/references';
+import MoviesApiService from '../js/api-fetch/fetch-films';
+import {changeMoviesArray} from '../js/markup/movies-array-change';
+import { onRenderPagination } from '../js/markup/gallery-pagination';
 
-import clearGalleryContainer from './clear-gallery';
-import { clearPaginationList } from './clear-pagination';
-import { loadTrandingPage } from './tranding';
+import { clearGalleryContainer } from '../js/utils/clear-gallery-container';
+import { loadTrandingPage } from '../js/js-partials/tranding-gallery';
 
-refs.inputForm.addEventListener('submit', searchSubmit);
-
-let currentPageS;
-let totalPages;
+inputForm.addEventListener('submit', searchSubmit);
 
 const moviesApiService = new MoviesApiService();
+
 async function searchSubmit(event) {
   event.preventDefault();
 
   const value = event.target.querySelector('.header__input').value;
   moviesApiService.resetPage();
 
-  if (value === '') {
+  if (!value) {
     loadTrandingPage();
   } else {
     moviesApiService.query = value;
@@ -27,32 +24,24 @@ async function searchSubmit(event) {
     await onRender();
   }
 
-  // refs.galleryContainer.innerHTML='';
-  //     const response = await moviesApiService.fetchMovies();
-  //   await errorS(response);
-  //     refs.galleryContainer.setAttribute('data-set', 'search');
-  //     const totalPages = response.total_pages;
-  //     await changeMoviesArray(response);
-  //     await onRenderPagination(totalPages);
 }
 
 async function errorS(response) {
   console.log('response', response.total_results);
-  if (response.total_results === 0) {
-    refs.headerError.textContent =
+  if (!response.total_results) {
+    headerError.textContent =
       'Search result not successful. Enter the correct movie name and'; 
-    refs.paginationWrap.classList.add('visually-hidden');
+    arrowBtn.classList.add('visually-hidden');
   }
 
-  totalPages = response.total_pages;
-  const currentPage = response.page;
-  currentPageS = currentPage;
-  await changeMoviesArray(response);
-  await onRenderPagination(currentPage, totalPages);
+
+      const movies = response.results;
+  await changeMoviesArray(movies);
+  await onRenderPagination(response);
 }
 
 export async function loadSelectedSearchPage(page) {
-  // console.log('page', page);
+
   moviesApiService.setPage(page);
 
   await onRender();
@@ -60,32 +49,13 @@ export async function loadSelectedSearchPage(page) {
 
 async function onRender() {
   await clearGalleryContainer();
-  await clearPaginationList();
 
-  // refs.galleryContainer.innerHTML = '';
+
   const response = await moviesApiService.fetchMovies();
-  //   await errorS(response)
-  refs.galleryContainer.setAttribute('data-set', 'search');
+ 
+  galleryContainer.setAttribute('data-set', 'search');
   await errorS(response);
-  //   const totalPages = response.total_pages;
-  const currentPage = response.page;
-  currentPageS = currentPage;
-  await paginationButons();
-  // await changeMoviesArray(response);
-  // await onRenderPagination(currentPage);
+
 }
 
-export { currentPageS };
 
-async function paginationButons() {
-  if (currentPageS === 1) {
-    refs.leftBtn.disabled = true;
-  } else {
-    refs.leftBtn.disabled = false;
-  }
-  if (currentPageS === totalPages) {
-    refs.rightBtn.disabled = true;
-  } else {
-    refs.rightBtn.disabled = false;
-  }
-}

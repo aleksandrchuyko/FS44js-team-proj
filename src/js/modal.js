@@ -1,180 +1,58 @@
-import { writeUserDataWatched, writeUserDataQueue } from './api-fetch/add-to-database';
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import {spinnerRef } from './spinner';
-import { modalMarkup } from './markup/modal-markup';
-import {openModalFilm, modalFilmContainer, closeModalBtn, backdrop} from './utils/references';
+import SimpleLightbox from 'simplelightbox';
 
-export { closeBacdropClick };
+import { tmItems } from './modal_tm-arr';
 
-  
-openModalFilm.addEventListener('click', openModal);
+const refs = {
+  openModalTmBtn: document.querySelector('[data-action="open-modal_tm"]'),
+  closeModalTmBtn: document.querySelector('[data-action="close-modal_tm"]'),
+  backdropTm: document.querySelector('.js-backdrop_tm'),
+};
 
-// Функція closeBacdropClick навішує слухачі на кнопку закриття модального вікна і backdrop,
-//я її запускаю після того як відбудеться завантаження модального вікна
+refs.openModalTmBtn.addEventListener('click', onOpenModal);
+refs.closeModalTmBtn.addEventListener('click', onCloseModal);
+refs.backdropTm.addEventListener('click', onBackdropClick);
 
-function closeBacdropClick(closeModalBtn, backdrop) {
-  closeModalBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', backdropClick);
-}
-
-function openModal(e) {
+function onOpenModal(e) {
   e.preventDefault();
-  Loading.hourglass('Loading...', spinnerRef);
-  let cardId = e.target.closest('.card').dataset.id;
-  window.addEventListener('keydown', escapePress);
-  document.body.classList.add('show__modal');
-  modalMarkup(cardId);
+  window.addEventListener('keydown', onEscKeyPress);
+  document.body.classList.add('show-modal');
 }
 
-function closeModal() {
-  window.removeEventListener('keydown', escapePress);
-  document.body.classList.remove('show__modal');
-  modalFilmContainer.innerHTML = '';
+function onCloseModal() {
+  window.removeEventListener('keydown', onEscKeyPress);
+  document.body.classList.remove('show-modal');
 }
 
-function backdropClick(event) {
+function onBackdropClick(event) {
   if (event.currentTarget === event.target) {
-    closeModal();
+    console.log('Кликнули именно в бекдроп!!!!');
+    onCloseModal();
   }
 }
 
-function escapePress(event) {
+function onEscKeyPress(event) {
   const ESC_KEY_CODE = 'Escape';
-  const escape = event.code === ESC_KEY_CODE;
+  const isEscKey = event.code === ESC_KEY_CODE;
 
-  if (escape) {
-    closeModal();
+  if (isEscKey) {
+    onCloseModal();
   }
 }
 
-// function localStorageMovie() {
-//   const STORAGE_WATCHED = 'watched-movie-list';
-//   const STORAGE_QUEUE = 'queue-movie-list';
-//   const addToWatchedEl = document.querySelector('.watched__btn');
-//   const addToQueueEl = document.querySelector('.queue__btn');
+const modalTm = document.querySelector('.modal_tm');
+const modalTmMarkup = createModalTmMarkup(tmItems);
 
-//   let arrayWatched = [];
-//   let arrayQueue = [];
+modalTm.insertAdjacentHTML('beforeend', modalTmMarkup);
+modalTm.addEventListener('click', onOpenSlider);
 
-//   addToLocalStorage();
-//   removeFromLocalStorage();
-
-//   function removeFromLocalStorage() {
-//     const tempWatched = localStorage.getItem(STORAGE_WATCHED);
-//     if (tempWatched === null) {
-//       console.log('STORAGE_WATCHED is empty');
-//     } else {
-//       arrayWatched = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
-//       if (arrayWatched.find(part => part === cardId)) {
-//         addToWatchedEl.textContent = 'remove from watched';
-//         addToWatchedEl.addEventListener('click', removeFromWatchedList);
-//       }
-//     }
-
-//     const tempQueue = localStorage.getItem(STORAGE_QUEUE);
-//     if (tempQueue === null) {
-//       console.log('STORAGE_QUEUE is empty');
-//     } else {
-//       arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
-//       if (arrayQueue.find(part => part === cardId)) {
-//         addToQueueEl.textContent = 'remove from queue';
-//         addToQueueEl.addEventListener('click', removeFromQueueList);
-//       }
-//     }
-
-//     function removeFromWatchedList() {
-//       const arrayTemp = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
-//       const index = arrayTemp.indexOf(cardId);
-//       arrayTemp.splice(index, 1);
-//       localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayTemp));
-//       addToWatchedEl.removeEventListener('click', removeFromWatchedList);
-//     }
-
-//     function removeFromQueueList() {
-//       const arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
-//       const index = arrayQueue.indexOf(cardId);
-//       arrayQueue.splice(index, 1);
-//       localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
-//       addToQueueEl.removeEventListener('click', removeFromQueueList);
-//     }
-//   }
-
-//   function addToLocalStorage() {
-//     addToWatchedEl.addEventListener('click', event => {
-//       addToWatchedList();
-//       addToWatchedEl.removeEventListener('click', addToWatchedList);
-//     });
-
-//     addToQueueEl.addEventListener('click', event => {
-//       addToQueueList();
-//       addToQueueEl.removeEventListener('click', addToQueueList);
-//     });
-
-//     function addToWatchedList() {
-//       addToWatchedEl.textContent = 'remove from watched';
-//       addToQueueEl.textContent = 'add to queue';
-
-//       const tempQueue = localStorage.getItem(STORAGE_QUEUE);
-//       if (tempQueue === null) {
-//         console.log('STORAGE_QUEUE is empty');
-//       } else {
-//         arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
-//         if (arrayQueue.find(part => part === cardId)) {
-//           const index = arrayQueue.indexOf(cardId);
-//           arrayQueue.splice(index, 1);
-
-//           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
-//         } else {
-//           console.log('not in Queue');
-//         }
-//       }
-
-//       const tempWatched = localStorage.getItem(STORAGE_WATCHED);
-//       if (tempWatched === null) {
-//         arrayWatched.push(cardId);
-//         localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
-//       } else {
-//         arrayWatched = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
-//         if (arrayWatched.find(part => part === cardId)) {
-//           addToWatchedEl.textContent = 'add to watched';
-//         } else {
-//           arrayWatched.push(cardId);
-//           localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
-//         }
-//       }
-//     }
-
-//     function addToQueueList() {
-//       addToQueueEl.textContent = 'remove from queue';
-//       addToWatchedEl.textContent = 'add to watched';
-
-//       const tempWatched = localStorage.getItem(STORAGE_WATCHED);
-//       if (tempWatched === null) {
-//         console.log('STORAGE_WATCHED is empty');
-//       } else {
-//         arrayWatched = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
-//         if (arrayWatched.find(part => part === cardId)) {
-//           const index = arrayWatched.indexOf(cardId);
-//           arrayWatched.splice(index, 1);
-//           localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
-//         } else {
-//           console.log('not in Watched');
-//         }
-//       }
-
-//       const tempQueue = localStorage.getItem(STORAGE_QUEUE);
-//       if (tempQueue === null) {
-//         arrayQueue.push(cardId);
-//         localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
-//       } else {
-//         arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
-//         if (arrayQueue.find(part => part === cardId)) {
-//           addToQueueEl.textContent = 'add to queue';
-//         } else {
-//           arrayQueue.push(cardId);
-//           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
-//         }
-//       }
-//     }
-//   }
-// }
+function createModalTmMarkup(tmItems) {
+  return tmItems
+    .map(({ preview, original, description }) => {
+      return `<a class="member__item" href="${original}">
+  <img class="member__image" src="${preview}" alt="${description}" title="${description}"/>
+</a>`;
+    })
+    .join('');
+}
+function onOpenSlider() {}
+let lightbox = new SimpleLightbox('.modal_tm a', { captionDelay: 250 });

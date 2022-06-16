@@ -22,16 +22,23 @@
                             <!-- <a href="#" class="sitenav__linkcurrent">MY LIBRARY</a> SB: потрібен curent щоб active працював -->
                             <a href="#" class="sitenav__link library__btn">MY LIBRARY</a>
                         </li>
+
+                    </ul>
                 </nav>
+
             </div>
 
         </div>
+        <!-- /закрыт header box -->
+
+        <button type="button" class="logout-btn visually-hidden" data-translatable>LOGOUT</button>
+
         <form class="header__searchform">
 
             <div class="header__form">
-                <p>
+                <div class="header__forminput">
                     <input type="search" class="header__input" name="searchQuery" placeholder="Поиск фильмов">
-                </p>
+                </div>
                 <button type="submit" class="header__button">
                     <svg class="header__svg" width="12" height="12">
                         <use href="/src/images/icons.svg#icon-search"></use>
@@ -43,7 +50,7 @@
         <div class="header__error"></div>
 
         <div class="library__btn ">
-            <ul class="library__list is-hidden">
+            <ul class="library__list visually-hidden">
                 <li class="library__item">
                     <button type="button" class="library__link watched-btn" data-translatable>Watched</button>
                 </li>
@@ -51,5 +58,6 @@
                     <button type="button" class="library__link queue-btn" data-translatable>Queue</button>
                 </li>
             </ul>
+
         </div>
     </div>

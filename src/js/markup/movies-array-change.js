@@ -27,15 +27,23 @@ export async function changeMoviesArray(movies) {
     }
     // const date = movie.release_date;
     // const releaseDate = date.match(releasePattern);
+    let genresIds;
 
-    const genresIds = movie.genre_ids;
-    if (genresIds.length > 1) {
-      genres = genresIds
-        .map(id => genresInfo.find(genre => genre.id === id).name)
-        .join(', ');
-    } else {
-      genres = noGenres;
-    }
+    // if (movie.genre_ids) {
+    //   genresIds = movie.genre_ids;
+    // }
+    // else {
+    //   genresIds = movie.genres.id
+    // }
+
+    // const genresIds = movie.genre_ids;
+    // if (genresIds.length > 1) {
+    //   genres = genresIds
+    //     .map(id => genresInfo.find(genre => genre.id === id).name)
+    //     .join(', ');
+    // } else {
+    //   genres = noGenres;
+    // }
 
     const poster = movie.poster_path;
     if (poster === null) {
@@ -48,7 +56,7 @@ export async function changeMoviesArray(movies) {
     return {
       id: movie.id,
       title: movie.title,
-      genres: genres,
+      genres: movie.genres,
       poster_path: posterPath,
       // vote_average: movie.vote_average,
       // overview: movie.overview,
