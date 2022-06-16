@@ -1,6 +1,6 @@
 import { loadSelectedTrandingPage } from '../js-partials/tranding-gallery';
 import { galleryContainer } from '../utils/references';
-import { loadSelectedSearchPage } from '../search';
+import { loadSelectedSearchPage } from '../js-partials/search';
 import { onRenderNextPage } from '../markup/render-watched'
 
 export async function onPaginationBtnClick(e) {

@@ -1,6 +1,6 @@
 import { loadSelectedTrandingPage } from '../js-partials/tranding-gallery';
 
-import { loadSelectedSearchPage } from '../search';
+import { loadSelectedSearchPage } from '../js-partials/search';
 import { galleryContainer } from '../utils/references';
 import { onRenderNextPage } from '../markup/render-watched'
 import { onRenderNextPageQueue } from '../markup/render-queue';
