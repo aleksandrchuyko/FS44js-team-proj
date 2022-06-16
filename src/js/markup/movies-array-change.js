@@ -34,7 +34,8 @@ export async function changeMoviesArray(movies) {
         genres = noGenres;
       }
     } else {
-      genres = data.genres.map(genre => genre.name).join(', ');
+      genres = movie.genres;
+      genres = genres.map(genre => genre.name).join(', ');
     }
 
     const poster = movie.poster_path;
