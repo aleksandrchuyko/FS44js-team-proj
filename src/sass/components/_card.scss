@@ -28,7 +28,7 @@
 
   &__list {
     display: flex;
-    color: var(--accent-text-color);
+    color: #ff6b08;
   }
   &__item {
     &:not(:first-child) {
@@ -36,12 +36,12 @@
     }
 
     &--genres {
-      border-right: 1px solid var(--card-color);
+      border-right: 1px solid orange;
       padding-right: 5px;
     }
     &--rating {
-      color: var(--main-text-color);
-      background-color: var(--card-color);
+      color: white;
+      background-color: orange;
       padding: 0 9px;
       border-radius: 4px;
     }

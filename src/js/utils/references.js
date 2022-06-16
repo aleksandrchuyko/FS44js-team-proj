@@ -18,8 +18,4 @@ export const headerTitle = document.querySelector('.header__title');
 export const arrowBtn = document.querySelector('.pagination__wrapper');
 export const logoutBtn = document.querySelector('.logout-btn');
 
-export const watchedBtn = document.querySelector('.watched-btn');
-export const queueBtn = document.querySelector('.queue-btn');
 
-export const leftBtn = document.querySelector('.pagination__button--left');
-export const rightBtn = document.querySelector('.pagination__button--right');

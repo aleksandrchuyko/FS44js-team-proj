@@ -20,4 +20,3 @@ export const mobileShiftPages = 1;
 // ---------- LIBRARY ------------ //
 export const WATCHED = 'watched-movie-list';
 export const QUEUE = 'queue-movie-list';
-export const PARPAGE = 20;

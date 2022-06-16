@@ -5,10 +5,6 @@ import {
   navHome,
   headerTitle,
   headerLogo,
-  navLibrary,
-  logoutBtn,
-  openModalFilm,
-  watchedBtn,
 } from '../utils/references';
 import { onPaginationBtnClick } from '../js-partials/pagination-btn-click';
 // import { searchSubmit } from '../js-partials/search-submit';
@@ -16,13 +12,10 @@ import { onPaginationBtnClick } from '../js-partials/pagination-btn-click';
 import { onClickHomePage } from '../js-partials/tranding-gallery';
 
 import { openModal } from '../js-partials/open-modal';
-// import { openModalFilm } from '../utils/references';
+import { openModalFilm } from '../utils/references';
 // import { onResize } from '../utils//display-change';
 import { arrowBtn } from '../utils/references';
-import { onArrowBtnClick } from '../js-partials/pagination-arrows';
-import { logOut } from '../service/login';
-import { setMyLibraryStyles } from '../markup/header-library'
-import { clickButWatched } from '../service/header-library-click'
+import { onArrowBtnClick} from '../js-partials/pagination-arrows';
 
 
 addEventListener('DOMContentLoaded', () => {
@@ -43,9 +36,6 @@ openModalFilm.addEventListener('click', openModal);
 // window.addEventListener('resize', onResize);
 
 
+
 arrowBtn.addEventListener('click', onArrowBtnClick);
 console.log(arrowBtn);
-
-watchedBtn.addEventListener('click', clickButWatched);
-navLibrary.addEventListener('click', setMyLibraryStyles);
-logoutBtn.addEventListener('click', logOut);

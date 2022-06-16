@@ -1,42 +1,42 @@
-// import { getData } from './api-fetch/get-film-api';
-// import { refs } from './refs';
-// import clearGalleryContainer from './clear-gallery';
-// import { getMovieMarkup } from './markup/library-gallery_markup'
-// import { load } from './service/add-movie-to-library_btns'
+import { getData } from './api-fetch/get-film-api';
+import { refs } from './refs';
+import clearGalleryContainer from './clear-gallery';
+import { getMovieMarkup } from './markup/library-gallery_markup'
+import { load } from './service/add-movie-to-library_btns'
 
-// refs.watchedBtn.addEventListener("click", onWatchedBtnClick);
-// refs.queueBtn.addEventListener("click", onQueueBtnClick);
+refs.watchedBtn.addEventListener("click", onWatchedBtnClick);
+refs.queueBtn.addEventListener("click", onQueueBtnClick);
 
-// function onWatchedBtnClick() {
-//     load("watched-movie-list").then(res => {
-//         document.querySelector('.main-gallery__list').innerHTML = ' ';
-//         const getListWatched = res;
-//         if (!getListWatched || getListWatched.length === 0) {
-//             clearGalleryContainer();
-//         } else {
-//             for (let id of getListWatched) {
-//                 getData(id.id).then(response => {
-//                     getMovieMarkup(response.id)
-//                 });
-//             }
-//         };
-//     });
-// }
-// function onQueueBtnClick() {
-//     load("queue-movie-list").then(res => {
-//         document.querySelector('.main-gallery__list').innerHTML = ' ';
-//         const getListQueue = res;
-//         if (!getListQueue || getListQueue.length === 0) {
-//             clearGalleryContainer();
-//         } else {
-//             for (let id of getListQueue) {
-//                 getData(id.id).then(response => {
-//                     getMovieMarkup(response.id)
-//                 });
-//             }
-//         };
-//     });
-// }
+function onWatchedBtnClick() {
+    load("watched-movie-list").then(res => {
+        document.querySelector('.main-gallery__list').innerHTML = ' ';
+        const getListWatched = res;
+        if (!getListWatched || getListWatched.length === 0) {
+            clearGalleryContainer();
+        } else {
+            for (let id of getListWatched) {
+                getData(id.id).then(response => {
+                    getMovieMarkup(response.id)
+                });
+            }
+        };
+    });
+}
+function onQueueBtnClick() {
+    load("queue-movie-list").then(res => {
+        document.querySelector('.main-gallery__list').innerHTML = ' ';
+        const getListQueue = res;
+        if (!getListQueue || getListQueue.length === 0) {
+            clearGalleryContainer();
+        } else {
+            for (let id of getListQueue) {
+                getData(id.id).then(response => {
+                    getMovieMarkup(response.id)
+                });
+            }
+        };
+    });
+}
 
 
 

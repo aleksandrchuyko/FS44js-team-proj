@@ -53,16 +53,12 @@
 
     &:hover,
     &:focus {
-        color: var(--accent-text-color);
-        background-color: var(--accent-text-color);
+        color: #FF6B08;
+        background-color: #FF6B08;
         opacity: 0.75;
-        box-shadow: (0 0 10px var(--accent-text-color));
+        box-shadow: (0 0 10px rgb(255, 107, 8));
 
     }
-}
-button:disabled:hover,
-button:disabled:focus  {
-background-color: transparent;
 }
 
 .pagination-list {
