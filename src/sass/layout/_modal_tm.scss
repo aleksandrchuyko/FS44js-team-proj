@@ -1,0 +1,66 @@
+body.show-modal .backdrop_tm {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+body.show-modal .modal_tm {
+  transform: scale(1);
+}
+
+.backdrop_tm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop-bg-color);
+  z-index: 999;
+
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
+}
+
+.modal_tm {
+  padding-top: 8px;
+  padding-right: 8px;
+  overflow-y: auto;
+  overflow-x: auto;
+  height: 100%;
+  background-color: var(--main-text-color);
+  transform: scale(1.1);
+  transition: transform 200ms ease-in-out;
+  @media screen and (min-width: 480px) {
+    width: 440px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: auto;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 814px;
+  }
+}
+
+.close-modal_tm {
+  display: block;
+  border: 0px;
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  background-color: inherit;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 2px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-right: 8px;
+  }
+}
