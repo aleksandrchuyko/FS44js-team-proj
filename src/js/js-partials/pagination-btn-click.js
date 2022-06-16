@@ -1,29 +1,23 @@
-// import { paginationList } from '../utils/references';
-import MoviesApiService from '../api-fetch/fetch-films.js';
-
-const moviesApiService = new MoviesApiService();
-
-// import { loadSelectedTrandingPage } from '../tranding';
-// import { loadSelectedSearchPage } from '../search';
-
-// paginationList.addEventListener('click', onPaginationBtnClick);
+import { loadSelectedTrandingPage } from '../js-partials/tranding-gallery';
+import { galleryContainer } from '../utils/references';
+import { loadSelectedSearchPage } from '../search';
+import { onRenderNextPage } from '../markup/render-watched'
 
 export async function onPaginationBtnClick(e) {
   e.preventDefault();
-
-  if (e.target.nodeName !== 'BUTTON') {
-    return;
-  }
   const page = e.target.textContent;
-  moviesApiService.setPage(page);
 
   console.log(page);
 
+  if (galleryContainer.getAttribute('data-set') === 'tranding') {
+    await loadSelectedTrandingPage(page);
+  }
+  if (galleryContainer.getAttribute('data-set') === 'search') {
 
-  // if (refs.galleryContainer.getAttribute('data-set') === 'tranding') {
-  //   await loadSelectedTrandingPage(page);
-  // }
-  // if (refs.galleryContainer.getAttribute('data-set') === 'search') {
-  //   await loadSelectedSearchPage(page);
-  // }
+    await loadSelectedSearchPage(page);
+  }
+  if (galleryContainer.getAttribute('data-set') === 'watched') {
+
+    await onRenderNextPage(page);
+  }
 }

@@ -2,21 +2,14 @@ import { paginationList } from '../utils/references';
 import { onCreatePaginationTemplate } from './pagination-markup';
 
 export async function onRenderPagination(response) {
-    
-    const currentPage = response.page;
-  console.log(currentPage);
 
-    const markup = await onCreatePaginationTemplate(response);
-    
+  const currentPage = response.page;
 
-  // console.log(markup);
+  const markup = await onCreatePaginationTemplate(response);
 
-  await paginationList.insertAdjacentHTML('beforeend', markup);
+  paginationList.insertAdjacentHTML('beforeend', markup);
 
-  const curentBtn = paginationList.querySelector(
-    `[data-set = '${currentPage}']`
-  );
-  // console.log(curentBtn);
+  const curentBtn = paginationList.querySelector(`[data-set = '${currentPage}']`);
 
   curentBtn.classList.add('pagination__active');
 }

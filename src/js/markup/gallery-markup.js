@@ -1,4 +1,5 @@
 import { galleryContainer } from '../utils/references';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export async function renderMovies(moviesArray) {
   const renderResult = await moviesArray
@@ -22,4 +23,5 @@ export async function renderMovies(moviesArray) {
     .join('');
 
   galleryContainer.insertAdjacentHTML('beforeend', renderResult);
+  Loading.remove();
 }

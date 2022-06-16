@@ -53,14 +53,11 @@
 
     &:hover,
     &:focus {
-        color: #FF6B08;
-        background-color: #FF6B08;
+        color: var(--accent-text-color);
+        background-color: var(--accent-text-color);
         opacity: 0.75;
-        box-shadow: (0 0 10px rgb(255, 107, 8));
+        box-shadow: (0 0 10px var(--accent-text-color));
 
-        // @media screen and (min-width: 480px){
-       
-        // }
     }
 }
 

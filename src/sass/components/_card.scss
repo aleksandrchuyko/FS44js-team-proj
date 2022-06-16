@@ -22,9 +22,13 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  @media screen and (min-width: 1024px) {
+    min-height: 64px;
+  }
+
   &__list {
     display: flex;
-    color: #ff6b08;
+    color: var(--accent-text-color);
   }
   &__item {
     &:not(:first-child) {
@@ -32,12 +36,12 @@
     }
 
     &--genres {
-      border-right: 1px solid orange;
+      border-right: 1px solid var(--card-color);
       padding-right: 5px;
     }
     &--rating {
-      color: white;
-      background-color: orange;
+      color: var(--main-text-color);
+      background-color: var(--card-color);
       padding: 0 9px;
       border-radius: 4px;
     }
