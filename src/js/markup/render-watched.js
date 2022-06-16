@@ -18,7 +18,7 @@ export async function onRenderLibrary(page) {
 
     const firebaseData = await getUserDataAllWatched(userId);
     const movies = Object.values(firebaseData);
-    console.log(movies);
+    
     const arrayLength = movies.length;
 
     const totalPages = Math.ceil(arrayLength / PARPAGE);

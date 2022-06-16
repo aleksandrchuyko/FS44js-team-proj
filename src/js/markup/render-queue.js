@@ -1,6 +1,6 @@
 import { logoutBtn, galleryContainer } from '../utils/references';
 import { getUserDataAllQueue } from '../api-fetch/get-from-database';
-
+import { userId} from '../service/init-firebase';
 import { changeMoviesArray } from '../markup/movies-array-change';
 import { onRenderPagination } from '../markup/gallery-pagination';
 import { clearGalleryContainer } from '../utils/clear-gallery-container';
@@ -16,8 +16,8 @@ export async function onRenderLibraryQueue(page) {
 
     Loading.hourglass('Loading...', spinnerRef);
 
-    const movies = await getUserDataAllQueue('116126857176505822881')
-    logoutBtn.classList.remove('visually-hidden');
+    const firebaseData = await getUserDataAllQueue(userId);
+    const movies = Object.values(firebaseData);
     const arrayLength = movies.length;
 
     const totalPages = Math.ceil(arrayLength / PARPAGE);
