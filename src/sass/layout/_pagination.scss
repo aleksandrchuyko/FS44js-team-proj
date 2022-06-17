@@ -45,6 +45,11 @@
     justify-content: center;
 }
 
+button:disabled:hover,
+button:disabled:focus {
+    background-color: transparent;
+}
+
 .pagination__button--left,
 .pagination__button--right {
     padding: 15px 15px;

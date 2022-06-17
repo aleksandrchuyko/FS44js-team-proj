@@ -10,6 +10,8 @@ import {
   openModalFilm,
   watchedBtn,
   queueBtn,
+  leftBtn,
+  rightBtn,
 } from '../utils/references';
 import { onPaginationBtnClick } from '../js-partials/pagination-btn-click';
 
@@ -24,6 +26,9 @@ import { logOut } from '../service/login';
 import { setMyLibraryStyles } from '../markup/header-library';
 import { clickButWatched } from '../service/header-library-click';
 import { clickButQueue } from '../service/header-queue-click';
+import { onLeftButtonClick } from '../js-partials/pagination-arrows';
+import { onRightButtonClick } from '../js-partials/pagination-arrows';
+
 
 addEventListener('DOMContentLoaded', () => {
   loadTrandingPage();
@@ -47,3 +52,6 @@ watchedBtn.addEventListener('click', clickButWatched);
 queueBtn.addEventListener('click', clickButQueue);
 navLibrary.addEventListener('click', setMyLibraryStyles);
 logoutBtn.addEventListener('click', logOut);
+leftBtn.addEventListener("click", onLeftButtonClick);
+rightBtn.addEventListener("click", onRightButtonClick);
+
