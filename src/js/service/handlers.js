@@ -20,8 +20,8 @@ import { onClickHomePage } from '../js-partials/tranding-gallery';
 import { openModal } from '../js-partials/open-modal';
 // import { openModalFilm } from '../utils/references';
 // import { onResize } from '../utils//display-change';
-import { arrowBtn } from '../utils/references';
-import { onArrowBtnClick } from '../js-partials/pagination-arrows';
+// import { arrowBtn } from '../utils/references';
+// import { onArrowBtnClick } from '../js-partials/pagination-arrows';
 import { logOut } from '../service/login';
 import { setMyLibraryStyles } from '../markup/header-library';
 import { clickButWatched } from '../service/header-library-click';
@@ -46,7 +46,7 @@ openModalFilm.addEventListener('click', openModal);
 
 // window.addEventListener('resize', onResize);
 
-arrowBtn.addEventListener('click', onArrowBtnClick);
+// arrowBtn.addEventListener('click', onArrowBtnClick);
 
 watchedBtn.addEventListener('click', clickButWatched);
 queueBtn.addEventListener('click', clickButQueue);
