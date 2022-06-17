@@ -23,3 +23,11 @@ export const queueBtn = document.querySelector('.queue-btn');
 
 export const leftBtn = document.querySelector('.pagination__button--left');
 export const rightBtn = document.querySelector('.pagination__button--right');
+
+
+export const currentPage = document.querySelector('.pagination-active');
+export const openModalTm = document.querySelector('[data-action="open-modal_tm"]');
+export const closeModalTm = document.querySelector('[data-action="close-modal_tm"]');
+export const backdropTm = document.querySelector('.js-backdrop_tm');
+
+
