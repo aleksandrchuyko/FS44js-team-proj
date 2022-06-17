@@ -6,7 +6,7 @@ export async function onCreatePaginationTemplate(response) {
   let beforePage;
   let afterPage;
 
-  const displayWidth = document.documentElement.clientWidth;
+  const displayWidth = window.innerWidth;
 
   const currentPage = response.page;
   const totalPages = response.total_pages;
