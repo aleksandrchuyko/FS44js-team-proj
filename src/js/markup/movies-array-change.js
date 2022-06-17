@@ -54,5 +54,5 @@ export async function changeMoviesArray(movies) {
     };
   });
 
-  await renderMovies(moviesArray);
+  renderMovies(moviesArray);
 }

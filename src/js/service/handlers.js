@@ -19,7 +19,7 @@ import { onClickHomePage } from '../js-partials/tranding-gallery';
 
 import { openModal } from '../js-partials/open-modal';
 // import { openModalFilm } from '../utils/references';
-// import { onResize } from '../utils//display-change';
+import { onResize } from '../utils/pagination-resize';
 // import { arrowBtn } from '../utils/references';
 // import { onArrowBtnClick } from '../js-partials/pagination-arrows';
 import { logOut } from '../service/login';
@@ -28,7 +28,6 @@ import { clickButWatched } from '../service/header-library-click';
 import { clickButQueue } from '../service/header-queue-click';
 import { onLeftButtonClick } from '../js-partials/pagination-arrows';
 import { onRightButtonClick } from '../js-partials/pagination-arrows';
-
 
 addEventListener('DOMContentLoaded', () => {
   loadTrandingPage();
@@ -44,7 +43,7 @@ headerLogo.addEventListener('click', onClickHomePage);
 
 openModalFilm.addEventListener('click', openModal);
 
-// window.addEventListener('resize', onResize);
+window.addEventListener('resize', onResize);
 
 // arrowBtn.addEventListener('click', onArrowBtnClick);
 
@@ -52,6 +51,5 @@ watchedBtn.addEventListener('click', clickButWatched);
 queueBtn.addEventListener('click', clickButQueue);
 navLibrary.addEventListener('click', setMyLibraryStyles);
 logoutBtn.addEventListener('click', logOut);
-leftBtn.addEventListener("click", onLeftButtonClick);
-rightBtn.addEventListener("click", onRightButtonClick);
-
+leftBtn.addEventListener('click', onLeftButtonClick);
+rightBtn.addEventListener('click', onRightButtonClick);
