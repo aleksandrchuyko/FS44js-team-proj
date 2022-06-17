@@ -23,4 +23,3 @@ export const queueBtn = document.querySelector('.queue-btn');
 
 export const leftBtn = document.querySelector('.pagination__button--left');
 export const rightBtn = document.querySelector('.pagination__button--right');
-export const currentPage = document.querySelector('.pagination-active');

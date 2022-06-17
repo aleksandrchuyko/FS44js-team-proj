@@ -1,7 +1,12 @@
-import { paginationList } from '../utils/references';
+import { paginationList, arrowBtn } from '../utils/references';
 import { onCreatePaginationTemplate } from './pagination-markup';
 
 export async function onRenderPagination(response) {
+  if (response.total_pages === 1) {
+    arrowBtn.classList.add('visually-hidden');
+  } else {
+   arrowBtn.classList.remove('visually-hidden');
+  }
 
   const currentPage = response.page;
 
