@@ -1,6 +1,7 @@
 import { navLibrary, header, navHome, inputForm, libraryBtns } from '../utils/references'
 import { userId} from '../service/init-firebase';
 import { logIn } from '../service/login';
+import { clickButWatched } from '../service/header-library-click';
 
 // import { clearGalleryContainer } from "../utils/clear-gallery-container"
 
@@ -15,7 +16,7 @@ export async function setMyLibraryStyles(e) {
     header.classList.add('header__my-library');
     navHome.classList.remove('current');
     inputForm.classList.add('visually-hidden');
-
+    clickButWatched(e);
     } catch(error) {
         // console.log('Sorry, you are non logged in');
         console.log(error.message);

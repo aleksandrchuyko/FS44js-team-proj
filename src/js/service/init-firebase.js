@@ -13,7 +13,7 @@ let userId = '';
 
     onAuthStateChanged(auth, (user) => {
   if (user) {
-      userId = user.providerData[0].uid;
+    userId = user.providerData[0].uid;
       logoutBtn.classList.remove('visually-hidden');
   } else {
     logoutBtn.classList.add('visually-hidden');
